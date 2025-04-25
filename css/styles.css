@@ -13,3 +13,16 @@ height: calc(100% - 73px);
 height: 100%;
 }
 }
+
+.social-media {
+    color: #afafaf;
+}
+
+.social-media:hover{
+    text-decoration: underline;
+    color: #797979
+}
+
+.forms {
+    padding: 10px;
+}
