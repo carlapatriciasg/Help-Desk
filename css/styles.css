@@ -30,3 +30,27 @@ height: 100%;
 .forms {
     padding: 10px;
 }
+
+.box{
+    margin: 5vh;
+    text-align: justify;
+    
+}
+.box h2{
+    font-size: medium;  
+    padding-top: 2vh;
+    padding-bottom: 3vh;      
+}
+.box p ul {
+    font-size: small;
+}
+.card-body {
+    width: 100%;
+  max-height: 400px; /* define uma altura máxima */
+  overflow-y: auto;  /* ativa scroll vertical quando necessário */
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+    
+}
