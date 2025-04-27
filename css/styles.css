@@ -14,6 +14,24 @@ height: 100%;
 }
 }
 
+.title {
+    padding-top: 30px;
+}
+
+/*REGISTER*/
+.forms {
+    padding: 10px;
+}
+
+#check-disclaimer {
+    margin-left: 1vh;
+}
+
+.check-disclaimer {
+    margin-right: 3vh;
+}
+
+/*FOOTER*/
 .social-media {
     color: #afafaf;
 }
@@ -23,12 +41,28 @@ height: 100%;
     color: #797979
 }
 
-.title {
-    padding-top: 30px;
+.box-disclaimer{
+    margin: 5vh;
+    text-align: justify;
+    
 }
-
-.forms {
-    padding: 10px;
+.box-disclaimer h2{
+    font-size: medium;  
+    padding-top: 2vh;
+    padding-bottom: 3vh;      
+}
+.box-disclaimer p ul {
+    font-size: small;
+}
+.card-body-disclaimer {
+    width: 100%;
+  max-height: 400px; /* define uma altura máxima */
+  overflow-y: auto;  /* ativa scroll vertical quando necessário */
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+    
 }
 
 .box{
