@@ -1,3 +1,9 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
 .divider:after,
 .divider:before {
 content: "";
@@ -22,6 +28,10 @@ height: 100%;
 .forms {
     padding: 10px;
 }
+/*body todo o conteudo principal*/
+section.forms {
+    flex: 1; /* Faz o conteúdo ocupar o espaço restante */
+}
 
 /*FOOTER*/
 .social-media {
@@ -32,6 +42,17 @@ height: 100%;
     text-decoration: underline;
     color: #797979
 }
+.rodape-fixo {
+    margin-top: auto; /* Empurra o footer para o fim quando necessário */
+  }
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
 /*disclaimer*/
 .box-disclaimer{
     margin: 5vh;
@@ -51,8 +72,9 @@ height: 100%;
   max-height: 400px; /* define uma altura máxima */
   overflow-y: auto;  /* ativa scroll vertical quando necessário */
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 4px solid #f9f9f9;
   background-color: #f9f9f9;
   border-radius: 8px;
     
 }
+
