@@ -14,7 +14,7 @@ background: #eee;
 .h-custom {
 height: calc(100% - 73px);
 }
-@media (max-width: 450px) {
+@media (max-width: 1950px) {
 .h-custom {
 height: 100%;
 }
@@ -42,9 +42,7 @@ section.forms {
     text-decoration: underline;
     color: #797979
 }
-.rodape-fixo {
-    margin-top: auto; /* Empurra o footer para o fim quando necessário */
-  }
+
 
 footer {
     position: relative;
