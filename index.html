@@ -22,96 +22,102 @@
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
   crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-  <section class="vh-100">
-    <div class="container-fluid h-custom">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-9 col-lg-6 col-xl-5">
-          <img src="img/Imagem.png"
-            class="img-fluid" alt="Sample image">
-        </div>
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-          <form>
-            <!-- Email input -->
-            <div class="mb-4">
-              <label for="form3Example3" class="form-label"><strong>E-mail</strong></label>
-              <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-                <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="exemplo@email.com">
-              </div>
+  <main class="flex-grow-1 d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-8">
+          <div class="row">
+            <!-- Imagem à esquerda  / md or lg /-->
+            <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center">
+              <img src="img/Imagem.png" class="img-fluid" alt="Sample image">
             </div>
-          
-            <!-- Password input -->
-            <div class="mb-3">
-              <label for="form3Example4" class="form-label"><strong>Senha</strong></label>
-              <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
-                <input type="password" id="form3Example4" class="form-control form-control-lg" placeholder="Digite sua senha">
-              </div>
+  
+            <!-- Formulário à direita -->
+            <div class="col-md-6 form-container text-center text-md-start">
+              <form>
+                <!-- E-mail -->
+                <div class="mb-4">
+                  <label for="formEmail" class="form-label"><strong>E-mail</strong></label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                    <input type="email" id="formEmail" class="form-control form-control-lg" placeholder="exemplo@email.com">
+                  </div>
+                </div>
+  
+                <!-- Senha -->
+                <div class="mb-3">
+                  <label for="formSenha" class="form-label"><strong>Senha</strong></label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                    <input type="password" id="formSenha" class="form-control form-control-lg" placeholder="Digite sua senha">
+                  </div>
+                </div>
+  
+                <!-- Checkbox e link -->
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-3 gap-2">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck" />
+                    <label class="form-check-label" for="formCheck">Mantenha-me conectado</label>
+                  </div>
+                  <a href="#!" class="text-body">Esqueceu a senha?</a>
+                </div>
+  
+                <!-- Botão -->
+                <div class="d-grid mb-3">
+                  <button type="submit" class="btn btn-primary btn-lg shadow-sm">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                  </button>
+                </div>
+  
+                <!-- Cadastro -->
+                <p class="small fw-bold mb-0 text-center">
+                  Não tem uma conta? <a href="register.html" class="link-danger">Cadastre-se</a>
+                </p>
+              </form>
             </div>
-          
-            <div class="d-flex justify-content-between align-items-center">
-              <!-- Checkbox -->
-              <div class="form-check mb-0">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                <label class="form-check-label" for="form2Example3">
-                  Mantenha-me conectado
-                </label>
-              </div>
-              <a href="#!" class="text-body">Esqueceu a senha?</a>
-            </div>
-          <!-- Botão de Cadastro -->
-            <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="submit" class="btn btn-primary btn-lg w-100 shadow-sm">
-                <i class="bi bi-box-arrow-in-right me-2"></i>Login
-              </button>
-              <p class="small fw-bold mt-2 pt-1 mb-0">Não tem uma conta? 
-                <a href="register.html" class="link-danger">Cadastre-se</a>
-              </p>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
+  </main>
+  
+  <footer class="text-center bg-body-tertiary">
+    <!-- Grid container -->
+    <div class="container pt-4">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a href="#"
+          ><button type="button" class="btn btn-floating btn-lg social-media">
+            <i class="bi bi-facebook"></i>
+          </button></a>
+  
+        <!-- Instagram -->
+        <a href="#"
+          ><button type="button" class="btn btn-floating btn-lg social-media">
+            <i class="bi bi-instagram"></i>
+          </button></a>
+  
+        <!-- Linkedin -->
+        <a href="#"
+          ><button type="button" class="btn btn-floating btn-lg social-media">
+            <i class="bi bi-linkedin"></i>
+          </button></a>
 
-    <footer class="text-center bg-body-tertiary">
-      <!-- Grid container -->
-      <div class="container pt-4">
-        <!-- Section: Social media -->
-        <section class="mb-4">
-          <!-- Facebook -->
-          <a href="#"
-            ><button type="button" class="btn btn-floating btn-lg social-media">
-              <i class="bi bi-facebook"></i>
-            </button></a>
-    
-          <!-- Instagram -->
-          <a href="#"
-            ><button type="button" class="btn btn-floating btn-lg social-media">
-              <i class="bi bi-instagram"></i>
-            </button></a>
-    
-          <!-- Linkedin -->
-          <a href="#"
-            ><button type="button" class="btn btn-floating btn-lg social-media">
-              <i class="bi bi-linkedin"></i>
-            </button></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
   
-        </section>
-        <!-- Section: Social media -->
-      </div>
-      <!-- Grid container -->
-    
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2020 Copyright:
-        <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-      </div>
-      <!-- Copyright -->
-    </footer>
-  </section>
-  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2020 Copyright:
+      <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
   <script src="js/scripts.js"></script>
 </body>
 </html>
