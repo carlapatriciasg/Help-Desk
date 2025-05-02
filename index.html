@@ -24,19 +24,13 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-  <main class="flex-grow-1 d-flex align-items-center">
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-12 col-md-10 col-lg-8 col-xl-8">
-          <div class="row">
-            <!-- Imagem à esquerda  / md or lg /-->
-            <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center">
-              <img src="img/Imagem.png" class="img-fluid" alt="Sample image">
-            </div>
-  
-            <!-- Formulário à direita -->
-            <div class="col-md-6 form-container text-center text-md-start">
-              <form>
+        <div class="col-12 col-md-10 col-lg-6"> <!-- Reduzi a largura para melhorar o centramento -->
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-10 form-container d-flex flex-column justify-content-center align-items-center">
+              <form class="w-100" style="max-width: 400px;"> <!-- Limita a largura do form -->
                 <!-- E-mail -->
                 <div class="mb-4">
                   <label for="formEmail" class="form-label"><strong>E-mail</strong></label>
@@ -82,6 +76,7 @@
       </div>
     </div>
   </main>
+  
   
   <footer class="text-center bg-body-tertiary">
     <!-- Grid container -->
