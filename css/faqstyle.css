@@ -108,6 +108,15 @@ footer {
   color: #6c757d;
 }
 
+.ending {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #dee2e6;
+  text-align: center;
+  font-size: 0.9em;
+  color: #6c757d;
+}
+
 a {
   color: #0056b3;
   text-decoration: none;
@@ -115,4 +124,21 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+/*FOOTER*/
+.social-media {
+  color: #afafaf;
+}
+
+.social-media:hover {
+  text-decoration: underline;
+  color: #797979
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
 }
