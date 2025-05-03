@@ -99,7 +99,7 @@ details[open] summary::after {
   margin-bottom: 0;
 }
 
-footer {
+.ending {
   margin-top: 40px;
   padding-top: 20px;
   border-top: 1px solid #dee2e6;
@@ -115,4 +115,21 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+/*FOOTER*/
+.social-media {
+  color: #afafaf;
+}
+
+.social-media:hover {
+  text-decoration: underline;
+  color: #797979
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
 }
