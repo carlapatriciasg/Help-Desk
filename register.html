@@ -50,12 +50,14 @@
         <!-- SENHA -->
         <div class="col-md-6">
           <label for="senha" class="form-label">Senha</label>
-          <input type="password" class="form-control" placeholder="" />
+          <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" />
+          <!-- Elemento para exibir a mensagem -->
+          <small id="mensagem" class="form-text"></small> 
         </div>
 
         <div class="col-md-6">
           <label for="confirmarSenha" class="form-label">Confirmar Senha</label>
-          <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha">
+          <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme sua senha">
         </div>
 
         <!-- DATA DE NASCIMENTO -->
@@ -150,7 +152,7 @@
   </footer>
   <script src="js/script.js"></script>
   
-  <script defer>
+<script defer>
 document.getElementById("senha").addEventListener("input", function() {
   const senha = this.value;
   const mensagem = document.getElementById("mensagem");
