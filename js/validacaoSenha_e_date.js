@@ -5,6 +5,8 @@ document.getElementById("senha").addEventListener("input", function () {
   validarConfirmacaoSenha();
 });
 
+document.getElementById("confirmarSenha").addEventListener("input", validarConfirmacaoSenha);
+
 function validarSenha() {
   const senha = document.getElementById("senha").value;
   const mensagem = document.getElementById("mensagem");
@@ -55,24 +57,30 @@ function atualizarRequisitosSenha() {
 }
 
 function validarConfirmacaoSenha() {
-  const senha = document.getElementById("senha").value;
-  const confirmarSenha = document.getElementById("confirmarSenha").value;
+  const senha = document.getElementById("senha").value.trim();
+  const confirmarSenha = document.getElementById("confirmarSenha").value.trim();
   const mensagem = document.getElementById("mensagem");
 
+  // Verifica se a senha atende aos critérios antes de comparar
   if (!validarSenha()) {
-    mensagem.textContent = "A senha deve atender aos critérios de validação."; 
+    mensagem.textContent = "A senha deve atender aos critérios de validação.";
     mensagem.style.color = "red";
     return;
   }
 
-  if (confirmarSenha !== senha) {
+  // Compara as senhas
+  if (confirmarSenha === "") {
+    mensagem.textContent = "Por favor, confirme sua senha.";
+    mensagem.style.color = "red";
+  } else if (confirmarSenha !== senha) {
     mensagem.textContent = "As senhas não coincidem.";
     mensagem.style.color = "red";
-  } else if (senha && confirmarSenha) {
+  } else {
     mensagem.textContent = "As senhas coincidem!";
     mensagem.style.color = "green";
   }
 }
+
 // validacao data 
 document.querySelector('input[type="date"]').addEventListener('input', function () {
   const data = this.value;
