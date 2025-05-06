@@ -1,12 +1,7 @@
-
-// Validação de senha (letra maiúscula e minúscula)
+// Validação de senha (letra maiúscula, minúscula, número e comprimento mínimo)
 document.getElementById("senha").addEventListener("input", function () {
   validarSenha();
-  validarConfirmacaoSenha();
-});
-
-// Validação de confirmação de senha
-document.getElementById("confirmarSenha").addEventListener("input", function () {
+  atualizarRequisitosSenha(); // Adiciona a atualização dos critérios
   validarConfirmacaoSenha();
 });
 
@@ -14,12 +9,20 @@ function validarSenha() {
   const senha = document.getElementById("senha").value;
   const mensagem = document.getElementById("mensagem");
 
-  if (!/[A-Z]/.test(senha)) {
+  if (senha.length < 8) {
+    mensagem.textContent = "A senha deve conter pelo menos 8 caracteres.";
+    mensagem.style.color = "red";
+    return false;
+  } else if (!/[A-Z]/.test(senha)) {
     mensagem.textContent = "A senha deve conter pelo menos uma letra maiúscula.";
     mensagem.style.color = "red";
     return false;
   } else if (!/[a-z]/.test(senha)) {
     mensagem.textContent = "A senha deve conter pelo menos uma letra minúscula.";
+    mensagem.style.color = "red";
+    return false;
+  } else if (!/[0-9]/.test(senha)) {
+    mensagem.textContent = "A senha deve conter pelo menos um número.";
     mensagem.style.color = "red";
     return false;
   } else {
@@ -29,13 +32,35 @@ function validarSenha() {
   }
 }
 
+// Função para atualizar os critérios de validação dinamicamente
+function atualizarRequisitosSenha() {
+  const senha = document.getElementById("senha").value;
+  const requisitos = document.getElementById("requisitos");
+
+  const criterios = [
+    { regex: /.{8,}/, mensagem: "Pelo menos 8 caracteres" },
+    { regex: /[A-Z]/, mensagem: "Pelo menos uma letra maiúscula" },
+    { regex: /[a-z]/, mensagem: "Pelo menos uma letra minúscula" },
+    { regex: /[0-9]/, mensagem: "Pelo menos um número" },
+  ];
+
+  requisitos.innerHTML = ""; // Limpa os critérios anteriores
+
+  criterios.forEach((criterio) => {
+    const item = document.createElement("li");
+    item.textContent = criterio.mensagem;
+    item.style.color = criterio.regex.test(senha) ? "green" : "red";
+    requisitos.appendChild(item);
+  });
+}
+
 function validarConfirmacaoSenha() {
   const senha = document.getElementById("senha").value;
   const confirmarSenha = document.getElementById("confirmarSenha").value;
   const mensagem = document.getElementById("mensagem");
 
   if (!validarSenha()) {
-    mensagem.textContent = "A senha deve conter pelo menos uma letra maiúscula e minúscula.";
+    mensagem.textContent = "A senha deve atender aos critérios de validação."; 
     mensagem.style.color = "red";
     return;
   }
@@ -48,7 +73,6 @@ function validarConfirmacaoSenha() {
     mensagem.style.color = "green";
   }
 }
-
 // validacao data 
 document.querySelector('input[type="date"]').addEventListener('input', function () {
   const data = this.value;
