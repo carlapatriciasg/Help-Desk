@@ -1,0 +1,202 @@
+/* Geral */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f7fc;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    padding: 1rem;
+    background-color: #343a40;
+    color: #fff;
+    z-index: 1030;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .nav-link i {
+    margin-right: 0.75rem;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.375rem;
+}
+
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.sidebar .logo img {
+    margin-right: 0.75rem;
+}
+
+/* Sidebar recolhida */
+.sidebar.collapsed {
+    width: 80px;
+    transition: width 0.3s ease-in-out;
+}
+
+.sidebar.collapsed .logo span,
+.sidebar.collapsed .nav-link {
+    display: none;
+}
+
+.sidebar.collapsed .nav-link i {
+    margin-right: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.main-content-wrapper.collapsed {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+    transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+/* Wrapper e Conteúdo Principal */
+.main-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.main-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+/* Header */
+.header {
+    background-color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid #dee2e6;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+/* Cartões de Métricas */
+.card-metric {
+    text-align: center;
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-metric .card-body {
+    padding: 1.5rem;
+}
+
+.card-metric .metric-value {
+    font-size: 2rem;
+    font-weight: 500;
+    display: block;
+}
+
+.card-metric .metric-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.card-metric.text-bg-primary .metric-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.card-metric.text-bg-warning .metric-label {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.card-metric.text-bg-success .metric-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.card-metric.text-bg-secondary .metric-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Seção "O que você pode fazer aqui?" */
+#post-login-info ol {
+    padding-left: 1.5rem;
+}
+
+#post-login-info li {
+    margin-bottom: 1rem;
+}
+
+#post-login-info li strong {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+#post-login-info li p {
+    font-size: 0.95rem;
+    color: #495057;
+}
+
+/* Responsividade */
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(-100%);
+        z-index: 1040;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .main-content-wrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .sidebar-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1035;
+        display: none;
+    }
+
+    .sidebar.show ~ .sidebar-backdrop {
+        display: block;
+    }
+
+    .sidebar-toggle {
+        display: block !important;
+    }
+}
+
+.sidebar-toggle {
+    display: none;
+}
