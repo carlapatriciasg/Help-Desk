@@ -116,41 +116,33 @@ body {
     text-align: center;
     border: none;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-    background-color: #ffffff; /* Fundo branco */
-    border-radius: 8px;
 }
-
 .card-metric .card-body {
     padding: 1.5rem;
 }
-
 .card-metric .metric-value {
     font-size: 2rem;
     font-weight: 500;
     display: block;
-    color: #0056b3; /* Azul consistente */
 }
-
 .card-metric .metric-label {
     font-size: 0.9rem;
     color: #6c757d;
 }
 
-.card-metric.text-bg-primary .metric-label {
-    color: rgba(255, 255, 255, 0.8);
+.text-bg-bluezinho {
+    background-color: #182b78;
 }
 
-.card-metric.text-bg-warning .metric-label {
-    color: rgba(0, 0, 0, 0.7);
+#stat-open {
+    color: rgb(255, 255, 255);
 }
 
-.card-metric.text-bg-success .metric-label {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.card-metric.text-bg-secondary .metric-label {
-    color: rgba(255, 255, 255, 0.8);
-}
+/* Adjustments for text-bg-* helper classes */
+.card-metric.text-bg-bluezinho .metric-label { color: rgb(255, 255, 255); }
+.card-metric.text-bg-warning .metric-label { color: rgba(0, 0, 0, 0.8); }
+.card-metric.text-bg-success .metric-label { color: rgba(255, 255, 255, 0.8); }
+.card-metric.text-bg-secondary .metric-label { color: rgba(255, 255, 255, 0.8); }
 
 /* Tabelas */
 .table th {
