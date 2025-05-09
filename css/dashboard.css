@@ -1,10 +1,12 @@
 /* Geral */
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #f4f7fc;
+    background-color: #f4f7fc; /* Fundo claro */
+    color: #343a40; /* Texto escuro */
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    margin: 0;
 }
 
 /* Sidebar */
@@ -15,7 +17,7 @@ body {
     bottom: 0;
     width: 260px;
     padding: 1rem;
-    background-color: #343a40;
+    background-color: #343a40; /* Fundo escuro */
     color: #fff;
     z-index: 1030;
     transition: transform 0.3s ease-in-out;
@@ -26,6 +28,7 @@ body {
     padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
+    font-size: 0.95rem;
 }
 
 .sidebar .nav-link i {
@@ -92,6 +95,10 @@ body {
 .main-content {
     padding: 1.5rem;
     flex-grow: 1;
+    background-color: #ffffff; /* Fundo branco */
+    border: 1px solid #dee2e6; /* Borda leve */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra leve */
 }
 
 /* Header */
@@ -109,12 +116,10 @@ body {
     text-align: center;
     border: none;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    background-color: #ffffff; /* Fundo branco */
+    border-radius: 8px;
 }
 
-
-.bt-color{
-    background-color:#0056b3
-}
 .card-metric .card-body {
     padding: 1.5rem;
 }
@@ -123,15 +128,16 @@ body {
     font-size: 2rem;
     font-weight: 500;
     display: block;
+    color: #0056b3; /* Azul consistente */
 }
 
 .card-metric .metric-label {
     font-size: 0.9rem;
-    color: #ffffff;
+    color: #6c757d;
 }
 
-.card-metric.bt-color .metric-label {
-    color: rgb(255, 255, 255);
+.card-metric.text-bg-primary .metric-label {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .card-metric.text-bg-warning .metric-label {
@@ -146,21 +152,107 @@ body {
     color: rgba(255, 255, 255, 0.8);
 }
 
+/* Tabelas */
+.table th {
+    font-weight: 500;
+}
 
-/* Seção "O que você pode fazer aqui?" */
+/* Badges de Status */
+.status-badge {
+    padding: 0.3em 0.6em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.status-aberto { background-color: #cfe2ff; color: #0d6efd; }
+.status-atendimento { background-color: #fff3cd; color: #ffc107; }
+.status-aguardando { background-color: #e2e3e5; color: #6c757d; }
+.status-resolvido { background-color: #d1e7dd; color: #198754; }
+.status-fechado { background-color: #f8d7da; color: #dc3545; }
+
+/* Prioridade de Ícones */
+.priority-icon {
+    font-size: 1.1em;
+    vertical-align: middle;
+}
+.priority-baixa { color: #0d6efd; }
+.priority-media { color: #ffc107; }
+.priority-alta { color: #fd7e14; }
+.priority-critica { color: #dc3545; }
+
+/* Timeline */
+.timeline {
+    list-style: none;
+    padding: 0;
+    position: relative;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 40px;
+    width: 2px;
+    background-color: #dee2e6;
+}
+
+.timeline-item {
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 70px;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: 28px;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #6c757d;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+.timeline-icon.status-change { background-color: #0d6efd; }
+.timeline-icon.comment { background-color: #198754; }
+.timeline-icon.creation { background-color: #ffc107; }
+
+.timeline-content {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    border: 1px solid #dee2e6;
+}
+
+.timeline-time {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+.timeline-author {
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+
+/* Seção de Ajuda */
 #post-login-info ol {
     padding-left: 1.5rem;
 }
-
 #post-login-info li {
     margin-bottom: 1rem;
 }
-
 #post-login-info li strong {
     display: block;
     margin-bottom: 0.25rem;
 }
-
 #post-login-info li p {
     font-size: 0.95rem;
     color: #495057;
