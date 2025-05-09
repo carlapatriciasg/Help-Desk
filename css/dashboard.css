@@ -111,6 +111,10 @@ body {
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
+
+.bt-color{
+    background-color:#0056b3
+}
 .card-metric .card-body {
     padding: 1.5rem;
 }
@@ -123,11 +127,11 @@ body {
 
 .card-metric .metric-label {
     font-size: 0.9rem;
-    color: #6c757d;
+    color: #ffffff;
 }
 
-.card-metric.text-bg-primary .metric-label {
-    color: rgba(255, 255, 255, 0.8);
+.card-metric.bt-color .metric-label {
+    color: rgb(255, 255, 255);
 }
 
 .card-metric.text-bg-warning .metric-label {
@@ -141,6 +145,7 @@ body {
 .card-metric.text-bg-secondary .metric-label {
     color: rgba(255, 255, 255, 0.8);
 }
+
 
 /* Seção "O que você pode fazer aqui?" */
 #post-login-info ol {
