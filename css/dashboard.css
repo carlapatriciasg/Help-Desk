@@ -1,6 +1,6 @@
 /* Geral */
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     background-color: #f4f7fc; /* Fundo claro */
     color: #343a40; /* Texto escuro */
     display: flex;
@@ -11,20 +11,23 @@ body {
 
 /* Sidebar */
 .sidebar {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-style: solid;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     width: 260px;
     padding: 1rem;
-    background-color: #343a40; /* Fundo escuro */
+    /* Fundo mais claro */
+    background-color: #f8f9fa; 
     color: #fff;
     z-index: 1030;
     transition: transform 0.3s ease-in-out;
 }
 
 .sidebar .nav-link {
-    color: rgba(255, 255, 255, 0.75);
+    color:#0056b3;
     padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
@@ -39,9 +42,9 @@ body {
 
 .sidebar .nav-link:hover,
 .sidebar .nav-link.active {
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.1);
+    color: #060130;
     border-radius: 0.375rem;
+    text-decoration: underline;
 }
 
 .sidebar .logo {
@@ -49,7 +52,7 @@ body {
     align-items: center;
     padding: 1rem;
     margin-bottom: 1rem;
-    color: #fff;
+    color: rgba(19, 10, 142, 0.75);
     text-decoration: none;
     font-size: 1.25rem;
     font-weight: 500;
