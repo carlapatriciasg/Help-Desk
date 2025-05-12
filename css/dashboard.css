@@ -96,6 +96,7 @@ body {
 }
 
 .main-content {
+    margin-top: -5vh;
     padding: 1.5rem;
     flex-grow: 1;
     background-color: #ffffff; /* Fundo branco */
