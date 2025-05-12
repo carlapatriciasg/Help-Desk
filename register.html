@@ -49,19 +49,19 @@
       <form action="/processa-cadastro" method="POST" class="row g-3">
         <div class="col-md-6">
           <label for="nome" class="form-label">Nome Completo</label>
-          <input type="text" class="form-control" placeholder="Informe seu nome completo" />
+          <input type="text" class="form-control" placeholder="Informe seu nome completo" required/>
         </div>
 
         <!-- EMAIL -->
         <div class="col-md-6">
           <label for="email" class="form-label">E-mail</label>
-          <input type="email" class="form-control" placeholder="example@example.com" />
+          <input type="email" class="form-control" placeholder="example@example.com" required/>
         </div>
 
         <!-- SENHA -->
         <div class="col-md-6">
           <label for="senha">Senha:</label>
-          <input type="password" class="form-control" id="senha" />
+          <input type="password" class="form-control" id="senha" required/>
           <ul id="requisitos">
             <!-- Os critérios serão preenchidos dinamicamente -->
           </ul>
@@ -71,44 +71,44 @@
         <div class="col-md-6">
           <label for="confirmarSenha" class="form-label">Confirmar Senha</label>
           <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha"
-            placeholder="Confirme sua senha">
+            placeholder="Confirme sua senha" required>
         </div>
 
         <!-- DATA DE NASCIMENTO -->
         <div class="col-md-6">
           <label for="email" class="form-label">Data de Nascimento</label>
-          <input type="date" class="form-control" />
+          <input type="date" class="form-control" required/>
         </div>
 
         <!-- CEP -->
         <div class="col-md-6">
           <label for="telefone" class="form-label">CEP</label>
           <input name="cep" type="text" id="cep" class="form-control" maxlength="9" placeholder="Digite seu CEP"
-            onblur="pesquisacep(this.value);" />
+            onblur="pesquisacep(this.value);" required/>
         </div>
 
         <!-- RUA -->
         <div class="col-md-6">
           <label for="telefone" class="form-label">Rua</label>
-          <input type="text" class="form-control" id="rua" name="rua" placeholder="Nome da rua" />
+          <input type="text" class="form-control" id="rua" name="rua" placeholder="Nome da rua" required/>
         </div>
 
         <!-- BAIRRO -->
         <div class="col-md-6">
           <label for="telefone" class="form-label">Bairro</label>
-          <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Nome do bairro" />
+          <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Nome do bairro" required/>
         </div>
 
         <!-- CIDADE -->
         <div class="col-md-6">
           <label for="telefone" class="form-label">Cidade</label>
-          <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Nome da cidade" />
+          <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Nome da cidade" required/>
         </div>
 
         <!-- ESTADO -->
         <div class="col-md-2">
           <label for="telefone" class="form-label">Estado</label>
-          <input type="text" class="form-control" id="uf" name="uf" placeholder="UF" maxlength="2" />
+          <input type="text" class="form-control" id="uf" name="uf" placeholder="UF" maxlength="2" required/>
         </div>
 
         <!-- TERMO DE USO -->
@@ -132,7 +132,7 @@
     </section>
   </div>
   
-  <script src="js/validacao.js" defer></script>
+  <script src="js/verify.js" defer></script>
 
 </body>
 
