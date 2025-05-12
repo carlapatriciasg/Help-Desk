@@ -1,0 +1,254 @@
+/* General Styles */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f7fc; /* Light background */
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/* Sidebar / Navigation */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 260px; /* Sidebar width */
+    padding: 1rem;
+    background-color: #343a40; /* Dark sidebar */
+    color: #fff;
+    z-index: 1030; /* Ensure sidebar is above content */
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .nav-link i {
+    margin-right: 0.75rem;
+    width: 20px; /* Fixed width for icons */
+    text-align: center;
+}
+
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.375rem; /* Equivalent to Bootstrap's rounded-2 */
+}
+
+
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.sidebar .logo img {
+    margin-right: 0.75rem;
+}
+
+/* Wrapper to contain header and main content */
+.main-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 260px; /* Default for large screens */
+    width: calc(100% - 260px); /* Default for large screens */
+    transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.main-content {
+    padding: 1.5rem;
+    flex-grow: 1; /* Allow main content to fill space */
+}
+
+/* Header */
+.header {
+    background-color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid #dee2e6;
+    position: sticky;
+    top: 0;
+    z-index: 1020; /* Below sidebar */
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(-100%); /* Hide sidebar by default */
+        z-index: 1040; /* Ensure it's above backdrop */
+    }
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    .main-content-wrapper { /* Adjust wrapper on small screens */
+        margin-left: 0;
+        width: 100%;
+    }
+    .sidebar-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1035; /* Below sidebar, above content */
+        display: none; /* Hidden by default */
+    }
+    .sidebar.show ~ .sidebar-backdrop {
+        display: block;
+    }
+
+    /* Show toggle button on small screens */
+    .sidebar-toggle {
+        display: block !important;
+    }
+}
+
+/* Hide toggle button on large screens */
+.sidebar-toggle {
+    display: none;
+}
+
+/* Card styling */
+.card-metric {
+    text-align: center;
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+.card-metric .card-body {
+    padding: 1.5rem;
+}
+.card-metric .metric-value {
+    font-size: 2rem;
+    font-weight: 500;
+    display: block;
+}
+.card-metric .metric-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Adjustments for text-bg-* helper classes */
+.card-metric.text-bg-primary .metric-label { color: rgba(255, 255, 255, 0.8); }
+.card-metric.text-bg-warning .metric-label { color: rgba(0, 0, 0, 0.7); } /* Darker label on yellow */
+.card-metric.text-bg-success .metric-label { color: rgba(255, 255, 255, 0.8); }
+.card-metric.text-bg-secondary .metric-label { color: rgba(255, 255, 255, 0.8); }
+
+/* Table styling */
+.table th {
+    font-weight: 500;
+}
+
+.status-badge {
+    padding: 0.3em 0.6em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.status-aberto { background-color: #cfe2ff; color: #0d6efd; } /* blue */
+.status-atendimento { background-color: #fff3cd; color: #ffc107; } /* yellow */
+.status-aguardando { background-color: #e2e3e5; color: #6c757d; } /* gray */
+.status-resolvido { background-color: #d1e7dd; color: #198754; } /* green */
+.status-fechado { background-color: #f8d7da; color: #dc3545; } /* red */
+
+.priority-icon {
+    font-size: 1.1em;
+    vertical-align: middle;
+}
+.priority-baixa { color: #0d6efd; } /* blue */
+.priority-media { color: #ffc107; } /* yellow */
+.priority-alta { color: #fd7e14; } /* orange */
+.priority-critica { color: #dc3545; } /* red */
+
+
+/* Ticket Detail Timeline */
+.timeline {
+    list-style: none;
+    padding: 0;
+    position: relative;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 40px; /* Adjust based on icon size */
+    width: 2px;
+    background-color: #dee2e6;
+}
+
+.timeline-item {
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 70px; /* Space for icon + padding */
+}
+
+.timeline-icon {
+    position: absolute;
+    left: 28px; /* Center icon on the line */
+    top: 0;
+    width: 24px; /* Icon container size */
+    height: 24px;
+    border-radius: 50%;
+    background-color: #6c757d; /* Default icon background */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+.timeline-icon.status-change { background-color: #0d6efd; } /* Blue for status change */
+.timeline-icon.comment { background-color: #198754; } /* Green for comment */
+.timeline-icon.creation { background-color: #ffc107; } /* Yellow for creation */
+
+
+.timeline-content {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    border: 1px solid #dee2e6;
+    position: relative; /* For potential future arrows */
+}
+
+.timeline-time {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+.timeline-author {
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+
+/* Help card styling */
+#post-login-info ol {
+    padding-left: 1.5rem; /* Indent list */
+}
+#post-login-info li {
+    margin-bottom: 1rem; /* Space between list items */
+}
+#post-login-info li strong {
+    display: block; /* Make title block level */
+    margin-bottom: 0.25rem;
+}
+#post-login-info li p {
+    font-size: 0.95rem;
+    color: #495057;
+}
