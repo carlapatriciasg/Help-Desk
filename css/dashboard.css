@@ -1,8 +1,8 @@
 /* Geral */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    background-color: #f4f7fc; /* Fundo claro */
-    color: #343a40; /* Texto escuro */
+    background-color: #f4f7fc; 
+    color: #343a40;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -99,10 +99,10 @@ body {
     margin-top: -5vh;
     padding: 1.5rem;
     flex-grow: 1;
-    background-color: #ffffff; /* Fundo branco */
-    border: 1px solid #dee2e6; /* Borda leve */
+    background-color: #ffffff; 
+    border: 1px solid #dee2e6; 
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra leve */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
 }
 
 /* Header */
