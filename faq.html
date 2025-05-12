@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FAQ - Sistema de Chamados</title>
-
-  <!-- bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-  <!-- css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="icon" href="logo.png" type="image/png">
 
-  <!-- scripts -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -26,143 +22,197 @@
 </head>
 
 <body>
-  <!--IMPLEMENTAÇÃO API ACESSIBILIDADE -->
-  <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <button class="btn btn-light sidebar-collapse" type="button">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+    <a href="dashboard.html" class="logo text-decoration-none">
+      <span><strong>Help-Desk</strong></span>
+    </a>
+    <nav class="nav flex-column mt-3">
+      <a class="nav-link" href="dashboard.html"><i class="bi bi-grid-fill"></i> Dashboard</a>
+      <a class="nav-link" href="ticket-list.html"><i class="bi bi-ticket-detailed-fill"></i> Meus Chamados</a>
+      <a class="nav-link active" href="new-ticket.html"><i class="bi bi-plus-circle-fill"></i> Abrir Chamado</a>
+      <a class="nav-link" href="knowledge-base.html"><i class="bi bi-journal-bookmark-fill"></i> Base de
+        Conhecimento</a>
+      <a class="nav-link" href="faq.html"><i class="bi bi-question-circle-fill"></i> FAQ</a>
+    </nav>
+    <div class="mt-auto">
+      <a class="nav-link" href="#" id="logout-button-sidebar"><i class="bi bi-box-arrow-left"></i> Sair</a>
     </div>
   </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
-  <div class="container-middle">
-    <header>
-      <h1>Perguntas Frequentes (FAQ)</h1>
-      <p>Encontre respostas para dúvidas comuns sobre o uso do Sistema de Gerenciamento de Chamados Corporativo.</p>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-content-wrapper">
+    <!-- Header -->
+    <header class="header d-flex justify-content-between align-items-center">
+      <button class="btn btn-light d-lg-none sidebar-toggle" type="button">
+        <i class="bi bi-list"></i>
+      </button>
+      <h1 class="h4 mb-0 ms-2">Perguntas Frequentes (FAQ)</h1>
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-person-circle fs-2 px-2"></i>
+          <strong id="username-header">Usuário</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="dropdownUser1">
+          <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person-circle me-2"></i>Perfil</a>
+          </li>
+          <li><a class="dropdown-item" href="profile.html#settings"><i
+                class="bi bi-gear-fill me-2"></i>Configurações</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="#" id="logout-button"><i class="bi bi-box-arrow-right me-2"></i>Sair</a>
+          </li>
+        </ul>
+      </div>
     </header>
 
-    <section id="inicio">
-      <h2>Primeiros Passos</h2>
-      <details>
-        <summary>Como faço login no sistema?</summary>
-        <div class="answer">
-          <p>Você pode acessar o sistema com suas credenciais corporativas (usuário e senha) através da página de login:
-            [Link da Página de Login]. Em caso de problemas, entre em contato com o suporte de TI.</p>
-        </div>
-      </details>
-      <details>
-        <summary>Qual é o objetivo principal deste sistema?</summary>
-        <div class="answer">
-          <p>O sistema foi criado para facilitar o registro, acompanhamento e resolução de solicitações internas em
-            diferentes setores, como TI, RH e Facilities.</p>
-        </div>
-      </details>
-      <details>
-        <summary>Onde encontro o manual do usuário?</summary>
-        <div class="answer">
-          <p>O manual completo está disponível na seção de Ajuda do sistema, geralmente acessível pelo menu principal ou
-            no rodapé. Você também pode acessá-lo aqui: [Link do Manual].</p>
-        </div>
-      </details>
-    </section>
+    <!-- Page Content -->
+    <main class="main-content" id="new-ticket-page">
+      <div class="container-middle">
+        <header>
+          <p>Encontre respostas para dúvidas comuns sobre o uso do Sistema de Gerenciamento de Chamados Corporativo.</p>
+        </header>
 
-    <section id="criando-chamados">
-      <h2>Abertura de Chamados</h2>
-      <details>
-        <summary>Como abro um novo chamado?</summary>
-        <div class="answer">
-          <p>Clique no botão “Novo Chamado” ou “Criar Solicitação”, localizado no seu painel principal. Preencha os
-            campos obrigatórios como categoria, título, descrição e anexe arquivos se necessário.</p>
-        </div>
-      </details>
-      <details>
-        <summary>Quais informações devo incluir em um chamado?</summary>
-        <div class="answer">
-          <p>Inclua:</p>
-          <ul>
-            <li>Um título claro e objetivo;</li>
-            <li>Descrição detalhada da solicitação ou problema;</li>
-            <li>Passos realizados antes do erro (se aplicável);</li>
-            <li>Mensagens de erro (se houver);</li>
-            <li>Capturas de tela ou arquivos relacionados;</li>
-            <li>Nível de urgência ou impacto do problema.</li>
-          </ul>
-        </div>
-      </details>
-      <details>
-        <summary>Posso definir a prioridade do chamado?</summary>
-        <div class="answer">
-          <p>Sim, ao criar o chamado, você pode escolher a prioridade (Baixa, Média, Alta ou Urgente), de acordo com o
-            impacto causado.</p>
-        </div>
-      </details>
-    </section>
+        <section id="inicio">
+          <h2>Primeiros Passos</h2>
+          <details>
+            <summary>Como faço login no sistema?</summary>
+            <div class="answer">
+              <p>Você pode acessar o sistema com suas credenciais corporativas (usuário e senha) através da página de
+                login:
+                [Link da Página de Login]. Em caso de problemas, entre em contato com o suporte de TI.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Qual é o objetivo principal deste sistema?</summary>
+            <div class="answer">
+              <p>O sistema foi criado para facilitar o registro, acompanhamento e resolução de solicitações internas em
+                diferentes setores, como TI, RH e Facilities.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Onde encontro o manual do usuário?</summary>
+            <div class="answer">
+              <p>O manual completo está disponível na seção de Ajuda do sistema, geralmente acessível pelo menu
+                principal ou
+                no rodapé. Você também pode acessá-lo aqui: [Link do Manual].</p>
+            </div>
+          </details>
+        </section>
 
-    <section id="gerenciando-chamados">
-      <h2>Gerenciamento de Chamados</h2>
-      <details>
-        <summary>Como acompanho o status de um chamado?</summary>
-        <div class="answer">
-          <p>Todos os seus chamados podem ser visualizados na tela “Meus Chamados” com o respectivo status (Aberto, Em
-            andamento, Resolvido, Fechado).</p>
-        </div>
-      </details>
-      <details>
-        <summary>Como adiciono comentários ou anexos a um chamado?</summary>
-        <div class="answer">
-          <p>Acesse o chamado desejado. Haverá uma área para comentários ou respostas, onde você pode incluir novas
-            informações ou anexar arquivos.</p>
-        </div>
-      </details>
-      <details>
-        <summary>Como serei notificado sobre atualizações no chamado?</summary>
-        <div class="answer">
-          <p>Você receberá notificações por e-mail sempre que o chamado for atualizado. As preferências podem ser
-            ajustadas nas configurações da sua conta.</p>
-        </div>
-      </details>
-      <details>
-        <summary>O que significam os diferentes status dos chamados?</summary>
-        <div class="answer">
-          <ul>
-            <li><strong>Aberto:</strong> Chamado criado e aguardando atendimento;</li>
-            <li><strong>Em andamento:</strong> Um técnico está trabalhando na solicitação;</li>
-            <li><strong>Pendente:</strong> Aguardando retorno ou mais informações;</li>
-            <li><strong>Resolvido:</strong> A solicitação foi tratada e está pronta para ser encerrada;</li>
-            <li><strong>Fechado:</strong> Chamado finalizado automaticamente ou após confirmação.</li>
-          </ul>
-        </div>
-      </details>
-    </section>
+        <section id="criando-chamados">
+          <h2>Abertura de Chamados</h2>
+          <details>
+            <summary>Como abro um novo chamado?</summary>
+            <div class="answer">
+              <p>Clique no botão “Novo Chamado” ou “Criar Solicitação”, localizado no seu painel principal. Preencha os
+                campos obrigatórios como categoria, título, descrição e anexe arquivos se necessário.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Quais informações devo incluir em um chamado?</summary>
+            <div class="answer">
+              <p>Inclua:</p>
+              <ul>
+                <li>Um título claro e objetivo;</li>
+                <li>Descrição detalhada da solicitação ou problema;</li>
+                <li>Passos realizados antes do erro (se aplicável);</li>
+                <li>Mensagens de erro (se houver);</li>
+                <li>Capturas de tela ou arquivos relacionados;</li>
+                <li>Nível de urgência ou impacto do problema.</li>
+              </ul>
+            </div>
+          </details>
+          <details>
+            <summary>Posso definir a prioridade do chamado?</summary>
+            <div class="answer">
+              <p>Sim, ao criar o chamado, você pode escolher a prioridade (Baixa, Média, Alta ou Urgente), de acordo com
+                o
+                impacto causado.</p>
+            </div>
+          </details>
+        </section>
 
-    <section id="suporte">
-      <h2>Resolução de Problemas</h2>
-      <details>
-        <summary>Esqueci minha senha. Como redefini-la?</summary>
-        <div class="answer">
-          <p>Se o sistema usa credenciais separadas, clique em “Esqueci minha senha” na tela de login. Se usar login
-            corporativo, siga o processo padrão da sua empresa ou fale com o suporte de TI.</p>
-        </div>
-      </details>
-      <details>
-        <summary>Estou vendo uma mensagem de erro. O que faço?</summary>
-        <div class="answer">
-          <p>Faça uma captura de tela do erro. Tente atualizar a página ou limpar o cache do navegador. Se o problema
-            continuar, abra um chamado com o máximo de detalhes e anexe a imagem do erro, informando também o que você
-            estava tentando fazer no momento.</p>
-        </div>
-      </details>
-      <details>
-        <summary>Com quem posso falar para obter mais ajuda?</summary>
-        <div class="answer">
-          <p>Se sua dúvida não estiver respondida nesta página, acesse a <a href="[Link para Página de Suporte]">Página
-              de Suporte</a> ou abra um novo chamado na categoria “Suporte ao Sistema”.</p>
-        </div>
-      </details>
-    </section>
+        <section id="gerenciando-chamados">
+          <h2>Gerenciamento de Chamados</h2>
+          <details>
+            <summary>Como acompanho o status de um chamado?</summary>
+            <div class="answer">
+              <p>Todos os seus chamados podem ser visualizados na tela “Meus Chamados” com o respectivo status (Aberto,
+                Em
+                andamento, Resolvido, Fechado).</p>
+            </div>
+          </details>
+          <details>
+            <summary>Como adiciono comentários ou anexos a um chamado?</summary>
+            <div class="answer">
+              <p>Acesse o chamado desejado. Haverá uma área para comentários ou respostas, onde você pode incluir novas
+                informações ou anexar arquivos.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Como serei notificado sobre atualizações no chamado?</summary>
+            <div class="answer">
+              <p>Você receberá notificações por e-mail sempre que o chamado for atualizado. As preferências podem ser
+                ajustadas nas configurações da sua conta.</p>
+            </div>
+          </details>
+          <details>
+            <summary>O que significam os diferentes status dos chamados?</summary>
+            <div class="answer">
+              <ul>
+                <li><strong>Aberto:</strong> Chamado criado e aguardando atendimento;</li>
+                <li><strong>Em andamento:</strong> Um técnico está trabalhando na solicitação;</li>
+                <li><strong>Pendente:</strong> Aguardando retorno ou mais informações;</li>
+                <li><strong>Resolvido:</strong> A solicitação foi tratada e está pronta para ser encerrada;</li>
+                <li><strong>Fechado:</strong> Chamado finalizado automaticamente ou após confirmação.</li>
+              </ul>
+            </div>
+          </details>
+        </section>
+
+        <section id="suporte">
+          <h2>Resolução de Problemas</h2>
+          <details>
+            <summary>Esqueci minha senha. Como redefini-la?</summary>
+            <div class="answer">
+              <p>Se o sistema usa credenciais separadas, clique em “Esqueci minha senha” na tela de login. Se usar login
+                corporativo, siga o processo padrão da sua empresa ou fale com o suporte de TI.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Estou vendo uma mensagem de erro. O que faço?</summary>
+            <div class="answer">
+              <p>Faça uma captura de tela do erro. Tente atualizar a página ou limpar o cache do navegador. Se o
+                problema
+                continuar, abra um chamado com o máximo de detalhes e anexe a imagem do erro, informando também o que
+                você
+                estava tentando fazer no momento.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Com quem posso falar para obter mais ajuda?</summary>
+            <div class="answer">
+              <p>Se sua dúvida não estiver respondida nesta página, acesse a <a
+                  href="[Link para Página de Suporte]">Página
+                  de Suporte</a> ou abra um novo chamado na categoria “Suporte ao Sistema”.</p>
+            </div>
+          </details>
+        </section>
+      </div>
+    </main>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script type="module" src="/js/sidebar.js"></script>
 </body>
 
 </html>
