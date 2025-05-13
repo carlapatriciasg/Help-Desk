@@ -61,17 +61,28 @@
         <!-- SENHA -->
         <div class="col-md-6">
           <label for="senha">Senha:</label>
-          <input type="password" class="form-control" id="senha" required/>
+          <div class="input-group">
+            <input type="password" class="form-control" id="senha" required/>
+            <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('senha', this)">
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
           <ul id="requisitos">
             <!-- Os critérios serão preenchidos dinamicamente -->
           </ul>
           <p id="mensagem"></p>
         </div>
 
+        <!-- CONFIRMAR SENHA -->
         <div class="col-md-6">
           <label for="confirmarSenha" class="form-label">Confirmar Senha</label>
-          <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha"
-            placeholder="Confirme sua senha" required>
+          <div class="input-group">
+            <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha"
+              placeholder="Confirme sua senha" required>
+            <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('confirmarSenha', this)">
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
         </div>
 
         <!-- DATA DE NASCIMENTO -->
