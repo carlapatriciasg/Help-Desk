@@ -30,7 +30,7 @@
         <div class="col-12 col-md-10 col-lg-6"> <!-- Reduzi a largura para melhorar o centramento -->
           <div class="row justify-content-center">
             <div class="col-12 col-md-10 form-container d-flex flex-column justify-content-center align-items-center">
-              <form class="w-100" style="max-width: 400px;"> <!-- Limita a largura do form -->
+              <form id="login-form" class="w-100" style="max-width: 400px;"> <!-- Limita a largura do form -->
                 <div class="lgin"><strong>Login</strong></div>
                 
                 <!-- E-mail -->
@@ -78,6 +78,44 @@
       </div>
     </div>
   </main>
+  <script>
+        // Simulate login
+        document.getElementById('login-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent actual form submission
+            // In a real app, you'd validate credentials here
+            const email = document.getElementById('formEmail').value;
+            const senha = document.getElementById('formSenha').value;
 
+            if (!email) {
+                alert('Por favor, insira seu usuário/e-mail');
+                return;
+            }
+
+            try{
+                const respostas = await fetch ('http://localhost:3000/api/login',{
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({email, senha})
+                });
+
+                if(!respostas.ok){
+                    const erro = await respostas.json();
+                    alert(erro.msg || 'Erro no Login')
+                    return
+                }
+
+                const data = await respostas.json();
+                console.log('Usuario logado:', data.usuario)
+
+                localStorage.setItem('Usuario', JSON.stringify(data.usuario))
+                window.location.href = 'dashboard.html'; // Redirect to dashboard
+            } catch(erro) {
+                console.error('Erro ao realizar requisição: ', erro)
+                alert(erro)
+            }
+        });
+      </script>  
 </body>
 </html>
