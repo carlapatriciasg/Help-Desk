@@ -1,7 +1,7 @@
 //importações
 require('dotenv').config()
 const express = require('express')
-const sequelize = require('../BACKEND/connection/db')
+const sequelize = require('../BackEnd/connection/db')
 const userRoutes = require('../BackEnd/routes/userCRoutes')
 const authRoutes = require('../BackEnd/routes/authRoutes')
 

@@ -32,8 +32,10 @@ const Usuario = db.define('usuario' , {
 });
 
 Usuario.checkEmailExists = async (email) => {
-    const user = await Usuario.findOne({ where: { email } });
-    return !!user;
+    const user = await Usuario.findOne({ 
+        where: { email }, 
+        attributes: ['id', 'email', 'senha', 'tipoUsuario'] });
+    return user;
   };
   
   // Método para criar novo usuário

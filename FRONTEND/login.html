@@ -63,16 +63,41 @@
 
     <script>
         // Simulate login
-        document.getElementById('login-form').addEventListener('submit', function(event) {
+        document.getElementById('login-form').addEventListener('submit', async function(event) {
             event.preventDefault(); // Prevent actual form submission
             // In a real app, you'd validate credentials here
             const email = document.getElementById('email').value;
+            const senha = document.getElementById('password').value;
+
             if (!email) {
-                alert('Por favor, insira seu usuário/e-mail.');
+                alert('Por favor, insira seu usuário/e-mail');
                 return;
             }
-            localStorage.setItem('loggedInUser', email); // Store dummy user
-            window.location.href = 'dashboard.html'; // Redirect to dashboard
+
+            try{
+                const respostas = await fetch ('http://localhost:3000/api/login',{
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/JSON'
+                    },
+                    body: JSON.stringify({email, senha})
+                });
+
+                if(!respostas.ok){
+                    const erro = await respostas.json();
+                    alert(erro.msg || 'Erro no Login')
+                    return
+                }
+
+                const data = await respostas.json();
+                console.log('Usuario logado:', data.usuario)
+
+                localStorage.setItem('Usuario', JSON.stringify(data.usuario))
+                window.location.href = 'dashboard.html'; // Redirect to dashboard
+            } catch(erro) {
+                console.error('Erro ao realizar requisição: ', erro)
+                alert(erro)
+            }
         });
         // Simulate SSO logins
         document.querySelectorAll('.btn-outline-secondary').forEach(button => {

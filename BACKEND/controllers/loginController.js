@@ -28,7 +28,7 @@ exports.login = async (req, res) => {
    
    // captura de erro na validação de acesso por id
    try{
-    const secret = process.env.SECRET
+    //const secret = process.env.SECRET
 
     /*const token = jwt.sign(
         {
@@ -36,7 +36,7 @@ exports.login = async (req, res) => {
         },
         secret,
     )*/
-        res.status(200).json({msg: 'Autenticação realizada com sucesso', token})
+        res.status(200).json({msg: 'Autenticação realizada com sucesso'})
    }catch(err) {
     console.log(err)
 
