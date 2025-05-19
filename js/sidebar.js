@@ -1,5 +1,5 @@
-//<!-- fechar a sidebar -->
-document.addEventListener('DOMContentLoaded', function () {
+export function initSidebar() {
+    //<!-- fechar a sidebar -->
     const sidebarToggle = document.querySelector('.sidebar-toggle');
     const sidebar = document.querySelector('.sidebar');
     const sidebarBackdrop = document.querySelector('#sidebarBackdrop');
@@ -17,11 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         console.error('Elementos necessários para a funcionalidade da sidebar não foram encontrados.');
     }
-});
 
-document.addEventListener('DOMContentLoaded', function () {
+    // Recolher sidebar
     const sidebarCollapseButton = document.querySelector('.sidebar-collapse');
-    const sidebar = document.querySelector('.sidebar');
     const mainContentWrapper = document.querySelector('.main-content-wrapper');
 
     if (sidebarCollapseButton && sidebar && mainContentWrapper) {
@@ -32,9 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         console.error('Elementos necessários para a funcionalidade de recolher a sidebar não foram encontrados.');
     }
-});
 
-document.addEventListener('DOMContentLoaded', function () {
     // Logout button na sidebar
     const logoutSidebarButton = document.getElementById('logout-button-sidebar');
     if (logoutSidebarButton) {
@@ -56,4 +52,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    initSidebar();
 });
