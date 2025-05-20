@@ -10,6 +10,12 @@ if(process.env.ENVIRONMENT === "system"){
             dialect: 'postgres',
             host: process.env.DATABASE_HOST,
             port: process.env.DATABASE_PORT,
+            dialectOptions: {
+                ssl: {
+                    rejectUnauthorized: true,
+                    ca: process.env.DATABASE_SSL?.replace(/\\n/g, '\n'),
+                },
+            },    
         }
     );
     module.exports = sequelize;
@@ -22,6 +28,12 @@ if(process.env.ENVIRONMENT === "system"){
             dialect: 'postgres',
             host: process.env.DATABASE_HOST,
             port: process.env.DATABASE_PORT,
+            dialectOptions: {
+                ssl: {
+                    rejectUnauthorized: true,
+                    ca: process.env.DATABASE_SSL?.replace(/\\n/g, '\n'),
+                },
+            }, 
         }
     );
     module.exports = sequelize;
