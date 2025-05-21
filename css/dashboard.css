@@ -396,29 +396,12 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Tema escuro para o body e conteúdo */
-.dark-mode {
-  background-color: #121212 !important;
-  color: #f8f9fa !important;
-}
-
 /* Estilo do botão */
 .btn-toggle {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-
-/* Corrige ícones do Bootstrap Icons dentro do header */
-.dark-mode .dropdown .bi {
-  color: #f8f9fa;
-}
-
-/* Corrige ícones do Bootstrap Icons dentro do header */
-.dark-mode .dropdown .bi {
-  color: #f8f9fa;
-}
-
 
 /* link em azul dark mode */
 .dark-mode a.dropdown-menu {
@@ -429,19 +412,13 @@ a:hover {
   color: #99ccff !important;
 }
 
-/* suavização mudança de tema*/
-
-* {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
 /* ===== MODO ESCURO ===== */
 .dark-mode {
   background-color: #121212 !important;
   color: #f8f9fa !important;
 }
 
-.dark-mode .dropdown-item:hover:hover,
+.dark-mode .dropdown-item:hover,
 .dark-mode .dropdown-item:hover.active {
     color: #e0f0ff; /* tom mais claro ao passar o mouse */
     background-color: rgba(0, 86, 179, 0.1); /* leve destaque de fundo */
@@ -652,4 +629,16 @@ a:hover {
 .dark-mode .card-body td {
     background-color: #333;
     color: #fff;
+}
+
+/* config */
+
+.dark-mode .form-select {
+  background-color: #2c2c2c;
+  color: #f8f9fa;
+  border-color: #444;
+}
+
+.dark-mode .form-check-input {
+  background-color: #2c2c2c;
 }

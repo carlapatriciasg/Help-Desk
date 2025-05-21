@@ -211,5 +211,19 @@ footer {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     text-align: justify;
-    
+}
+
+/* Aplicar tema escuro ao container do disclaimer */
+.dark-mode .privacidade-container {
+  background-color: #1e1e1e !important;
+  color: #f8f9fa !important;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .box-disclaimer h2 {
+    color: #9dcdff;
+    margin: 0;
+    font-size: 2em;
 }
