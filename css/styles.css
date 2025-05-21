@@ -27,6 +27,76 @@ body {
     }
 }
 
+/* Tema escuro para o body e conteúdo */
+.dark-mode {
+  background-color: #121212 !important;
+  color: #f8f9fa !important;
+}
+
+/*tema escuro cadastro*/
+.dark-mode .container-middle {
+  background-color: #1e1e1e !important;
+  color: #f8f9fa !important;
+}
+
+/* Aplicar tema escuro também ao container do formulário */
+.dark-mode .form-container {
+  background-color: #1e1e1e !important;
+  color: #f8f9fa !important;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Tema claro para formulário */
+.form-container {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do botão */
+.btn-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* === Inputs no modo escuro === */
+.dark-mode input.form-control {
+  background-color: #2c2c2c;
+  color: #f8f9fa;
+  border-color: #444;
+}
+
+.dark-mode input.form-control::placeholder {
+  color: #aaa;
+}
+
+.dark-mode .input-group-text {
+  background-color: #2c2c2c;
+  color: #f8f9fa;
+  border-color: #444;
+}
+
+/* Corrige ícones do Bootstrap Icons dentro de inputs */
+.dark-mode .input-group .bi {
+  color: #f8f9fa;
+}
+
+/* link em azul dark mode */
+.dark-mode a.blue {
+  color: #66b2ff !important;
+}
+
+.dark-mode a:hover.blue {
+  color: #99ccff !important;
+}
+
+
+/* */
+
 .title {
     padding-top: 30px;
 }
@@ -57,8 +127,14 @@ header h1 {
     font-size: 2em;
 }
 
+.dark-mode header h1 {
+    color: #9dcdff;
+    margin: 0;
+    font-size: 2em;
+}
+
 header p {
-    color: #6c757d;
+    color: #ffffff;
     margin-top: 5px;
 }
 
