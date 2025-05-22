@@ -49,4 +49,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Exibe a tela após aplicar o tema
     document.body.style.visibility = 'visible'; // Torna o conteúdo visível
+
+    // Sincroniza o select com o tema salvo
+    const themeSelect = document.getElementById('theme');
+    if (themeSelect) {
+        // Define o valor do select conforme o tema salvo
+        themeSelect.value = theme;
+
+        // Altera o tema ao trocar o select
+        themeSelect.addEventListener('change', (e) => {
+            if (e.target.value === 'dark') {
+                setDarkMode();
+            } else {
+                setLightMode();
+            }
+        });
+    }
 });
