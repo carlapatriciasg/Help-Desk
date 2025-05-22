@@ -1,7 +1,7 @@
 import { initSidebar } from './sidebar.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/sidebar.html')
+    fetch('/FrontEnd/pages/sidebar.html')
         .then(response => response.text())
         .then(html => {
             const tempDiv = document.createElement('div');
