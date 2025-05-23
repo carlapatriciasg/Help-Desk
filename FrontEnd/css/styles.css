@@ -186,6 +186,15 @@ h2 {
     margin-bottom: 0.6vh;
 }
 
+.eye-toggle {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .eye-toggle:hover {
+    background-color: #808080; /* cor semelhante ao btn-outline-secondary ao hover */
+  }
+
 /*body todo o conteudo principal*/
 section.forms {
     flex: 1;
