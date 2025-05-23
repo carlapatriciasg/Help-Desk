@@ -109,6 +109,24 @@ body {
     color: #fff !important;
 }
 
+.dark-mode .form-group .format-archieve{
+    color: #fff;
+}
+
+.dark-mode .card-footer .relatorio-feedback{
+    color: #fff;
+}
+
+
+.dark-mode .form-control {
+    background-color: #2c2c2c;
+    color: #aaa;
+}
+
+.dark-mode .form-control::placeholder {
+    color: #aaa;
+}
+
 /* Header */
 .header {
     background-color: #fff;
