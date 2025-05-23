@@ -16,19 +16,19 @@
 </head>
 
 <body class="bg-light text-dark" id="body" style="visibility: hidden;">
-    
+
 
     <!-- Main Content Wrapper -->
     <div class="main-content-wrapper">
         <!-- Header -->
         <header class="header d-flex justify-content-between align-items-center">
-            
+
             <button class="btn btn-light d-lg-none sidebar-toggle" type="button">
                 <i class="bi bi-list"></i>
             </button>
 
             <h1 class="h4 mb-0 ms-2">
-                <strog>Dashboard</strog>
+                <strog>Abrir Novo Chamado</strog>
             </h1>
             <div class="d-flex align-items-center gap-2">
                 <div class="d-flex align-items-center gap-2">
@@ -41,7 +41,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="dropdownUser1">
                             <li><a class="dropdown-item" href="/FrontEnd/pages/profile.html"><i
-                                 class="bi bi-person-fill me-2"></i></i>Perfil</a></li>
+                                        class="bi bi-person-fill me-2"></i></i>Perfil</a></li>
                             <li><a class="dropdown-item" href="/FrontEnd/pages/config.html"><i
                                         class="bi bi-gear-fill me-2"></i>Configurações</a></li>
                             <li>
@@ -106,13 +106,15 @@
                                     placeholder="Descreva detalhadamente o problema ou solicitação. Inclua informações relevantes como mensagens de erro, passos para reproduzir o problema, etc."
                                     required></textarea>
                             </div>
-                            <div class="col-md-12">
-                                <label for="attachments" class="form-label">Anexos</label>
-                                <input class="form-control" type="file" id="attachments" multiple>
-                                <div class="form-text">
-                                     Formatos permitidos: PDF, JPG, PNG, DOC, DOCX, XLS, XLSX, TXT. Tamanho máximo: 5MB por arquivo.
-                            </div>
-                            </div>
+                            <form>
+                                <div class="form-group">
+                                    <input type="file" class="form-control" id="exampleFormControlFile1">
+                                    <div class="form-text">
+                                    Formatos permitidos: PDF, JPG, PNG, DOC, DOCX, XLS, XLSX, TXT. Tamanho máximo: 5MB
+                                    por arquivo.
+                                </div>
+                                </div>
+                            </form>
                         </div>
 
                         <hr class="my-4">
@@ -133,7 +135,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script>
-        document.getElementById('new-ticket-form').addEventListener('submit', async function(event) {
+        document.getElementById('new-ticket-form').addEventListener('submit', async function (event) {
             event.preventDefault();
 
             const categoria = document.getElementById('category').value;
@@ -141,42 +143,35 @@
             const prioridade = document.getElementById('priority').value;
             const titulo = document.getElementById('title').value;
             const descricao = document.getElementById('description').value;
+            //const anexo = document.getElementById('attachments').value;
+
             const userEmail = localStorage.getItem("email");
-            const attachments = document.getElementById('attachments').files;
-
-            const formData = new FormData();
-            formData.append('categoria', categoria);
-            formData.append('subcategoria', subcategoria);
-            formData.append('prioridade', prioridade);
-            formData.append('titulo', titulo);
-            formData.append('descricao', descricao);
-            formData.append('userEmail', userEmail);
-
-            // Adiciona todos os arquivos ao FormData
-            for (let i = 0; i < attachments.length; i++) {
-                formData.append('anexos', attachments[i]);
-            }
 
             try {
                 const respostas = await fetch('http://localhost:3000/api/abertura', {
                     method: 'POST',
-                    body: formData // Não defina Content-Type, o navegador faz isso automaticamente
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ categoria, subcategoria, prioridade, titulo, descricao, userEmail })
                 });
 
                 if (!respostas.ok) {
                     const erro = await respostas.json();
-                    alert(erro.msg || 'Erro na abertura de chamado');
-                    return;
+                    alert(erro.msg || 'Erro na abertura de chamado')
+                    return
                 }
 
                 const data = await respostas.json();
-                localStorage.setItem('Chamado', JSON.stringify(data.chamado));
-                window.location.href = 'ticket-list.html';
+                console.log('Chamado aberto:', data.chamado)
+
+                localStorage.setItem('Chamado', JSON.stringify(data.chamado))
+                window.location.href = 'ticket-list.html'; // Redirect to ticket-list
             } catch (erro) {
-                console.error('Erro ao realizar requisição: ', erro);
-                alert(erro);
+                console.error('Erro ao realizar requisição: ', erro)
+                alert(erro)
             }
-        });
+        })
     </script>
     <script type="module" src="/FrontEnd/js/loadSidebar.js"></script>
     <script type="module" src="/FrontEnd/js/vlibras.js"></script>
