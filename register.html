@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro</title>
- 
 
   <!-- bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -24,20 +23,17 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+
+  <!-- Script de tema, para aplicar corretamente -->
+  <script type="module" src="/js/theme.js"></script>
 </head>
 
-<body>
-  <!--IMPLEMENTAÇÃO API ACESSIBILIDADE -->
-  <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
-  </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
+<body class="bg-light text-dark" id="body" style="visibility: hidden;">
+  <!-- Botão de alternar tema -->
+  <button id="toggleTheme" class="btn btn-sm btn-outline-primary position-absolute top-1 end-0 m-3 z-3">
+    <i class="bi bi-moon-fill" id="theme-icon"></i>
+  </button>
+
   <div class="container-middle">
     <header class="my-4">
       <h1>Cadastro de Novo Usuário</h1>
@@ -127,7 +123,7 @@
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="termos" required>
             <label class="form-check-label" for="termos">
-              Concordo com os <a href="disclaimer.html" target="_blank">termos de uso</a> e políticas de privacidade.
+              Concordo com os <a href="disclaimer.html" class="text-body blue" target="_blank">termos de uso</a> e políticas de privacidade.
             </label>
           </div>
         </div>
@@ -138,57 +134,60 @@
       </form>
 
       <div class="mt-5 ending">
-        <p>Já tem uma conta? <a href="index.html">Faça login aqui</a>.</p>
+        <p>Já tem uma conta? <a href="index.html" class="text-body blue">Faça login aqui</a>.</p>
       </div>
     </section>
   </div>
-   <script>
-        document.getElementById('registre-form').addEventListener('submit', async function(event) {
-            event.preventDefault(); 
-            
-            const nome = document.getElementById('nome').value;
-            const email = document.getElementById('email').value;
-            const senha = document.getElementById('senha').value;
-            const confirmarSenha = document.getElementById('confirmarSenha').value;
-            const dataNascimento = document.getElementById('dataNascimento').value;
-            const cep = document.getElementById('cep').value;
-            const rua = document.getElementById('rua').value;
-            const bairro = document.getElementById('bairro').value;
-            const cidade = document.getElementById('cidade').value;
-            const estado = document.getElementById('uf').value;
 
+  <script>
+    document.getElementById('registre-form').addEventListener('submit', async function(event) {
+        event.preventDefault(); 
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const senha = document.getElementById('senha').value;
+        const confirmarSenha = document.getElementById('confirmarSenha').value;
+        const dataNascimento = document.getElementById('dataNascimento').value;
+        const cep = document.getElementById('cep').value;
+        const rua = document.getElementById('rua').value;
+        const bairro = document.getElementById('bairro').value;
+        const cidade = document.getElementById('cidade').value;
+        const estado = document.getElementById('uf').value;
 
-            if (!email) {
-                alert('Por favor, insira seu e-mail');
-                return;
+        if (!email) {
+            alert('Por favor, insira seu e-mail');
+            return;
+        }
+
+        try {
+            const respostas = await fetch('http://localhost:3000/api/cadastro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nome, email, senha, confirmSenha: confirmarSenha,
+                    datanasc: dataNascimento, cep, rua, bairro, cidade, uf: estado
+                })
+            });
+
+            if (!respostas.ok) {
+                const erro = await respostas.json();
+                alert(erro.msg || 'Erro no cadastro')
+                return
             }
 
-            try{
-                const respostas = await fetch ('http://localhost:3000/api/cadastro',{
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({nome, email, senha, confirmSenha: confirmarSenha, datanasc: dataNascimento ,cep, rua, bairro, cidade, uf: estado})
-                  });
+            const data = await respostas.json();
+            console.log('Usuario cadastrado:', data.usuario)
 
-                if(!respostas.ok){
-                    const erro = await respostas.json();
-                    alert(erro.msg || 'Erro no cadastro')
-                    return
-                }
+            localStorage.setItem('Usuario', JSON.stringify(data.usuario))
+            window.location.href = 'index.html'; // Redirect to index
+        } catch (erro) {
+            console.error('Erro ao realizar requisição: ', erro)
+            alert(erro)
+        }
+    });
+  </script>
 
-                const data = await respostas.json();
-                console.log('Usuario cadastrado:', data.usuario)
-
-                localStorage.setItem('Usuario', JSON.stringify(data.usuario))
-                window.location.href = 'index.html'; // Redirect to index
-            } catch(erro) {
-                console.error('Erro ao realizar requisição: ', erro)
-                alert(erro)
-            }
-        });
-      </script> 
   <script src="js/verify.js" defer></script>
   <script type="module" src="/js/vlibras.js"></script>
 

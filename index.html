@@ -4,76 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <!-- bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-<!-- css -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="css/styles.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-<!-- scripts -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-  integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-  crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-  crossorigin="anonymous"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script type="module" src="/js/theme.js"></script>
 </head>
-<body class="d-flex flex-column min-vh-100">
 
-  <main class="flex-grow-1 d-flex align-items-center justify-content-center">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-10 col-lg-6"> <!-- Reduzi a largura para melhorar o centramento -->
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-10 form-container d-flex flex-column justify-content-center align-items-center">
-              <form id="login-form" class="w-100" style="max-width: 400px;"> <!-- Limita a largura do form -->
-                <div class="lgin"><strong>Login</strong></div>
-                
-                <!-- E-mail -->
-                <div class="mb-4">
-                  <label for="formEmail" class="form-label"><strong>E-mail</strong></label>
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-                    <input type="email" id="formEmail" class="form-control form-control-lg" placeholder="exemplo@email.com" required>
-                  </div>
+<body class="d-flex flex-column min-vh-100" id="body" style="visibility: hidden;">
+
+    <!-- Botão de alternar tema -->
+    <button id="toggleTheme" class="btn btn-sm btn-outline-primary position-absolute top-0 end-0 m-3 z-3">
+        <i class="bi bi-moon-fill" id="theme-icon"></i>
+    </button>
+
+    <main class="flex-grow-1 d-flex align-items-center justify-content-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-6">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-10 form-container d-flex flex-column justify-content-center align-items-center">
+                            <form id="login-form" class="w-100" style="max-width: 400px;">
+                                <div class="lgin"><strong>Login</strong></div>
+
+                                <!-- E-mail -->
+                                <div class="mb-4">
+                                    <label for="formEmail" class="form-label"><strong>E-mail</strong></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                                        <input type="email" id="formEmail" class="form-control form-control-lg" placeholder="exemplo@email.com" required>
+                                    </div>
+                                </div>
+
+                                <!-- Senha -->
+                                <div class="mb-3">
+                                    <label for="formSenha" class="form-label"><strong>Senha</strong></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                                        <input type="password" id="formSenha" class="form-control form-control-lg" placeholder="Digite sua senha" required>
+                                    </div>
+                                </div>
+
+                                <!-- Checkbox e link -->
+                                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-3 gap-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="formCheck" />
+                                        <label class="form-check-label" for="formCheck">Mantenha-me conectado</label>
+                                    </div>
+                                    <a href="reset-password.html" class="text-body blue">Esqueceu a senha?</a>
+                                </div>
+
+                                <!-- Botão -->
+                                <div class="d-grid mb-3">
+                                    <button type="submit" class="btn btn-primary btn-lg shadow-sm">
+                                        <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                                    </button>
+                                </div>
+
+                                <!-- Cadastro -->
+                                <p class="small fw-bold mb-0 text-center">
+                                    Não tem uma conta? <a href="register.html" class="link-danger">Cadastre-se</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-  
-                <!-- Senha -->
-                <div class="mb-3">
-                  <label for="formSenha" class="form-label"><strong>Senha</strong></label>
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
-                    <input type="password" id="formSenha" class="form-control form-control-lg" placeholder="Digite sua senha" required>
-                  </div>
-                </div>
-  
-                <!-- Checkbox e link -->
-                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-3 gap-2">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="formCheck" />
-                    <label class="form-check-label" for="formCheck">Mantenha-me conectado</label>
-                  </div>
-                  <a href="reset-password.html" class="text-body">Esqueceu a senha?</a>
-                </div>
-  
-                <!-- Botão -->
-                <div class="d-grid mb-3">
-                  <button type="submit" class="btn btn-primary btn-lg shadow-sm">
-                    <i class="bi bi-box-arrow-in-right me-2"></i>Login
-                  </button>
-                </div>
-  
-                <!-- Cadastro -->
-                <p class="small fw-bold mb-0 text-center">
-                  Não tem uma conta? <a href="register.html" class="link-danger">Cadastre-se</a>
-                </p>
-              </form>
             </div>
-          </div>
         </div>
       </div>
     </div>
@@ -90,34 +101,37 @@
                 return;
             }
 
-            try{
-                const respostas = await fetch ('http://localhost:3000/api/login',{
+            try {
+                const respostas = await fetch('http://localhost:3000/api/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({email, senha})
+                    body: JSON.stringify({ email, senha })
                 });
 
-                if(!respostas.ok){
+                if (!respostas.ok) {
                     const erro = await respostas.json();
-                    alert(erro.msg || 'Erro no Login')
-                    return
+                    alert(erro.msg || 'Erro no Login');
+                    return;
                 }
 
                 const data = await respostas.json();
-                console.log('Usuario logado:', data.usuario)
+                console.log('Usuario logado:', data.usuario);
 
                 localStorage.setItem("email", email);
                 localStorage.setItem('Usuario', JSON.stringify(data.usuario))
                 
+                localStorage.setItem('Usuario', JSON.stringify(data.usuario));
                 window.location.href = 'dashboard.html'; // Redirect to dashboard
-            } catch(erro) {
-                console.error('Erro ao realizar requisição: ', erro)
-                alert(erro)
+            } catch (erro) {
+                console.error('Erro ao realizar requisição: ', erro);
+                alert(erro);
             }
         });
-      </script>  
-      <script type="module" src="/js/vlibras.js"></script>
+    </script>
+
+    <script type="module" src="/js/vlibras.js"></script>
+    
 </body>
 </html>
