@@ -103,7 +103,7 @@
                 const chamados = await respostas.json();
 
                 if(!chamados.length){
-                    tbody.innerHTML = `<tr><td colspan="8" class="text-center text-muted">Nenhum chamado em aberto.</td></tr>`
+                    tbody.innerHTML = `<tr><td colspan="8" class="text-center text-danger">Nenhum chamado em aberto.</td></tr>`
                     return;
                 }
 
