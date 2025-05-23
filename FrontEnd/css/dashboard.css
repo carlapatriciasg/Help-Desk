@@ -123,6 +123,11 @@ body {
     color: #aaa;
 }
 
+.dark-mode .form-control#profileEmail{
+    background-color: #636363;
+    color: #aaa;
+}
+
 .dark-mode .form-control::placeholder {
     color: #aaa;
 }

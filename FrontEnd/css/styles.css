@@ -84,6 +84,10 @@ body {
     color: #f8f9fa;
 }
 
+a.blue {
+    color: #0056b3 !important;
+}
+
 /* link em azul dark mode */
 .dark-mode a.blue {
     color: #66b2ff !important;
