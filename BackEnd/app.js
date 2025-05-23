@@ -5,6 +5,7 @@ const cors = require('cors');
 const sequelize = require('../BackEnd/connection/db')
 const userRoutes = require('../BackEnd/routes/userCRoutes')
 const authRoutes = require('../BACKEND/routes/authRoutes')
+const ticketRoutes = require('../BackEnd/routes/ticketRoutes')
 
 const app = express()
 app.use(cors())
@@ -19,6 +20,7 @@ sequelize.sync().then(() => {
 
 app.use('/api', userRoutes)
 app.use('/api', authRoutes)
+app.use('/api', ticketRoutes)
 
 const PORT = process.env.PORT || 3000;
 

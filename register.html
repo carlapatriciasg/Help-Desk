@@ -143,10 +143,9 @@
     </section>
   </div>
    <script>
-        // Simulate login
         document.getElementById('registre-form').addEventListener('submit', async function(event) {
-            event.preventDefault(); // Prevent actual form submission
-            // In a real app, you'd validate credentials here
+            event.preventDefault(); 
+            
             const nome = document.getElementById('nome').value;
             const email = document.getElementById('email').value;
             const senha = document.getElementById('senha').value;

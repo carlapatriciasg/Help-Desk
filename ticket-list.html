@@ -75,6 +75,41 @@
         </main>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', async() => {
+            const tbody = document.getElementById('ticket-list-body')
+            const email = localStorage.getItem('email')
+
+            try{
+                const respostas = await fetch ((`http://localhost:3000/api/chamados-abertos?email=${email}`))
+                const chamados = await respostas.json();
+
+                if(!chamados.length){
+                    tbody.innerHTML = `<tr><td colspan="8" class="text-center text-muted">Nenhum chamado em aberto.</td></tr>`
+                    return;
+                }
+
+                tbody.innerHTML = ""
+                chamados.forEach(ch => {
+                    tbody.innerHTML += 
+                    `<tr>
+                        <td>${ch.id}</td>
+                        <td>${ch.titulo}</td>
+                        <td><span class="badge bg-primary">${ch.status}</span></td>
+                        <td>${ch.prioridade}</td>
+                        <td>${ch.categoria}</td>
+                        <td>${ch.agente || '-'}</td>
+                        <td>${new Date(ch.createdAt).toLocaleString('pt-BR')}</td>
+                        <td>${new Date(ch.updatedAt).toLocaleString('pt-BR')}</td>
+                    </tr>`
+                });
+            } catch(error){
+                console.error('Erro ao carregar chamados: ', error)
+                tbody.innerHTML = `<tr><td colspan="8" class="text-center text-danger">Erro ao carregar chamados.</td></tr>`;
+            }
+        })
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script type="module" src="/js/vlibras.js"></script>
     <script type="module" src="js/loadSidebar.js"></script>

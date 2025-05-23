@@ -79,10 +79,9 @@
     </div>
   </main>
   <script>
-        // Simulate login
         document.getElementById('login-form').addEventListener('submit', async function(event) {
-            event.preventDefault(); // Prevent actual form submission
-            // In a real app, you'd validate credentials here
+            event.preventDefault(); 
+            
             const email = document.getElementById('formEmail').value;
             const senha = document.getElementById('formSenha').value;
 
@@ -109,7 +108,9 @@
                 const data = await respostas.json();
                 console.log('Usuario logado:', data.usuario)
 
+                localStorage.setItem("email", email);
                 localStorage.setItem('Usuario', JSON.stringify(data.usuario))
+                
                 window.location.href = 'dashboard.html'; // Redirect to dashboard
             } catch(erro) {
                 console.error('Erro ao realizar requisição: ', erro)

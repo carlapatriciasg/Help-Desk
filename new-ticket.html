@@ -110,6 +110,45 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script>
+            document.getElementById('new-ticket-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); 
+
+            const categoria = document.getElementById('category').value;
+            const subcategoria = document.getElementById('subcategory').value;
+            const prioridade = document.getElementById('priority').value;
+            const titulo = document.getElementById('title').value;
+            const descricao = document.getElementById('description').value;
+            //const anexo = document.getElementById('attachments').value;
+
+            const userEmail = localStorage.getItem("email");
+
+                try{
+                const respostas = await fetch ('http://localhost:3000/api/abertura',{
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({categoria, subcategoria, prioridade, titulo, descricao, userEmail})
+                  });
+
+                if(!respostas.ok){
+                    const erro = await respostas.json();
+                    alert(erro.msg || 'Erro na abertura de chamado')
+                    return
+                }
+
+                const data = await respostas.json();
+                console.log('Chamado aberto:', data.chamado)
+
+                localStorage.setItem('Chamado', JSON.stringify(data.chamado))
+                window.location.href = 'ticket-list.html'; // Redirect to ticket-list
+                } catch(erro) {
+                console.error('Erro ao realizar requisição: ', erro)
+                alert(erro)
+                }
+            })
+    </script>
     <script type="module" src="js/loadSidebar.js"></script>
     <script type="module" src="/js/vlibras.js"></script>
 </body>
