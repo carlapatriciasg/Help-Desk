@@ -108,7 +108,7 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="attachments" class="form-label">Anexos</label>
-                                <input class="form-control" type="file" id="attachments" multiple disabled>
+                                <input class="form-control" type="file" id="attachments" multiple>
                                 <div class="form-text">Você poderá anexar arquivos após a criação do chamado.
                                     (Funcionalidade desabilitada na simulação)</div>
                             </div>
@@ -132,43 +132,50 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script>
-            document.getElementById('new-ticket-form').addEventListener('submit', async function(event) {
-            event.preventDefault(); 
+        document.getElementById('new-ticket-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
 
             const categoria = document.getElementById('category').value;
             const subcategoria = document.getElementById('subcategory').value;
             const prioridade = document.getElementById('priority').value;
             const titulo = document.getElementById('title').value;
             const descricao = document.getElementById('description').value;
-            //const anexo = document.getElementById('attachments').value;
-
             const userEmail = localStorage.getItem("email");
+            const attachments = document.getElementById('attachments').files;
 
-                try{
-                const respostas = await fetch ('http://localhost:3000/api/abertura',{
+            const formData = new FormData();
+            formData.append('categoria', categoria);
+            formData.append('subcategoria', subcategoria);
+            formData.append('prioridade', prioridade);
+            formData.append('titulo', titulo);
+            formData.append('descricao', descricao);
+            formData.append('userEmail', userEmail);
+
+            // Adiciona todos os arquivos ao FormData
+            for (let i = 0; i < attachments.length; i++) {
+                formData.append('anexos', attachments[i]);
+            }
+
+            try {
+                const respostas = await fetch('http://localhost:3000/api/abertura', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({categoria, subcategoria, prioridade, titulo, descricao, userEmail})
-                  });
+                    body: formData // Não defina Content-Type, o navegador faz isso automaticamente
+                });
 
-                if(!respostas.ok){
+                if (!respostas.ok) {
                     const erro = await respostas.json();
-                    alert(erro.msg || 'Erro na abertura de chamado')
-                    return
+                    alert(erro.msg || 'Erro na abertura de chamado');
+                    return;
                 }
 
                 const data = await respostas.json();
-                console.log('Chamado aberto:', data.chamado)
-
-                localStorage.setItem('Chamado', JSON.stringify(data.chamado))
-                window.location.href = 'ticket-list.html'; // Redirect to ticket-list
-                } catch(erro) {
-                console.error('Erro ao realizar requisição: ', erro)
-                alert(erro)
-                }
-            })
+                localStorage.setItem('Chamado', JSON.stringify(data.chamado));
+                window.location.href = 'ticket-list.html';
+            } catch (erro) {
+                console.error('Erro ao realizar requisição: ', erro);
+                alert(erro);
+            }
+        });
     </script>
     <script type="module" src="/FrontEnd/js/loadSidebar.js"></script>
     <script type="module" src="/FrontEnd/js/vlibras.js"></script>
