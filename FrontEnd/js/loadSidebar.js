@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.prepend(tempDiv.querySelector('.sidebar'));
             // Agora inicializa os eventos da sidebar
             initSidebar();
+            updateContent(); // Chame isso logo após inserir a sidebar
         });
 });
 

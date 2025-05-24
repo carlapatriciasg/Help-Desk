@@ -3,30 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Chamado - Sistema de Chamados</title>
+    <title data-i18n="ticket_detail_title">Detalhes do Chamado - Sistema de Chamados</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
     <link rel="stylesheet" href="/FrontEnd/css/dashboard.css">
     <link rel="icon" href="logo.png" type="image/png">
-
     <script type="module" src="/FrontEnd/js/theme.js"></script>
 </head>
 <body class="bg-light text-dark" id="body" style="visibility: hidden;">
-    
-   
-
     <!-- Main Content Wrapper -->
     <div class="main-content-wrapper">
         <!-- Header -->
         <header class="header d-flex justify-content-between align-items-center">
-
             <button class="btn btn-light d-lg-none sidebar-toggle" type="button">
                 <i class="bi bi-list"></i>
             </button>
-
-            <h1 class="h4 mb-0 ms-2">
-                <strog>Detalhes do Chamado</strog>
+            <h1 class="h4 mb-0 ms-2" data-i18n="ticket_detail_header">
+                <strong>Detalhes do Chamado</strong>
             </h1>
             <div class="d-flex align-items-center gap-2">
                 <div class="d-flex align-items-center gap-2">
@@ -35,33 +28,35 @@
                         <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle"
                             id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-circle fs-2 px-2"></i>
-                            <strong id="username-header">Usuário</strong>
+                            <strong id="username-header" data-i18n="user">Usuário</strong>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="dropdownUser1">
-                            <li><a class="dropdown-item" href="/FrontEnd/pages/profile.html"><i
-                                 class="bi bi-person-fill me-2"></i></i>Perfil</a></li>
-                            <li><a class="dropdown-item" href="/FrontEnd/pages/config.html"><i
-                                        class="bi bi-gear-fill me-2"></i>Configurações</a></li>
+                            <li><a class="dropdown-item" href="/FrontEnd/pages/profile.html"><i class="bi bi-person-fill me-2"></i><span data-i18n="profile">Perfil</span></a></li>
+                            <li><a class="dropdown-item" href="/FrontEnd/pages/config.html"><i class="bi bi-gear-fill me-2"></i><span data-i18n="settings">Configurações</span></a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#" id="logout-button"><i
-                                        class="bi bi-box-arrow-right me-2"></i>Sair</a></li>
+                            <li><a class="dropdown-item" href="#" id="logout-button"><i class="bi bi-box-arrow-right me-2"></i><span data-i18n="menu_logout">Sair</span></a></li>
                         </ul>
                     </div>
-
                     <!-- Botão de alternar tema -->
                     <button id="toggleTheme" class="btn btn-sm btn-outline-primary ms-3">
                         <i class="bi bi-moon-fill" id="theme-icon"></i>
                     </button>
                 </div>
+            </div>
         </header>
 
         <!-- Page Content -->
         <main class="main-content" id="ticket-detail-page">
             <div id="ticket-detail-content">
                 <!-- Loading Indicator -->
-                 <div class="text-center p-5"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div><p class="mt-2">Carregando detalhes do chamado...</p></div>
+                <div class="text-center p-5">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden" data-i18n="loading">Loading...</span>
+                    </div>
+                    <p class="mt-2" data-i18n="ticket_detail_loading">Carregando detalhes do chamado...</p>
+                </div>
 
                 <!-- JS will replace above with ticket details -->
                 <div class="row g-4 d-none" id="ticket-info-container"> 
@@ -73,11 +68,11 @@
                                 <span id="ticket-status" class="status-badge"></span>
                             </div>
                             <div class="card-body">
-                                <h6>Descrição</h6>
+                                <h6 data-i18n="ticket_detail_description">Descrição</h6>
                                 <p id="ticket-description" style="white-space: pre-wrap;"></p>
                                 <!-- Attachments Section Placeholder -->
                                 <div class="mt-3 d-none" id="attachments-section">
-                                    <h6>Anexos</h6>
+                                    <h6 data-i18n="ticket_detail_attachments">Anexos</h6>
                                     <ul class="list-group list-group-flush">
                                         <!-- Attachment items here -->
                                         <li class="list-group-item"><i class="bi bi-paperclip me-2"></i> arquivo_exemplo.pdf</li>
@@ -89,14 +84,14 @@
                         <!-- History/Timeline -->
                         <div class="card mb-4">
                              <div class="card-header">
-                                <h5 class="card-title mb-0"><i class="bi bi-clock-history me-2"></i>Histórico do Chamado</h5>
+                                <h5 class="card-title mb-0"><i class="bi bi-clock-history me-2"></i><span data-i18n="ticket_detail_history">Histórico do Chamado</span></h5>
                              </div>
                              <div class="card-body">
                                 <ul class="timeline" id="ticket-timeline">
                                     <!-- Timeline items inserted by JS -->
                                     <li class="timeline-item">
                                          <span class="timeline-icon"><i class="bi bi-hourglass-split"></i></span>
-                                         <div class="timeline-content">Carregando histórico...</div>
+                                         <div class="timeline-content" data-i18n="ticket_detail_loading_history">Carregando histórico...</div>
                                     </li>
                                 </ul>
                              </div>
@@ -105,65 +100,63 @@
                         <!-- Add Comment/Reply Section -->
                          <div class="card">
                              <div class="card-header">
-                                 <h5 class="card-title mb-0"><i class="bi bi-chat-dots-fill me-2"></i>Adicionar Comentário / Resposta</h5>
+                                 <h5 class="card-title mb-0"><i class="bi bi-chat-dots-fill me-2"></i><span data-i18n="ticket_detail_add_comment">Adicionar Comentário / Resposta</span></h5>
                              </div>
                              <div class="card-body">
                                 <form id="add-comment-form">
                                     <div class="mb-3">
-                                        <textarea class="form-control" id="comment-text" rows="4" placeholder="Digite seu comentário aqui..." required disabled></textarea>
+                                        <textarea class="form-control" id="comment-text" rows="4" placeholder="Digite seu comentário aqui..." required disabled data-i18n-placeholder="ticket_detail_comment_placeholder"></textarea>
                                     </div>
                                      <div class="mb-3">
-                                         <label for="comment-attachment" class="form-label">Anexar arquivo (opcional)</label>
+                                         <label for="comment-attachment" class="form-label" data-i18n="ticket_detail_attach_file">Anexar arquivo (opcional)</label>
                                          <input class="form-control" type="file" id="comment-attachment" disabled>
-                                         <div class="form-text">Upload de anexos desabilitado na simulação.</div>
+                                         <div class="form-text" data-i18n="ticket_detail_upload_disabled">Upload de anexos desabilitado na simulação.</div>
                                      </div>
                                      <div class="d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary" disabled><i class="bi bi-send-fill me-2"></i>Enviar Comentário</button>
+                                        <button type="submit" class="btn btn-primary" disabled><i class="bi bi-send-fill me-2"></i><span data-i18n="ticket_detail_send_comment">Enviar Comentário</span></button>
                                      </div>
                                 </form>
                              </div>
                          </div>
-
                     </div>
 
                     <!-- Right Column: Metadata & Actions -->
                     <div class="col-lg-4">
                         <div class="card">
                              <div class="card-header">
-                                <h5 class="card-title mb-0"><i class="bi bi-info-circle-fill me-2"></i>Informações</h5>
+                                <h5 class="card-title mb-0"><i class="bi bi-info-circle-fill me-2"></i><span data-i18n="ticket_detail_info">Informações</span></h5>
                              </div>
                              <div class="card-body">
                                 <dl class="row mb-0">
-                                    <dt class="col-sm-5">Prioridade:</dt>
+                                    <dt class="col-sm-5" data-i18n="ticket_detail_priority">Prioridade:</dt>
                                     <dd class="col-sm-7" id="ticket-priority"></dd>
 
-                                    <dt class="col-sm-5">Categoria:</dt>
+                                    <dt class="col-sm-5" data-i18n="ticket_detail_category">Categoria:</dt>
                                     <dd class="col-sm-7" id="ticket-category"></dd>
 
-                                    <dt class="col-sm-5">Solicitante:</dt>
+                                    <dt class="col-sm-5" data-i18n="ticket_detail_requester">Solicitante:</dt>
                                     <dd class="col-sm-7" id="ticket-requester"></dd>
 
-                                    <dt class="col-sm-5">Agente:</dt>
+                                    <dt class="col-sm-5" data-i18n="ticket_detail_agent">Agente:</dt>
                                     <dd class="col-sm-7" id="ticket-agent"></dd>
 
-                                    <dt class="col-sm-5">Criado em:</dt>
+                                    <dt class="col-sm-5" data-i18n="ticket_detail_created">Criado em:</dt>
                                     <dd class="col-sm-7" id="ticket-created-at"></dd>
 
-                                    <dt class="col-sm-5">Última Atualização:</dt>
+                                    <dt class="col-sm-5" data-i18n="ticket_detail_updated">Última Atualização:</dt>
                                     <dd class="col-sm-7" id="ticket-updated-at"></dd>
                                 </dl>
                              </div>
                              <div class="card-footer">
                                  <div class="d-grid gap-2">
-                                     <button id="edit-ticket-button" class="btn btn-outline-secondary" style="display: none;"><i class="bi bi-pencil-square me-2"></i>Editar Chamado</button>
-                                     <button id="close-ticket-button" class="btn btn-danger" style="display: none;"><i class="bi bi-x-octagon-fill me-2"></i>Fechar Chamado</button>
-                                      <button id="reopen-ticket-button" class="btn btn-warning" style="display: none;"><i class="bi bi-arrow-clockwise me-2"></i>Reabrir Chamado</button>
+                                     <button id="edit-ticket-button" class="btn btn-outline-secondary" style="display: none;"><i class="bi bi-pencil-square me-2"></i><span data-i18n="ticket_detail_edit">Editar Chamado</span></button>
+                                     <button id="close-ticket-button" class="btn btn-danger" style="display: none;"><i class="bi bi-x-octagon-fill me-2"></i><span data-i18n="ticket_detail_close">Fechar Chamado</span></button>
+                                     <button id="reopen-ticket-button" class="btn btn-warning" style="display: none;"><i class="bi bi-arrow-clockwise me-2"></i><span data-i18n="ticket_detail_reopen">Reabrir Chamado</span></button>
                                  </div>
                              </div>
                         </div>
                     </div>
                 </div><!-- End #ticket-info-container -->
-
             </div> 
         </main>
     </div>
@@ -171,5 +164,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script type="module" src="/FrontEnd/js/vlibras.js"></script>
     <script type="module" src="/FrontEnd/js/loadSidebar.js"></script>
+    <script src="https://unpkg.com/i18next@23.10.1/i18next.min.js"></script>
+    <script src="/FrontEnd/js/traslate.js"></script>
 </body>
 </html>
