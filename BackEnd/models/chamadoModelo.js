@@ -35,13 +35,16 @@ const Chamado = db.define('chamado', {
     },
     agente: {
         type: DataTypes.STRING,
+    },
+    anexo: {
+        type: DataTypes.BLOB
     }
 },{
     tableNome: 'Chamado',
     timestamp: true
 });
 
-Chamado.createChamado = async ({ titulo, userEmail, categoria, subcategoria, prioridade, descricao}) => {
+Chamado.createChamado = async ({ titulo, userEmail, categoria, subcategoria, prioridade, descricao, anexo}) => {
     return Chamado.create({ 
         id,
         titulo,
@@ -49,7 +52,9 @@ Chamado.createChamado = async ({ titulo, userEmail, categoria, subcategoria, pri
         categoria, 
         subcategoria, 
         prioridade, 
-        descricao });
+        descricao,
+        anexo 
+    });
   };  
 
   module.exports = Chamado

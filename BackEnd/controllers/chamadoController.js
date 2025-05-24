@@ -2,7 +2,7 @@ const Chamado = require('../models/chamadoModelo');
 const ChamadoHistorico = require('../models/ChamadoHistorico');
 
 exports.Abertura = async (req, res) => {
-    const {titulo, categoria, subcategoria, prioridade, descricao, userEmail} = req.body;
+    const {titulo, categoria, subcategoria, prioridade, descricao, userEmail, anexo} = req.body;
     //validações
     if(!titulo){
         return res.status(422).json({msg: 'O titulo é obrigatório'})
@@ -33,7 +33,8 @@ exports.Abertura = async (req, res) => {
         descricao: descricao,
         userEmail,
         status: 'Aberto',
-        agente: null
+        agente: null,
+        anexo
     });
     //criação do historico do chamado
     await ChamadoHistorico.create({
