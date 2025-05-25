@@ -1,0 +1,244 @@
+html,
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    color: #343a40;
+}
+
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.h-custom {
+    height: calc(100% - 73px);
+}
+
+@media (max-width: 1950px) {
+    .h-custom {
+        height: 100%;
+    }
+}
+
+/* Tema escuro para o body e conteúdo */
+.dark-mode {
+    background-color: #121212 !important;
+    color: #f8f9fa !important;
+}
+
+/*tema escuro cadastro*/
+.dark-mode .container-middle {
+    background-color: #1e1e1e !important;
+    color: #f8f9fa !important;
+}
+
+/* Aplicar tema escuro também ao container do formulário */
+.dark-mode .form-container {
+    background-color: #1e1e1e !important;
+    color: #f8f9fa !important;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Tema claro para formulário */
+.form-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do botão */
+.btn-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* === Inputs no modo escuro === */
+.dark-mode input.form-control {
+    background-color: #2c2c2c;
+    color: #f8f9fa;
+    border-color: #444;
+}
+
+.dark-mode input.form-control::placeholder {
+    color: #aaa;
+}
+
+.dark-mode .input-group-text {
+    background-color: #2c2c2c;
+    color: #f8f9fa;
+    border-color: #444;
+}
+
+/* Corrige ícones do Bootstrap Icons dentro de inputs */
+.dark-mode .input-group .bi {
+    color: #f8f9fa;
+}
+
+a.blue {
+    color: #0056b3 !important;
+}
+
+/* link em azul dark mode */
+.dark-mode a.blue {
+    color: #66b2ff !important;
+}
+
+.dark-mode a:hover.blue {
+    color: #99ccff !important;
+}
+
+
+/* */
+
+.title {
+    padding-top: 30px;
+}
+
+.content-wrapper {
+    flex: 1;
+}
+
+.container-middle {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+header {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #0056b3;
+    margin: 0;
+    font-size: 2em;
+}
+
+.dark-mode header h1 {
+    color: #9dcdff;
+    margin: 0;
+    font-size: 2em;
+}
+
+header p {
+    color: #ffffff;
+    margin-top: 5px;
+}
+
+h2 {
+    color: #0056b3;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 10px;
+    font-size: 1.5em;
+}
+
+/*LOGIN*/
+.form-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.329);
+}
+
+.lgin {
+    padding-bottom: 3vh;
+    font-size: x-large;
+}
+
+.form-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+#formCheck {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.329);
+}
+
+/*REGISTER*/
+.forms {
+    padding: 10px;
+}
+
+#termos {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.329);
+}
+
+.senha {
+    padding-top: 0.3vh;
+}
+
+#labelsenha {
+    margin-bottom: 0.6vh;
+}
+
+.eye-toggle {
+    cursor: pointer;
+}
+
+.eye-toggle:hover {
+    background-color: #e2e2e2;
+}
+
+.dark-mode .eye-toggle:hover {
+    background-color: #808080;
+}
+
+/*body todo o conteudo principal*/
+section.forms {
+    flex: 1;
+}
+
+/*FOOTER*/
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* DISCLAIMER */
+.privacidade-container {
+    max-width: 1000px;
+    max-height: 700px;
+    overflow-y: auto;
+    margin: 50px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    text-align: justify;
+}
+
+/* Aplicar tema escuro ao container do disclaimer */
+.dark-mode .privacidade-container {
+    background-color: #1e1e1e !important;
+    color: #f8f9fa !important;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .box-disclaimer h2 {
+    color: #9dcdff;
+    margin: 0;
+    font-size: 2em;
+}
