@@ -341,7 +341,7 @@ function updateContent() {
   // Atualiza textos com data-i18n
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    el.innerText = i18next.t(key);
+    el.textContent = i18next.t(key);
   });
   // Atualiza placeholders
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
