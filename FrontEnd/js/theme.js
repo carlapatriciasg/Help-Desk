@@ -1,4 +1,17 @@
+// Aplica o tema salvo ANTES de tudo
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const theme = savedTheme || (prefersDark ? 'dark' : 'light');
 const body = document.getElementById("body");
+
+if (theme === 'dark') {
+    body.classList.add('dark-mode', 'bg-dark', 'text-light');
+    body.classList.remove('bg-light', 'text-dark');
+} else {
+    body.classList.remove('dark-mode', 'bg-dark', 'text-light');
+    body.classList.add('bg-light', 'text-dark');
+}
+
 const toggleBtn = document.getElementById("toggleTheme");
 const themeIcon = document.getElementById("theme-icon");
 

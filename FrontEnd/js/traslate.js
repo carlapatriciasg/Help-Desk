@@ -169,10 +169,37 @@ const resources = {
       faq_a12: "Tire uma captura de tela do erro. Tente atualizar a página ou limpar o cache do navegador. Se o problema persistir, abra um chamado com o máximo de detalhes possível e anexe a imagem do erro, informando também o que você estava tentando fazer na ocasião.",
       faq_q13: "Quem posso contatar para mais ajuda?",
       faq_a13: "Se sua dúvida não foi respondida nesta página, vá até a <a href=\"[Link da Página de Suporte]\">Página de Suporte</a> ou abra um novo chamado na categoria 'Suporte ao Sistema'.",
+      profile_profile: "Perfil",
+      notification_title: "Notificações",
+      menu_config: "Configurações",
+      menu_logout: "Sair",
+      // ...dentro de translation: {
+      notification_title: "Notificações",
+      notification_none: "Nenhuma notificação no momento.",
+      notification_mark_all_read: "Marcar todas como lidas",
+      notification_new: "Nova notificação",
+      notification_view_all: "Ver todas as notificações",
+// ...restante das chaves...
+
+
+
     }
   },
   'en-US': {
     translation: {
+      // Para en-US
+profile_profile: "Profile",
+notification_title: "Notifications",
+menu_config: "Settings",
+menu_logout: "Logout",
+
+      // ...existing code...
+      notification_title: "Notifications - Ticket System",
+      notification_none: "No notifications at the moment.",
+      notification_mark_all_read: "Mark all as read",
+      notification_new: "New notification",
+      notification_view_all: "View all notifications",
+// ...existing code...
       title_config: "Settings",
       general_settings: "General Settings",
       notifications: "Notifications",
