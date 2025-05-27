@@ -58,7 +58,10 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title mb-0" data-i18n="dashboard_help_title"><i class="bi bi-info-circle-fill me-2 text-primary"></i>O que você pode fazer aqui?</h5>
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-info-circle-fill me-2 text-primary"></i>
+                                <span data-i18n="dashboard_help_title">O que você pode fazer aqui?</span>
+                            </h5>
                         </div>
                         <div class="card-body" id="post-login-info">
                             <h1 class="lead " data-i18n="dashboard_welcome"><strong>Bem-vindo(a) ao Sistema de Gerenciamento de Chamados!</strong></h1>
@@ -70,13 +73,15 @@
                                 </li>
                                 <li>
                                     <strong data-i18n="dashboard_new_ticket_title">Criar um Novo Chamado:</strong>
-                                    <p class="mb-1" data-i18n="dashboard_new_ticket_desc">
-                                        Use o botão <a href="/FrontEnd/pages/new-ticket.html"
-                                            class="btn btn-sm btn-success"><i class="bi bi-plus-circle-fill me-1"></i>
-                                            <span data-i18n="dashboard_btn_new_ticket">Abrir Novo Chamado</span></a> para reportar um problema ou fazer uma solicitação de
-                                        serviço. Você preencherá um formulário escolhendo a categoria (ex: TI, RH),
-                                        descrevendo a necessidade, definindo a urgência e anexando arquivos se
-                                        necessário.
+                                    <p class="mb-1">
+                                        <span data-i18n="dashboard_new_ticket_desc1">Use o botão</span>
+                                        <a href="/FrontEnd/pages/new-ticket.html" class="btn btn-sm btn-success">
+                                            <i class="bi bi-plus-circle-fill me-1"></i>
+                                            <span data-i18n="dashboard_btn_new_ticket">Abrir Novo Chamado</span>
+                                        </a>
+                                        <span data-i18n="dashboard_new_ticket_desc2">
+                                            para reportar um problema ou fazer uma solicitação de serviço. Você preencherá um formulário escolhendo a categoria (ex: TI, RH), descrevendo a necessidade, definindo a urgência e anexando arquivos se necessário.
+                                        </span>
                                     </p>
                                 </li>
                                 <li>
@@ -97,8 +102,8 @@
                                 </li>
                                 <li>
                                     <strong data-i18n="dashboard_profile_title">Editar Configurações do Perfil:</strong>
-                                    <p class="mb-0" data-i18n="dashboard_profile_desc">Você pode atualizar suas informações pessoais, trocar a senha ou
-                                        ajustar preferências de notificação no seu <a href="/FrontEnd/pages/profile.html" data-i18n="profile">Perfil</a>.
+                                    <p class="mb-0" data-i18n="dashboard_profile_desc">
+                                        Você pode atualizar suas informações pessoais, trocar a senha ou ajustar preferências de notificação no seu <a href="/FrontEnd/pages/profile.html">Perfil</a>.
                                     </p>
                                 </li>
                             </ol>

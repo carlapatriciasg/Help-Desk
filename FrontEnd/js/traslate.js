@@ -39,7 +39,7 @@ const resources = {
       dashboard_help_resources_title: "Acessar Recursos de Ajuda:",
       dashboard_help_resources_desc: "Do Usuário diretamente do painel.",
       dashboard_profile_title: "Editar Configurações do Perfil:",
-      dashboard_profile_desc: "Você pode atualizar suas informações pessoais, trocar a senha ou ajustar preferências de notificação no seu Perfil.",
+      dashboard_profile_desc: 'Você pode atualizar suas informações pessoais, trocar a senha ou ajustar preferências de notificação no seu <a href="/FrontEnd/pages/profile.html">Perfil</a>.',
       dashboard_recent_activity: "Atividade Recente",
       dashboard_no_activity: "Nenhuma atividade recente para mostrar.",
       stat_open: "Abertos",
@@ -180,6 +180,13 @@ const resources = {
       notification_new: "Nova notificação",
       notification_view_all: "Ver todas as notificações",
 // ...restante das chaves...
+// ...dentro de translation: {
+dashboard_new_ticket_desc1: "Use o botão",
+dashboard_new_ticket_desc2: "para reportar um problema ou fazer uma solicitação de serviço. Você preencherá um formulário escolhendo a categoria (ex: TI, RH), descrevendo a necessidade, definindo a urgência e anexando arquivos se necessário.",
+dashboard_btn_new_ticket: "Abrir Novo Chamado",
+// ...restante das chaves...
+// pt-BR
+profile_profile: "Perfil",
 
 
 
@@ -187,6 +194,14 @@ const resources = {
   },
   'en-US': {
     translation: {
+      // en-US
+profile_profile: "Profile",
+
+      // ...dentro de 'en-US': { translation: {
+dashboard_new_ticket_desc1: "Use the button",
+dashboard_new_ticket_desc2: "to report a problem or make a service request. You will fill out a form choosing the category (e.g., IT, HR), describing the need, setting the urgency, and attaching files if necessary.",
+dashboard_btn_new_ticket: "Open New Ticket",
+// ...restante das chaves...
       // Para en-US
 profile_profile: "Profile",
 notification_title: "Notifications",
@@ -237,7 +252,7 @@ menu_logout: "Logout",
       dashboard_help_resources_title: "Access Help Resources:",
       dashboard_help_resources_desc: "Directly from the dashboard.",
       dashboard_profile_title: "Edit Profile Settings:",
-      dashboard_profile_desc: "You can update your personal information, change your password, or adjust notification preferences in your Profile.",
+      dashboard_profile_desc: 'You can update your personal information, change your password, or adjust notification preferences in your <a href="/FrontEnd/pages/profile.html">Profile</a>.',
       dashboard_recent_activity: "Recent Activity",
       dashboard_no_activity: "No recent activity to show.",
       stat_open: "Open",
@@ -375,7 +390,7 @@ function updateContent() {
   // Atualiza textos com data-i18n
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    el.textContent = i18next.t(key);
+    el.innerHTML = i18next.t(key); // <-- Troque textContent por innerHTML
   });
   // Atualiza placeholders
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
