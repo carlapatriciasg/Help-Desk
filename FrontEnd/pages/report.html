@@ -79,9 +79,13 @@
                                 <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
                                     <h5 class="mb-0 me-auto">Últimos chamados atendidos</h5>
                                     <div class="mt-2 mt-md-0">
-                                        <button id="filter-button" class="btn btn-outline-secondary btn-sm me-2">
-                                            <i class="bi bi-funnel-fill"></i> Filtros
-                                        </button>
+                                        <select id="filter-button" class="btn btn-sm me-2">
+                                            <option value="">Filtrar por Prioridade</option>
+                                            <option value="Baixa">Baixa</option>
+                                            <option value="Média">Média</option>
+                                            <option value="Alta">Alta</option>
+                                            <option value="Crítica">Crítica</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="card-body p-0">
@@ -120,7 +124,14 @@
                             <hr>
                             <h6>Observações do Analista</h6>
                             <textarea class="form-control" rows="4"
-                                placeholder="Adicione observações ou comentários sobre o atendimento..."></textarea>
+                                placeholder="Adicione observações ou comentários sobre o atendimento...">
+                            </textarea>
+
+                            <div class="d-flex justify-content-end mt-3">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-send-fill me-2"></i>Enviar
+                            </button>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -129,6 +140,23 @@
     </div>
     <script type="module" src="/FrontEnd/js/vlibras.js"></script>
     <script type="module" src="/FrontEnd/js/loadSidebar.js"></script>
+
+    <script>
+        document.getElementById("filter-button").addEventListener("change", function () {
+            let prioridadeSelecionada = this.value;
+            let linhas = document.querySelectorAll("#ticket-list-body tr");
+
+            linhas.forEach(linha => {
+                let prioridade = linha.cells[3]?.textContent.trim(); // Obtém a prioridade da tabela
+
+                if (prioridadeSelecionada === "" || prioridade === prioridadeSelecionada) {
+                    linha.style.display = "table-row";
+                } else {
+                    linha.style.display = "none";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

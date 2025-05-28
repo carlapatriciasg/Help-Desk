@@ -635,12 +635,22 @@ a:hover {
 
 /* ticket list */
 
-.dark-mode .card-header {
-    background-color: #232323;
+#filter-button {
+    border-color: #292828;
 }
 
 .dark-mode #filter-button {
+    background-color: #3c4146;
     color: #fff;
+    border-color: none;
+}
+
+.dark-mode #filter-button:hover {
+    background-color: #3b3a3a;
+}
+
+.dark-mode .card-header {
+    background-color: #232323;
 }
 
 .dark-mode #export-button  {
