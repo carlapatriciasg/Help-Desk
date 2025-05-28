@@ -48,7 +48,7 @@ const Usuario = db.define('usuario' , {
     },
     tipoUsuario : {
         type: DataTypes.STRING,
-        //allowNull: false, 
+        default: 'usuario',  
     },
 });
 

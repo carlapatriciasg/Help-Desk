@@ -89,7 +89,7 @@
       </div>
     </div>
   </main>
-  <script>
+    <script>
         document.getElementById('login-form').addEventListener('submit', async function(event) {
             event.preventDefault(); 
             
@@ -122,8 +122,15 @@
                 localStorage.setItem("email", email);
                 localStorage.setItem('Usuario', JSON.stringify(data.usuario))
                 
-                localStorage.setItem('Usuario', JSON.stringify(data.usuario));
-                window.location.href = 'dashboard.html'; // Redirect to dashboard
+                if (data.usuario.tipoUsuario === 'analista'){
+                    window.location.href = 'dashboard.html' // Redirect to dashboard
+                    alert('analista')
+                }else if(data.usuario.tipoUsuario === 'usuario'){
+                    window.location.href = 'dashboard.html'
+                    alert('usuario')
+                } else{
+                    alert('Usuário não localizado')
+                }
             } catch (erro) {
                 console.error('Erro ao realizar requisição: ', erro);
                 alert(erro);

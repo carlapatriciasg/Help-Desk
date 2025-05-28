@@ -1,4 +1,5 @@
 const Usuario = require('../models/usuarioModelo')
+const Analista = require('../models/AnalistaModelo')
 const bcrypt = require('bcryptjs')
 const validator = require('validator')
 
@@ -62,7 +63,7 @@ exports.register = async (req, res) => {
         datanasc,
         tipoUsuario,
     });
-    
+
     return res.status(201).json({ msg: 'Usuario criado com sucesso'})
 
     } catch(error){
