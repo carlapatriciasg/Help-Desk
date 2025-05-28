@@ -4,8 +4,9 @@ const express = require('express')
 const cors = require('cors');
 const sequelize = require('../BackEnd/connection/db')
 const userRoutes = require('../BackEnd/routes/userCRoutes')
-const authRoutes = require('../BACKEND/routes/authRoutes')
+const authRoutes = require('../BackEnd/routes/authRoutes')
 const ticketRoutes = require('../BackEnd/routes/ticketRoutes')
+const dadosRouter = require('../BackEnd/routes/dadosRouter')
 
 const app = express()
 app.use(cors())
@@ -21,6 +22,7 @@ sequelize.sync().then(() => {
 app.use('/api', userRoutes)
 app.use('/api', authRoutes)
 app.use('/api', ticketRoutes)
+app.use('/api', dadosRouter)
 
 const PORT = process.env.PORT || 3000;
 

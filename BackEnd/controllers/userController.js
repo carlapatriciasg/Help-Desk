@@ -1,5 +1,4 @@
 const Usuario = require('../models/usuarioModelo')
-const Analista = require('../models/AnalistaModelo')
 const bcrypt = require('bcryptjs')
 const validator = require('validator')
 
