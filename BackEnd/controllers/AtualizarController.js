@@ -1,6 +1,7 @@
 const Usuario = require('../models/usuarioModelo')
 const Analista = require('../models/AnalistaModelo')
 const bcrypt = require('bcryptjs')
+const { where } = require('sequelize')
 
 exports.atualizarDados = async (req, res) =>{
     const { email, nome, senhaAtual, senhaNova } = req.body
@@ -31,4 +32,16 @@ exports.atualizarDados = async (req, res) =>{
 
     await usuario.save()
     res.json({ msg: 'Dados atualizados' })
+}
+
+exports.perfilDados = async (req, res) =>{
+    const { email } = req.query
+
+    let usuario = await Usuario.findOne({ where: { email }})
+
+    if (!usuario) {
+        usuario = await Analista.findOne({ where: { email }})
+    }
+
+    res.json({nome: usuario.nome, email: usuario.email})
 }
