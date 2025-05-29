@@ -79,6 +79,36 @@ exports.ChamadoDoUsuarios = async (req, res) => {
     }
 }
 
+exports.TodosChamados = async (req, res) => {
+    const email = req.query.email
+
+    if(!email){
+        return res.status(400).json({msg: 'E-mail é obrigatório'})
+    }
+
+    try{
+        let chamado = await Chamado.findAll({
+            where: {
+                userEmail: email,
+            },
+            order: [['createdAt', 'DESC']]
+        })
+
+        if(chamado.length === 0){
+            chamado = await Chamado.findAll({
+            where: {
+                agente: email,
+            },
+            order: [['createdAt', 'DESC']]
+        })
+    }
+    res.status(200).json(chamado)
+    } catch(error) {
+        console.error('Erro ao buscar chamados: ', error)
+        res.status(500).json({msg: 'Erro ao buscar chamados'})
+    }
+}
+
 exports.chamadosContador = async (req, res) =>{
     const {emailAnalista} = req.query
 
