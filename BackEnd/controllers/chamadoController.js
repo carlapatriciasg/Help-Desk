@@ -1,5 +1,6 @@
 const Chamado = require('../models/chamadoModelo');
 const ChamadoHistorico = require('../models/ChamadoHistorico');
+const { where } = require('sequelize');
 
 exports.Abertura = async (req, res) => {
     const {titulo, categoria, subcategoria, prioridade, descricao, userEmail, anexo} = req.body;
@@ -75,5 +76,22 @@ exports.ChamadoDoUsuarios = async (req, res) => {
     } catch(error) {
         console.error('Erro ao buscar chamados: ', error)
         res.status(500).json({msg: 'Erro ao buscar chamados'})
+    }
+}
+
+exports.chamadosContador = async (req, res) =>{
+    const {emailAnalista} = req.query
+
+    try {
+        const [abertos , emAtendimento, resolvidos, fechados] = await Promise.all([
+            Chamado.count({where: { agente: emailAnalista, status: 'Aberto'}}),
+            Chamado.count({where: { agente: emailAnalista, status: 'Em Atendimento'}}),
+            Chamado.count({where: { agente: emailAnalista, status: 'Resolvido'}}),
+            Chamado.count({where: { agente: emailAnalista, status: 'Fechado'}})
+        ])
+        res.json({ abertos, emAtendimento, resolvidos, fechados})
+    }catch(erro){
+        console.error('Erro no contador de chamados: ', erro)
+        res.status(500).json({msg: 'Erro interno'})
     }
 }

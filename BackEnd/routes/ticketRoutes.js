@@ -6,4 +6,6 @@ router.post('/abertura', chamadoController.Abertura);
 
 router.get('/chamados-abertos', chamadoController.ChamadoDoUsuarios)
 
+router.get('/contador-chamados', chamadoController.chamadosContador)
+
 module.exports = router

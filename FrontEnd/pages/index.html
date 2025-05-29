@@ -119,15 +119,13 @@
                 const data = await respostas.json();
                 console.log('Usuario logado:', data.usuario);
 
-                localStorage.setItem("email", email);
+                sessionStorage.setItem("email", email);
                 localStorage.setItem('Usuario', JSON.stringify(data.usuario))
                 
                 if (data.usuario.tipoUsuario === 'analista'){
-                    window.location.href = 'dashboard.html' // Redirect to dashboard
-                    alert('analista')
+                    window.location.href = 'dashboard.html'
                 }else if(data.usuario.tipoUsuario === 'usuario'){
                     window.location.href = 'dashboard.html'
-                    alert('usuario')
                 } else{
                     alert('Usuário não localizado')
                 }

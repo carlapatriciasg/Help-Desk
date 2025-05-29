@@ -143,7 +143,7 @@
             const descricao = document.getElementById('description').value;
             const anexo = document.getElementById('attachments').value;
 
-            const userEmail = localStorage.getItem("email");
+            const userEmail = sessionStorage.getItem("email");
 
             try {
                 const respostas = await fetch('http://localhost:3000/api/abertura', {

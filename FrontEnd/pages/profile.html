@@ -114,7 +114,7 @@
         document.getElementById('profile-form').addEventListener('submit', async(event) => {
             event.preventDefault()
 
-            const email = localStorage.getItem('email')
+            const email = sessionStorage.getItem('email')
             const nome = document.getElementById('profileName').value
 
             try{
@@ -142,7 +142,7 @@
         document.getElementById('change-password-form').addEventListener('submit', async(event) => {
             event.preventDefault()
 
-            const email = localStorage.getItem('email')
+            const email = sessionStorage.getItem('email')
             const senhaAtual = document.getElementById('currentPassword').value
             const senhaNova = document.getElementById('newPassword').value
             const senhaConfirm = document.getElementById('confirmPassword').value

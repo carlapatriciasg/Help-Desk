@@ -1,5 +1,6 @@
 export function inicializarDashboard() {
     const usuario = JSON.parse(localStorage.getItem('Usuario') || '{}');
+    
 
     if (!usuario || !usuario.tipoUsuario) {
         alert('Sessão inválida. Faça login novamente.');
@@ -20,3 +21,4 @@ export function inicializarDashboard() {
         });
     }
 }
+
