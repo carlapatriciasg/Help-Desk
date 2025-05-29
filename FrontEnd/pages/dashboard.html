@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Sistema de Chamados</title>
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -34,7 +34,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="dropdownUser1">
                             <li><a class="dropdown-item" href="/FrontEnd/pages/profile.html"><i
-                                 class="bi bi-person-fill me-2"></i></i>Perfil</a></li>
+                                        class="bi bi-person-fill me-2"></i></i>Perfil</a></li>
                             <li><a class="dropdown-item" href="/FrontEnd/pages/config.html"><i
                                         class="bi bi-gear-fill me-2"></i>Configurações</a></li>
                             <li>
@@ -52,7 +52,7 @@
                 </div>
         </header>
         <main class="main-content" id="dashboard-page">
-            <div class="row mb-4">
+            <div class="row mb-4" id="cards-analista">
                 <!-- Estatiscas dos Cards -->
                 <div class="col-md-3 mb-3">
                     <div class="card card-metric text-bg-bluezinho" id="bluecard">
@@ -96,7 +96,8 @@
                                 você pode fazer aqui?</h5>
                         </div>
                         <div class="card-body" id="post-login-info">
-                            <h1 class="lead "><strong>Bem-vindo(a) ao Sistema de Gerenciamento de Chamados!</strong></h1>
+                            <h1 class="lead "><strong>Bem-vindo(a) ao Sistema de Gerenciamento de Chamados!</strong>
+                            </h1>
                             <p>Após fazer login com suas credenciais corporativas, você está no seu Painel Principal
                                 (Dashboard). Veja o que você pode fazer:</p>
                             <ol>
@@ -109,7 +110,8 @@
                                 <li>
                                     <strong>Criar um Novo Chamado:</strong>
                                     <p class="mb-1">Use o botão <a href="/FrontEnd/pages/new-ticket.html"
-                                            class="btn btn-sm btn-success"><i class="bi bi-plus-circle-fill me-1"></i>
+                                            class="btn btn-sm btn-success btn-abrir-chamado"><i
+                                                class="bi bi-plus-circle-fill me-1"></i>
                                             Abrir Novo Chamado</a> para reportar um problema ou fazer uma solicitação de
                                         serviço. Você preencherá um formulário escolhendo a categoria (ex: TI, RH),
                                         descrevendo a necessidade, definindo a urgência e anexando arquivos se
@@ -124,8 +126,7 @@
                                 <li>
                                     <strong>Receber Notificações:</strong>
                                     <p class="mb-1">Qualquer atualização (como respostas de técnicos ou mudanças de
-                                        status) geram notificações, geralmente por e-mail e/ou alertas visíveis no
-                                        sistema.</p>
+                                        status) geram notificações por e-mail.</p>
                                 </li>
                                 <li>
                                     <strong>Acessar Recursos de Ajuda:</strong>
@@ -134,7 +135,8 @@
                                 <li>
                                     <strong>Editar Configurações do Perfil:</strong>
                                     <p class="mb-0">Você pode atualizar suas informações pessoais, trocar a senha ou
-                                        ajustar preferências de notificação no seu <a href="/FrontEnd/pages/profile.html">Perfil</a>.
+                                        ajustar preferências de notificação no seu <a
+                                            href="/FrontEnd/pages/profile.html">Perfil</a>.
                                     </p>
                                 </li>
                             </ol>
@@ -147,12 +149,13 @@
                             <h5 class="card-title mb-0"><i class="bi bi-clock-history me-2"></i>Atividade Recente</h5>
                         </div>
                         <div class="card-body p-0" id="recent-activity-list">
-                            <p class="text-muted p-3 small recent-activity-list">Nenhuma atividade recente para mostrar.</p>
+                            <p class="text-muted p-3 small recent-activity-list">Nenhuma atividade recente para mostrar.
+                            </p>
                             <!-- JS will populate recent activity here -->
                         </div>
                     </div>
                     <div class="d-grid gap-2">
-                        <a href="/FrontEnd/pages/new-ticket.html" class="btn btn-lg btn-success"><i
+                        <a href="/FrontEnd/pages/new-ticket.html" class="btn btn-lg btn-success btn-abrir-chamado"><i
                                 class="bi bi-plus-circle-fill me-2"></i>Abrir Novo Chamado</a>
                     </div>
                 </div>
@@ -165,6 +168,10 @@
         crossorigin="anonymous"></script>
     <script type="module" src="/FrontEnd/js/vlibras.js"></script>
     <script type="module" src="/FrontEnd/js/loadSidebar.js"></script>
+    <script type="module">
+        import { inicializarDashboard } from '/FrontEnd/js/authDashboard.js';
+        inicializarDashboard();
+    </script>
 
 </body>
 

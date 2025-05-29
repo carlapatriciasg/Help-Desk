@@ -157,6 +157,16 @@
             });
         });
     </script>
+
+    <script>
+    const usuario = JSON.parse(localStorage.getItem('Usuario') || '{}');
+
+    // redireciona para o dashboard caso uma conta que não seja analista tente acessar diretamente pela URL
+    if (!usuario || usuario.tipoUsuario !== 'analista') {
+        alert('Acesso negado: esta página é exclusiva para analistas.');
+        window.location.href = '/FrontEnd/pages/dashboard.html';
+    }
+</script>
 </body>
 
 </html>

@@ -6,17 +6,27 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(html => {
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = html;
-            // Remove a sidebar antiga, se existir
+
             const oldSidebar = document.querySelector('.sidebar');
             if (oldSidebar) oldSidebar.remove();
             const oldBackdrop = document.querySelector('.sidebar-backdrop');
             if (oldBackdrop) oldBackdrop.remove();
-            // Adiciona a nova sidebar e backdrop no início do body
+
             document.body.prepend(tempDiv.querySelector('.sidebar-backdrop'));
             document.body.prepend(tempDiv.querySelector('.sidebar'));
-            // Agora inicializa os eventos da sidebar
+
+            // Inicializa eventos da sidebar
             initSidebar();
+
+            // Esconde o menu de relatório se não for analista
+            const usuario = JSON.parse(localStorage.getItem('Usuario') || '{}');
+            const tipo = usuario.tipoUsuario;
+
+            if (tipo === 'usuario') {
+                const relatorioMenu = document.getElementById('menu-relatorio');
+                if (relatorioMenu) {
+                    relatorioMenu.style.display = 'none';
+                }
+            }
         });
 });
-
-
