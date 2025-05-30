@@ -28,5 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     relatorioMenu.style.display = 'none';
                 }
             }
+
+            if (tipo === 'analista') {
+                const relatorioMenu = document.getElementById('menu-new-ticket');
+                if (relatorioMenu) {
+                    relatorioMenu.style.display = 'none';
+                }
+            }
         });
 });
