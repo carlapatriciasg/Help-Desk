@@ -65,14 +65,23 @@ exports.ChamadoDoUsuarios = async (req, res) => {
     }
 
     try{
-        const chamado = await Chamado.findAll({
+        let chamado = await Chamado.findAll({
             where: {
                 userEmail: email,
                 status: 'Aberto'
             },
             order: [['createdAt', 'DESC']]
         })
-        res.status(200).json(chamado)
+
+        if(chamado.length === 0){
+            chamado = await Chamado.findAll({
+            where: {
+                agente: email,
+                status: 'Aberto'
+            },
+            order: [['createdAt', 'DESC']]})
+        }
+    res.status(200).json(chamado)
     } catch(error) {
         console.error('Erro ao buscar chamados: ', error)
         res.status(500).json({msg: 'Erro ao buscar chamados'})
