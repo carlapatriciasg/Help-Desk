@@ -1,6 +1,7 @@
 const Chamado = require('../models/chamadoModelo');
 const ChamadoHistorico = require('../models/ChamadoHistorico');
 const { where } = require('sequelize');
+const { Op } = require('sequelize');
 
 exports.Abertura = async (req, res) => {
     const {titulo, categoria, subcategoria, prioridade, descricao, userEmail, anexo} = req.body;
@@ -85,6 +86,57 @@ exports.ChamadoDoUsuarios = async (req, res) => {
     } catch(error) {
         console.error('Erro ao buscar chamados: ', error)
         res.status(500).json({msg: 'Erro ao buscar chamados'})
+    }
+}
+
+exports.ChamadoRelatorio = async (req, res) => {
+    const email = req.query.email
+
+    if(!email){
+        return res.status(400).json({msg: 'E-mail não localizado'})
+    }
+
+    try{
+        let chamado = await Chamado.findAll({
+            where: {
+                userEmail: email,
+            },
+            order: [['createdAt', 'DESC']]
+        })
+
+        if(chamado.length === 0){
+            chamado = await Chamado.findAll({
+            where: {
+                agente: email,
+            },
+            order: [['createdAt', 'DESC']]})
+        }
+
+        const chamadosTotais = await Chamado.count({ where: {agente: email}})
+
+        const chamadosResolvidos = await Chamado.count({where: {
+            agente: email,
+            status: { [Op.iLike]: 'resolvido'}
+        }})
+
+        const chamadosPendentes = await Chamado.count({where: {
+            agente: email,
+            [Op.or]: [
+                { status: { [Op.iLike]: 'aberto' } },
+                { status: { [Op.iLike]: 'em atendimento' } }]
+        }})
+
+        res.status(200).json({
+            listas: chamado,
+            resumo: {
+                total: chamadosTotais,
+                resolvidos: chamadosResolvidos,
+                pendentes: chamadosPendentes
+            }
+        });
+    }catch(erro){
+        console.error('erro no relatorio dos chamados: ', erro)
+        res.status(500).json({msg: 'Erro no relatorio do chamado'})
     }
 }
 

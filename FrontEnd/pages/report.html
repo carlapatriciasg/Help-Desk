@@ -68,9 +68,9 @@
                         </div>
                         <div class="card-body">
                             <ul>
-                                <li><strong>Total de chamados atendidos:</strong> 0</li>
-                                <li><strong>Chamados resolvidos:</strong> 0</li>
-                                <li><strong>Chamados pendentes:</strong> 0</li>
+                                <li><strong>Total de chamados atendidos:</strong><span id="total"> 0</span></li>
+                                <li><strong>Chamados resolvidos:</strong><span id="resolvidos"> 0</span></li>
+                                <li><strong>Chamados pendentes:</strong><span id="pendentes"> 0</span></li>
                             </ul>
                             <hr>
                             <div class="card mb-4">
@@ -161,6 +161,50 @@
     }
 </script>
 <script src="../js/nameBar.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const tbody = document.getElementById('relatorio-ticket-list-body')
+            const email = sessionStorage.getItem('email')
+
+            try {
+                const respostas = await fetch((`http://localhost:3000/api/chamados-relatorios?email=${email}`))
+                const chamados = await respostas.json();
+
+                try{
+                    const resumos = chamados.resumo
+                    document.getElementById('total').textContent = resumos.total
+                    document.getElementById('resolvidos').textContent = resumos.resolvidos
+                    document.getElementById('pendentes').textContent = resumos.pendentes
+                }catch(erro){
+                    console.error('Erro no resumo: ', erro)
+                }
+
+                const list = chamados.listas
+                if (list.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="8" class="text-center text-danger">Nenhum chamado em aberto.</td></tr>`
+                    return;
+                }
+
+                tbody.innerHTML = ""
+                list.forEach(ch => {
+                    tbody.innerHTML +=
+                        `<tr>
+                        <td>${ch.id}</td>
+                        <td>${ch.titulo}</td>
+                        <td><span class="badge bg-primary">${ch.status}</span></td>
+                        <td>${ch.prioridade}</td>
+                        <td>${ch.categoria}</td>
+                        <td>${ch.agente || '-'}</td>
+                        <td>${new Date(ch.createdAt).toLocaleString('pt-BR')}</td>
+                        <td>${new Date(ch.updatedAt).toLocaleString('pt-BR')}</td>
+                    </tr>`
+                });
+            } catch (error) {
+                console.error('Erro ao carregar chamados: ', error)
+                tbody.innerHTML = `<tr><td colspan="8" class="text-center text-danger">Erro ao carregar chamados.</td></tr>`;
+            }
+        })
+    </script>
 </body>
 
 </html>
