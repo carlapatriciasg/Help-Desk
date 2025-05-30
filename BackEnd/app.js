@@ -7,6 +7,7 @@ const userRoutes = require('../BackEnd/routes/userCRoutes')
 const authRoutes = require('../BackEnd/routes/authRoutes')
 const ticketRoutes = require('../BackEnd/routes/ticketRoutes')
 const dadosRouter = require('../BackEnd/routes/dadosRouter')
+const emailRoutes = require('../BackEnd/routes/EmailRoutes')
 
 const app = express()
 app.use(cors())
@@ -23,6 +24,7 @@ app.use('/api', userRoutes)
 app.use('/api', authRoutes)
 app.use('/api', ticketRoutes)
 app.use('/api', dadosRouter)
+app.use('/api', emailRoutes)
 
 const PORT = process.env.PORT || 3000;
 
