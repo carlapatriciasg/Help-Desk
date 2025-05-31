@@ -170,6 +170,17 @@ exports.TodosChamados = async (req, res) => {
     }
 }
 
+exports.ListaTodosChamados = async (req, res) => { 
+
+    try{
+        const chamados =await Chamado.findAll({order: [['createdAt', 'DESC']]})
+        res.status(200).json(chamados)
+    }catch(erro){
+        console.error('Erro na lista de chamados: ', erro)
+        res.status(500).json({ msg: 'Erro na listagem de chamados'})
+    }
+}
+
 exports.chamadosContador = async (req, res) =>{
     const {emailAnalista} = req.query
 
