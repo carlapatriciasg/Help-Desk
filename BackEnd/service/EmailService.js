@@ -7,8 +7,8 @@ class EmailService {
     this.transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: "podlegends807@gmail.com", // Armazenado em .env
-        pass: "yefztcyojtcprqap",
+        user:  "podlegends1807@gmail.com", // Armazenado em .env
+        pass: "iwfclvpsocfoewyi",
       },
     });
   }
