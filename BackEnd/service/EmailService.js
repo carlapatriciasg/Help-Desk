@@ -8,7 +8,7 @@ class EmailService {
       service: 'gmail',
       auth: {
         user: "podlegends807@gmail.com", // Armazenado em .env
-        pass: "",
+        pass: "yefztcyojtcprqap",
       },
     });
   }

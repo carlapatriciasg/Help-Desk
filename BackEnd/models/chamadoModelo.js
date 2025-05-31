@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../connection/db');
+const ChamadoHistorico = require('./ChamadoHistorico');
 
 const Chamado = db.define('chamado', {
     id: {
@@ -43,6 +44,10 @@ const Chamado = db.define('chamado', {
     tableNome: 'Chamado',
     timestamp: true
 });
+
+// Associação entre Chamado e ChamadoHistorico
+Chamado.hasMany(ChamadoHistorico, { foreignKey: 'chamadoId', as: 'historico' });
+ChamadoHistorico.belongsTo(Chamado, { foreignKey: 'chamadoId', as: 'chamado' });
 
 Chamado.createChamado = async ({ titulo, userEmail, categoria, subcategoria, prioridade, descricao, anexo}) => {
     return Chamado.create({ 
