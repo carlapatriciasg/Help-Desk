@@ -589,6 +589,11 @@ a:hover {
   color: #ccc;
 }
 
+.dark-mode .list-group-item{
+    background-color: #232323;
+    color: #fff;
+}
+
 /* FAQ AND DETAILS */
 
 .dark-mode .container-middle p {
