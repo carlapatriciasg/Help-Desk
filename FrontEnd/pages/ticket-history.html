@@ -117,7 +117,7 @@
                 const chamados = await respostas.json();
 
                 if (!chamados.length) {
-                    tbody.innerHTML = `<tr><td colspan="8" class="text-center text-danger">Nenhum chamado em aberto.</td></tr>`
+                    tbody.innerHTML = `<tr><td colspan="9" class="text-center text-danger">Nenhum chamado em aberto.</td></tr>`
                     return;
                 }
 
@@ -137,7 +137,7 @@
                 });
             } catch (error) {
                 console.error('Erro ao carregar chamados: ', error)
-                tbody.innerHTML = `<tr><td colspan="8" class="text-center text-danger">Erro ao carregar chamados.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="9" class="text-center text-danger">Erro ao carregar chamados.</td></tr>`;
             }
         })
     </script>
