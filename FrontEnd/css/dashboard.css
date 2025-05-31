@@ -19,7 +19,7 @@ body {
     bottom: 0;
     width: 260px;
     padding: 1rem;
-    /* Fundo mais claro */
+    /* Lighter Background */
     background-color: #f8f9fa; 
     color: #fff;
     z-index: 1030;
@@ -62,7 +62,7 @@ body {
     margin-right: 0.75rem;
 }
 
-/* Sidebar recolhida */
+/* Sidebar Collapsed */
 .sidebar.collapsed {
     width: 80px;
     transition: width 0.3s ease-in-out;
@@ -85,7 +85,7 @@ body {
     transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
 }
 
-/* Wrapper e Conteúdo Principal */
+/* Wrapper and Main Content */
 .main-content-wrapper {
     display: flex;
     flex-direction: column;
@@ -142,7 +142,7 @@ body {
     z-index: 1020;
 }
 
-/* Cartões de Métricas */
+/* Metric Cards */
 .card-metric {
     text-align: center;
     border: none;
@@ -175,12 +175,12 @@ body {
 .card-metric.text-bg-success .metric-label { color: rgba(255, 255, 255, 0.8); }
 .card-metric.text-bg-secondary .metric-label { color: rgba(255, 255, 255, 0.8); }
 
-/* Tabelas */
+/* TABLES */
 .table th {
     font-weight: 500;
 }
 
-/* Badges de Status */
+/* Badges Status */
 .status-badge {
     padding: 0.3em 0.6em;
     font-size: 0.75rem;
@@ -196,7 +196,7 @@ body {
 .status-resolvido { background-color: #d1e7dd; color: #198754; }
 .status-fechado { background-color: #f8d7da; color: #dc3545; }
 
-/* Prioridade de Ícones */
+/* Icon Priority */
 .priority-icon {
     font-size: 1.1em;
     vertical-align: middle;
@@ -265,7 +265,7 @@ body {
     margin-right: 0.5rem;
 }
 
-/* Seção de Ajuda */
+/* Help Section */
 #post-login-info ol {
     padding-left: 1.5rem;
 }
@@ -281,7 +281,7 @@ body {
     color: #495057;
 }
 
-/* Responsividade */
+/* Responsiveness */
 @media (max-width: 991.98px) {
     .sidebar {
         transform: translateX(-100%);
@@ -422,14 +422,14 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Estilo do botão */
+/* BUTTON STYLE */
 .btn-toggle {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-/* link em azul dark mode */
+/* Link in Blue Dark Mode */
 .dark-mode a.dropdown-menu {
   color: #66b2ff !important;
 }
@@ -438,7 +438,7 @@ a:hover {
   color: #99ccff !important;
 }
 
-/* ===== MODO ESCURO ===== */
+/* ===== DARK MODE ===== */
 .dark-mode {
   background-color: #121212 !important;
   color: #f8f9fa !important;
@@ -446,15 +446,15 @@ a:hover {
 
 .dark-mode .dropdown-item:hover,
 .dark-mode .dropdown-item:hover.active {
-    color: #e0f0ff; /* tom mais claro ao passar o mouse */
-    background-color: rgba(0, 86, 179, 0.1); /* leve destaque de fundo */
+    color: #e0f0ff; 
+    background-color: rgba(0, 86, 179, 0.1); 
     text-decoration: underline;
 }
 
-/* === MODO DARK: Sidebar com azul institucional === */
+/* === DARK MODE: Sidebar with Institutional Blue === */
 .dark-mode .sidebar {
-    background-color: #1a1a1a; /* fundo escuro */
-    color: #9dcdff; /* azul do Help Desk */
+    background-color: #1a1a1a; 
+    color: #9dcdff; 
 }
 
 .dark-mode .sidebar .nav-link,
@@ -464,8 +464,8 @@ a:hover {
 
 .dark-mode .sidebar .nav-link:hover,
 .dark-mode .sidebar .nav-link.active {
-    color: #e0f0ff; /* tom mais claro ao passar o mouse */
-    background-color: rgba(0, 86, 179, 0.1); /* leve destaque de fundo */
+    color: #e0f0ff; 
+    background-color: rgba(0, 86, 179, 0.1); 
     text-decoration: underline;
 }
 
@@ -496,7 +496,7 @@ a:hover {
     background-color: #2a2a2a;
 }
 
-/* Conteúdo principal */
+/* MAIN CONTENT */
 .dark-mode .main-content {
   background-color: #1e1e1e;
   border-color: #333;
@@ -530,7 +530,7 @@ a:hover {
   border-bottom-color: #444;
 }
 
-/* cor do texto no card */
+/* Text Color on CardS */
 .dark-mode .card-metric .metric-label {
   color: #ffffff;
 }
@@ -559,7 +559,7 @@ a:hover {
   color: #aaa;
 }
 
-/* Tabelas */
+/* TABLES */
 .dark-mode .table {
   background-color: #1e1e1e;
   color: #e0e0e0;
@@ -569,7 +569,7 @@ a:hover {
   color: #ccc;
 }
 
-/* FAQ e detalhes */
+/* FAQ AND DETAILS */
 
 .dark-mode .container-middle p {
     color: #fff;
@@ -601,7 +601,7 @@ a:hover {
     color: #66b2ff;
 }
 
-/* Links e menus */
+/* Links and Menus */
 .dark-mode a {
   color: #66b2ff;
 }
@@ -611,7 +611,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Botão toggle */
+/*  Toggle Button */
 .dark-mode .btn-outline-primary {
   border-color: #66b2ff;
   color: #66b2ff;

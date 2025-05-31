@@ -26,19 +26,19 @@ body {
     }
 }
 
-/* Tema escuro para o body e conteúdo */
+/* Dark theme for Body and Content */
 .dark-mode {
     background-color: #121212 !important;
     color: #f8f9fa !important;
 }
 
-/*tema escuro cadastro*/
+/*Dark Theme Registration*/
 .dark-mode .container-middle {
     background-color: #1e1e1e !important;
     color: #f8f9fa !important;
 }
 
-/* Aplicar tema escuro também ao container do formulário */
+/* Apply Dark Theme to Form Container as Well */
 .dark-mode .form-container {
     background-color: #1e1e1e !important;
     color: #f8f9fa !important;
@@ -47,7 +47,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Tema claro para formulário */
+/* Lighter theme for form */
 .form-container {
     background-color: #ffffff;
     padding: 2rem;
@@ -55,14 +55,14 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo do botão */
+/* Button Style */
 .btn-toggle {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-/* === Inputs no modo escuro === */
+/* === Inputs Dark Mode=== */
 .dark-mode input.form-control {
     background-color: #2c2c2c;
     color: #f8f9fa;
@@ -79,7 +79,7 @@ body {
     border-color: #444;
 }
 
-/* Corrige ícones do Bootstrap Icons dentro de inputs */
+/* Fixes Bootstrap Icons Inside Inputs */
 .dark-mode .input-group .bi {
     color: #f8f9fa;
 }
@@ -88,7 +88,7 @@ a.blue {
     color: #0056b3 !important;
 }
 
-/* link em azul dark mode */
+/* Blue Link Dark Mode */
 .dark-mode a.blue {
     color: #66b2ff !important;
 }
@@ -98,7 +98,7 @@ a.blue {
 }
 
 
-/* */
+/* Main Template */
 
 .title {
     padding-top: 30px;
@@ -201,17 +201,9 @@ h2 {
     background-color: #808080;
 }
 
-/*body todo o conteudo principal*/
+
 section.forms {
     flex: 1;
-}
-
-/*FOOTER*/
-footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* DISCLAIMER */
@@ -228,7 +220,7 @@ footer {
     text-align: justify;
 }
 
-/* Aplicar tema escuro ao container do disclaimer */
+/* Dark Mode in Container Disclaimer */
 .dark-mode .privacidade-container {
     background-color: #1e1e1e !important;
     color: #f8f9fa !important;

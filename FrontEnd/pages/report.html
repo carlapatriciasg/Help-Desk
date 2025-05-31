@@ -140,7 +140,7 @@
             let linhas = document.querySelectorAll("#ticket-list-body tr");
 
             linhas.forEach(linha => {
-                let prioridade = linha.cells[3]?.textContent.trim(); // Obtém a prioridade da tabela
+                let prioridade = linha.cells[3]?.textContent.trim(); 
 
                 if (prioridadeSelecionada === "" || prioridade === prioridadeSelecionada) {
                     linha.style.display = "table-row";
@@ -154,7 +154,7 @@
     <script>
     const usuario = JSON.parse(localStorage.getItem('Usuario') || '{}');
 
-    // redireciona para o dashboard caso uma conta que não seja analista tente acessar diretamente pela URL
+    // redirects to the dashboard if a non-analyst account tries to access it directly via the URL
     if (!usuario || usuario.tipoUsuario !== 'analista') {
         alert('Acesso negado: esta página é exclusiva para analistas.');
         window.location.href = '/FrontEnd/pages/dashboard.html';
