@@ -1,10 +1,11 @@
 const Chamado = require('../models/chamadoModelo');
 const ChamadoHistorico = require('../models/ChamadoHistorico');
+const EmailService = require('../service/EmailService');
 const { where } = require('sequelize');
 const { Op } = require('sequelize');
 
 exports.Abertura = async (req, res) => {
-    const {titulo, categoria, subcategoria, prioridade, descricao, userEmail, anexo} = req.body;
+    const { titulo, categoria, subcategoria, prioridade, descricao, userEmail, anexo } = req.body;
     //validações
     if(!titulo){
         return res.status(422).json({msg: 'O titulo é obrigatório'})
@@ -46,7 +47,37 @@ exports.Abertura = async (req, res) => {
         timestamp: now,
         detalhes: 'Chamado criado'
     });
-        return res.status(201).json({msg:  'Chamado criado'});
+
+        // Monta o conteúdo do e-mail
+        const assunto = `Chamado aberto: ${titulo}`;
+        const texto = `
+            Seu chamado foi criado com sucesso!
+            Número: ${newId}
+            Título: ${titulo}
+            Categoria: ${categoria} / ${subcategoria}
+            Prioridade: ${prioridade}
+            Descrição: ${descricao}
+        `;
+        const html = `
+            <h2>Seu chamado foi criado com sucesso!</h2>
+            <ul>
+                <li><b>Número:</b> ${newId}</li>
+                <li><b>Título:</b> ${titulo}</li>
+                <li><b>Categoria:</b> ${categoria} / ${subcategoria}</li>
+                <li><b>Prioridade:</b> ${prioridade}</li>
+                <li><b>Descrição:</b> ${descricao}</li>
+            </ul>
+        `;
+
+        // Envia o e-mail
+        try {
+            await EmailService.sendEmail(userEmail, assunto, texto, html);
+            console.log('E-mail de abertura de chamado enviado para', userEmail);
+        } catch (emailError) {
+            console.error('Falha ao enviar e-mail de abertura:', emailError);
+        }
+
+        return res.status(201).json({ msg: 'Chamado criado com sucesso!' });
     } catch(err){
         console.error('Erro ao criar chamado: ', err)
         return res.status(500).json({msg: 'Erro interno, tente novamente'})
