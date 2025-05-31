@@ -161,7 +161,10 @@
     }
 </script>
 <script src="../js/nameBar.js"></script>
-<script>
+
+<script type="module">
+
+        import { getStatusClass } from '/FrontEnd/js/ticket-status.js';
         document.addEventListener('DOMContentLoaded', async () => {
             const tbody = document.getElementById('relatorio-ticket-list-body')
             const email = sessionStorage.getItem('email')
@@ -191,7 +194,7 @@
                         `<tr>
                         <td>${ch.id}</td>
                         <td>${ch.titulo}</td>
-                        <td><span class="badge bg-primary">${ch.status}</span></td>
+                        <td><span class="badge ${getStatusClass(ch.status)}">${ch.status}</span></td>
                         <td>${ch.prioridade}</td>
                         <td>${ch.categoria}</td>
                         <td>${ch.agente || '-'}</td>

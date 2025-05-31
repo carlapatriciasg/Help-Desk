@@ -607,7 +607,7 @@ a:hover {
     color: #fff;
 }
 
-.dropdown-menu{
+#dropdown-menu-detail{
     background-color: #fff9c1;
 }
 
@@ -633,7 +633,7 @@ a:hover {
     color: #000000;
 }
 
-.dropdown-menu .dropdown-item:hover{
+#dropdown-menu-detail .dropdown-item:hover{
     background-color: #fff599;
 }
 
