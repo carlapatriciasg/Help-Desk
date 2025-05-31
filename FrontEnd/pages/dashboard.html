@@ -174,21 +174,14 @@
     </script>
     <script src="../js/nameBar.js"></script>
     <script type="module" src="../js/contadorDashboard.js"></script>
-    <script>
+
+    <script type="module">
+        import { getStatusClass } from '/FrontEnd/js/ticket-status.js';
+        
         document.addEventListener('DOMContentLoaded', async () => {
             const list = document.getElementById('recent-activity-list')
             const email = sessionStorage.getItem('email')
 
-            function getStatusClass(status) {
-                switch (status?.toLowerCase()) {
-                    case 'aberto': return 'status-aberto';
-                    case 'em atendimento': return 'status-atendimento';
-                    case 'aguardando resposta': return 'status-aguardando';
-                    case 'resolvido': return 'status-resolvido';
-                    case 'fechado': return 'status-fechado';
-                    default: return 'status-aguardando';
-                }
-            }
             try {
                 const respostas = await fetch((`http://localhost:3000/api/chamados-lista?email=${email}`))
                 const chamados = await respostas.json();
