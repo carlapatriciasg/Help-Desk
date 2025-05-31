@@ -110,6 +110,7 @@
         document.addEventListener('DOMContentLoaded', async () => {
             const tbody = document.getElementById('ticket-list-body')
             const email = sessionStorage.getItem('email')
+            const paginationFooter = document.getElementById('pagination-footer')
 
             try {
                 const respostas = await fetch((`http://localhost:3000/api/chamados-abertos?email=${email}`))
@@ -133,6 +134,10 @@
                         <td>${new Date(ch.createdAt).toLocaleString('pt-BR')}</td>
                         <td>${new Date(ch.updatedAt).toLocaleString('pt-BR')}</td>
                     </tr>`
+
+                    const exibidos = chamados.length
+                    const total = exibidos
+                    paginationFooter.textContent = `Exibindo ${exibidos} de ${total} chamados.`
                 });
             } catch (error) {
                 console.error('Erro ao carregar chamados: ', error)

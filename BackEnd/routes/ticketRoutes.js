@@ -8,6 +8,8 @@ router.get('/chamados-abertos', chamadoController.ChamadoDoUsuarios)
 
 router.get('/chamados-lista', chamadoController.TodosChamados)
 
+router.get('/lista-todos-chamados', chamadoController.ListaTodosChamados)
+
 router.get('/contador-chamados', chamadoController.chamadosContador)
 
 router.get('/chamados-relatorios', chamadoController.ChamadoRelatorio)
