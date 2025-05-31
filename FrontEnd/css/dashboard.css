@@ -137,7 +137,6 @@ body {
     color: #fff;
 }
 
-
 .dark-mode .form-control {
     background-color: #2c2c2c;
     color: #aaa;
@@ -485,7 +484,7 @@ a:hover {
 .dark-mode .sidebar .nav-link:hover,
 .dark-mode .sidebar .nav-link.active {
     color: #e0f0ff; 
-    background-color: rgba(0, 86, 179, 0.1); 
+    background-color: rgba(0, 86, 179, 0.1); /*blue hover sidebar <---------*/
     text-decoration: underline;
 }
 
@@ -500,7 +499,11 @@ a:hover {
   color: #9dcdff;
 }
 
-.dark-mode .dropdown .bi:hover {
+.dark-mode .dropdown .user-name:hover {
+  color: #e0f0ff;
+}
+
+.dark-mode .dropdown .user-icon:hover {
   color: #e0f0ff;
 }
 
@@ -514,6 +517,14 @@ a:hover {
 
 .dark-mode .dropdown-menu {
     background-color: #2a2a2a;
+}
+
+.dark-mode #dropdownUser1 {
+    color: #9dcdff;
+}
+
+.dark-mode #dropdownUser1:hover {
+    color: #e0f0ff;
 }
 
 /* MAIN CONTENT */
@@ -589,9 +600,70 @@ a:hover {
   color: #ccc;
 }
 
+/* ticket detail */
+
 .dark-mode .list-group-item{
     background-color: #232323;
     color: #fff;
+}
+
+.dropdown-menu{
+    background-color: #fff9c1;
+}
+
+.dark-mode #dropdownStatusButton {
+    color: #000000;
+}
+
+.dropdown-menu .dropdown-item{
+    color: #000000;
+    text-decoration: none;
+}
+
+.dark-mode .dropdown-menu .dropdown-item{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.dark-mode .dropdown .icon {
+    color: #000000;
+}
+
+.dark-mode .dropdown a{
+    color: #000000;
+}
+
+.dropdown-menu .dropdown-item:hover{
+    background-color: #fff599;
+}
+
+.dark-mode #dropdownStatusButton:hover {
+    background-color: #f0b400;
+}
+
+.dark-mode .dropdown-menu .dropdown-item{
+    color: #9dcdff;
+}
+
+.dark-mode .dropdown-menu .dropdown-item:hover{
+    color: #e0f0ff;
+}
+
+.dark-mode .dropdown-menu .dropdown-item:hover{
+    background-color: rgba(0, 86, 179, 0.1);
+}
+
+.dark-mode .card-footer {
+    background-color: #383838;
+}
+
+.dark-mode #edit-ticket-button {
+    background-color: #000000;
+    color: #fff;
+}
+
+.dark-mode #edit-ticket-button:hover {
+    background-color: #1b1b1b;
 }
 
 /* FAQ AND DETAILS */

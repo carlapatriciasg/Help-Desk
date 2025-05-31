@@ -35,9 +35,9 @@
                 <div class="d-flex align-items-center gap-2">
                     <!-- USER FIELD -->
                     <div class="dropdown">
-                        <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle"
+                        <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle user-name"
                             id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-circle fs-2 px-2"></i>
+                            <i class="bi bi-person-circle fs-2 px-2 user-icon"></i>
                             <strong id="username-header">Usuário</strong>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="dropdownUser1">
@@ -162,40 +162,41 @@
                             </div>
                             <div class="card-footer">
                                 <div class="d-grid gap-2">
+                                    <!-- Checkbox -->
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="selectTicketS" checked>
-                                        <label class="form-check-label" for="selectTicket">
+                                        <label class="form-check-label" for="selectTicketS">
                                             Selecionar este Chamado para Tratamento
                                         </label>
                                     </div>
-                                    <button id="edit-ticket-button" class="btn btn-outline-secondary"><i
-                                            class="bi bi-pencil-square me-2"></i>Editar
-                                        Chamado</button>
-                                        <div>
-                                            <button>
-                                        <select class="btn btn-outline-light">
-                                            <option value="">Selecionar Status do Chamado</option>
-                                            <option value="Baixa">Aberto</option>
-                                            <option value="Média">Aguardando Resposta</option>
-                                            <option value="Alta">Em Andamento</option>
-                                        </select>
+
+                                    <!-- Dropdown com texto centralizado -->
+                                    <div class="dropdown">
+                                        <button
+                                            class="btn btn-warning dropdown-toggle w-100 d-flex justify-content-center align-items-center text-center"
+                                            type="button" data-bs-toggle="dropdown" id="dropdownStatusButton">
+                                            <i class="bi bi-arrow-down-up me-2 icon"></i>Selecionar Status do Chamado
                                         </button>
+                                        <ul class="dropdown-menu w-100 text-center"
+                                            aria-labelledby="dropdownStatusButton">
+                                            <li><a class="dropdown-item" href="#" data-value="Baixa"><i class="bi bi-clipboard-data me-2"></i>Chamado em Aberto</a></li>
+                                            <li><a class="dropdown-item" href="#" data-value="Média"><i class="bi bi-hourglass-split me-2"></i>Chamado em Andamento</a></li>
+                                            <li><a class="dropdown-item" href="#" data-value="Alta"><i class="bi bi-check2-circle me-2"></i>Chamado Resolvido</a></li>
+                                            <li><a class="dropdown-item" href="#" data-value="Alta"><i class="bi bi-x me-2"></i>Chamado Fechado</a></li>
+                                        </ul>
                                     </div>
-                                    <button id="close-ticket-button" class="btn btn-danger"><i
-                                            class="bi bi-x-circle-fill me-2"></i>Fechar Chamado</button>
-                                    
+
+                                    <!-- Botão de fechar -->
+                                    <button id="close-ticket-button" class="btn btn-danger">
+                                        <i class="bi bi-x-circle-fill me-2"></i>Fechar Chamado
+                                    </button>
                                 </div>
 
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </main>
     </div>
 
@@ -206,6 +207,11 @@
     <script type="module" src="/FrontEnd/js/loadSidebar.js"></script>
     <script src="../js/nameBar.js"></script>
     <script src="/FrontEnd/js/ticket-detail.js"></script>
+    <script src="/FrontEnd/js/dropdownStatus.js"></script>
+    <script type="module">
+        import { setupDropdownStatus } from '/FrontEnd/js/dropdownStatus.js';
+        setupDropdownStatus();
+    </script>
 </body>
 
 </html>
