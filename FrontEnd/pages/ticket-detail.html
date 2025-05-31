@@ -163,17 +163,29 @@
                             <div class="card-footer">
                                 <div class="d-grid gap-2">
                                     <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="selectTicketS" checked>
-                                    <label class="form-check-label" for="selectTicket">
-                                        Selecionar este Chamado para Tratamento
-                                    </label>
-                                </div>
+                                        <input class="form-check-input" type="checkbox" id="selectTicketS" checked>
+                                        <label class="form-check-label" for="selectTicket">
+                                            Selecionar este Chamado para Tratamento
+                                        </label>
+                                    </div>
                                     <button id="edit-ticket-button" class="btn btn-outline-secondary"><i
                                             class="bi bi-pencil-square me-2"></i>Editar
                                         Chamado</button>
-                                    <button id="close-ticket-button" class="btn btn-danger"><i class="bi bi-x-circle-fill me-2"></i>Fechar Chamado</button>
+                                        <div>
+                                            <button>
+                                        <select class="btn btn-outline-light">
+                                            <option value="">Selecionar Status do Chamado</option>
+                                            <option value="Baixa">Aberto</option>
+                                            <option value="Média">Aguardando Resposta</option>
+                                            <option value="Alta">Em Andamento</option>
+                                        </select>
+                                        </button>
+                                    </div>
+                                    <button id="close-ticket-button" class="btn btn-danger"><i
+                                            class="bi bi-x-circle-fill me-2"></i>Fechar Chamado</button>
+                                    
                                 </div>
-                                
+
                             </div>
 
                         </div>
