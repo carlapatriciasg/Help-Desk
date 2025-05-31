@@ -186,3 +186,53 @@ exports.chamadosContador = async (req, res) =>{
         res.status(500).json({msg: 'Erro interno'})
     }
 }
+
+exports.BuscarChamadoPorId = async (req, res) => {
+    const chamadoId = req.params.id;
+    console.log('BuscarChamadoPorId chamadoId:', chamadoId);
+
+    try {
+        const chamado = await Chamado.findOne({
+            where: { id: chamadoId },
+            include: [
+                {
+                    model: ChamadoHistorico,
+                    as: 'historico',
+                    order: [['timestamp', 'DESC']]
+                }
+            ]
+        });
+
+        if (!chamado) {
+            console.log('Chamado não encontrado para ID:', chamadoId);
+            return res.status(404).json({ msg: 'Chamado não encontrado' });
+        }
+
+        // Preparar dados para resposta
+        const response = {
+            chamado: {
+                id: chamado.id,
+                titulo: chamado.titulo,
+                descricao: chamado.descricao,
+                status: chamado.status,
+                prioridade: chamado.prioridade,
+                categoria: chamado.categoria,
+                solicitante: chamado.userEmail,
+                analista: chamado.agente,
+                criadoEm: chamado.createdAt,
+                atualizadoEm: chamado.updatedAt,
+                historico: chamado.historico.map(h => ({
+                    acao: h.type,
+                    data: h.timestamp,
+                    descricao: h.detalhes
+                })),
+                anexos: chamado.anexo ? [{ nome: chamado.anexo }] : []
+            }
+        };
+
+        res.status(200).json(response);
+    } catch (error) {
+        console.error('Erro ao buscar chamado por ID:', error);
+        res.status(500).json({ msg: 'Erro interno ao buscar chamado' });
+    }
+};

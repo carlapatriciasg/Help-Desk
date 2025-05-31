@@ -198,21 +198,22 @@
 
                 const ul = document.createElement('ul') 
 
-                chamados.forEach(ch => {
+                    chamados.forEach(ch => {
 
-                    const li = document.createElement('li') 
+                        const li = document.createElement('li') 
 
-                    const ultimaAcao = (new Date(ch.createdAt).getTime() === new Date(ch.updatedAt).getTime())? 'Criado' : 'Atualizado'
+                        const ultimaAcao = (new Date(ch.createdAt).getTime() === new Date(ch.updatedAt).getTime())? 'Criado' : 'Atualizado'
 
-                    li.innerHTML +=
-                        `<div>
-                        <span>${ch.id}: ${ch.titulo.substring(0, 35)}${ch.titulo.length > 35 ? '...' : ''}</span><br>
-                        <span>${ultimaAcao} ${new Date(ch.updatedAt).toLocaleString('pt-BR')}</span>
-                        </div>
-                        <span class="badge ${getStatusClass(ch.status)}">${ch.status}</span>
-                        `;
-                        ul.appendChild(li)
-                    });
+                        li.innerHTML +=
+                            `<a href="/FrontEnd/pages/ticket-detail.html?id=${encodeURIComponent(ch.id)}" class="text-decoration-none  d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span>${ch.id}: ${ch.titulo.substring(0, 35)}${ch.titulo.length > 35 ? '...' : ''}</span><br>
+                                    <span>${ultimaAcao} ${new Date(ch.updatedAt).toLocaleString('pt-BR')}</span>
+                                </div>
+                                <span class="badge ${getStatusClass(ch.status)}">${ch.status}</span>
+                            </a>`;
+                            ul.appendChild(li)
+                        });
                     list.appendChild(ul)
                 } catch (error) {
                     console.error('Erro ao carregar chamados: ', error)

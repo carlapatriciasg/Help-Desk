@@ -12,4 +12,6 @@ router.get('/contador-chamados', chamadoController.chamadosContador)
 
 router.get('/chamados-relatorios', chamadoController.ChamadoRelatorio)
 
+router.get('/chamado/:id', chamadoController.BuscarChamadoPorId);
+
 module.exports = router
