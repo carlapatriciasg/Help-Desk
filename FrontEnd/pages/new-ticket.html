@@ -106,11 +106,12 @@
                                     placeholder="Descreva detalhadamente o problema ou solicitação. Inclua informações relevantes como mensagens de erro, passos para reproduzir o problema, etc."
                                     required></textarea>
                             </div>
-                            <div class="form-group">                            
+                            <div class="form-group">
                                 <input type="file" class="form-control" id="attachments" multiple
-                                       accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt">
+                                    accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt">
                                 <div class="form-text format-archieve">
-                                    Formatos permitidos: PDF, JPG, PNG, DOC, DOCX, XLS, XLSX, TXT. Tamanho máximo: 5MB por arquivo.
+                                    Formatos permitidos: PDF, JPG, PNG, DOC, DOCX, XLS, XLSX, TXT. Tamanho máximo: 5MB
+                                    por arquivo.
                                 </div>
                             </div>
                         </div>
@@ -164,7 +165,7 @@
                 console.log('Chamado aberto:', data.chamado)
 
                 localStorage.setItem('Chamado', JSON.stringify(data.chamado))
-                window.location.href = 'ticket-list.html'; 
+                window.location.href = 'ticket-list.html';
             } catch (erro) {
                 console.error('Erro ao realizar requisição: ', erro)
                 alert(erro)
