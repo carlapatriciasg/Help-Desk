@@ -28,6 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     relatorioMenu.style.display = 'none';
                 }
             }
+            
+            if (tipo === 'usuario') {
+                const relatorioMenu = document.getElementById('menu-ticket-history');
+                if (relatorioMenu) {
+                    relatorioMenu.style.display = 'none';
+                }
+            }
 
             if (tipo === 'analista') {
                 const relatorioMenu = document.getElementById('menu-new-ticket');
