@@ -182,7 +182,7 @@
             function getStatusClass(status) {
                 switch (status?.toLowerCase()) {
                     case 'aberto': return 'status-aberto';
-                    case 'em atendimento': return'status-atendimento';
+                    case 'em atendimento': return 'status-atendimento';
                     case 'aguardando resposta': return 'status-aguardando';
                     case 'resolvido': return 'status-resolvido';
                     case 'fechado': return 'status-fechado';
@@ -196,30 +196,33 @@
 
                 list.innerHTML = ""
 
-                const ul = document.createElement('ul') 
+                const ul = document.createElement('ul')
 
-                    chamados.forEach(ch => {
+                chamados.forEach(ch => {
 
-                        const li = document.createElement('li') 
+                    const li = document.createElement('li');
 
-                        const ultimaAcao = (new Date(ch.createdAt).getTime() === new Date(ch.updatedAt).getTime())? 'Criado' : 'Atualizado'
+                    const ultimaAcao = (new Date(ch.createdAt).getTime() === new Date(ch.updatedAt).getTime()) ? 'Criado' : 'Atualizado';
 
-                        li.innerHTML +=
-                            `<a href="/FrontEnd/pages/ticket-detail.html?id=${encodeURIComponent(ch.id)}" class="text-decoration-none d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="recent-activity-link">${ch.id}: ${ch.titulo.substring(0, 35)}${ch.titulo.length > 35 ? '...' : ''}</span><br>
-                                    <span class="recent-activity-text">${ultimaAcao} ${new Date(ch.updatedAt).toLocaleString('pt-BR')}</span>
-                                </div>
-                                <span class="badge ${getStatusClass(ch.status)}">${ch.status}</span>
-                            </a>`;
-                            ul.appendChild(li)
-                        });
-                    list.appendChild(ul)
-                } catch (error) {
-                    console.error('Erro ao carregar chamados: ', error)
-                    list.innerHTML = `<p class="text-danger p-3">Erro ao carregar chamados.</p>>`;
-                }
-            })
+                    li.innerHTML += `
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <div>
+                                <a href="/FrontEnd/pages/ticket-detail.html?id=${encodeURIComponent(ch.id)}" class="text-decoration-none">
+                                    <span class="recent-activity-link">${ch.id}: ${ch.titulo.substring(0, 35)}${ch.titulo.length > 35 ? '...' : ''}</span>
+                                </a><br>
+                                <span class="recent-activity-text">${ultimaAcao} ${new Date(ch.updatedAt).toLocaleString('pt-BR')}</span>
+                            </div>
+                            <span class="badge ${getStatusClass(ch.status)}">${ch.status}</span>
+                        </div>`;
+                    ul.appendChild(li);
+                });
+                list.appendChild(ul)
+            } catch (error) {
+                console.error('Erro ao carregar chamados: ', error)
+                list.innerHTML = `<p class="text-danger p-3">Erro ao carregar chamados.</p>>`;
+            }
+        })
     </script>
 </body>
+
 </html>
