@@ -137,8 +137,12 @@ header h1 {
 }
 
 header p {
-    color: #ffffff;
+    color: #000000;
     margin-top: 5px;
+}
+
+.dark-mode header p {
+    color: #ffffff;
 }
 
 h2 {

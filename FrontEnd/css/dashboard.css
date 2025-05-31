@@ -105,6 +105,26 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
 }
 
+.card-body .recent-activity-list{
+    color: inherit;
+}
+
+.recent-activity-link {
+    color: #0068d8;
+}
+
+.recent-activity-text {
+    color: rgb(0, 0, 0);
+}
+
+.dark-mode .recent-activity-link {
+    color: #66b2ff;
+}
+
+.dark-mode .recent-activity-text {
+    color: rgb(255, 255, 255);
+}
+
 .dark-mode .card-body .recent-activity-list{
     color: #fff !important;
 }
@@ -634,7 +654,6 @@ a:hover {
 .dark-mode .status-fechado { background-color: #842029; }
 
 /* ticket list */
-
 #filter-button {
     border-color: #292828;
 }

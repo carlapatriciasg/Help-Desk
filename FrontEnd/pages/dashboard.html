@@ -205,10 +205,10 @@
                         const ultimaAcao = (new Date(ch.createdAt).getTime() === new Date(ch.updatedAt).getTime())? 'Criado' : 'Atualizado'
 
                         li.innerHTML +=
-                            `<a href="/FrontEnd/pages/ticket-detail.html?id=${encodeURIComponent(ch.id)}" class="text-decoration-none  d-flex justify-content-between align-items-center">
+                            `<a href="/FrontEnd/pages/ticket-detail.html?id=${encodeURIComponent(ch.id)}" class="text-decoration-none d-flex justify-content-between align-items-center">
                                 <div>
-                                    <span>${ch.id}: ${ch.titulo.substring(0, 35)}${ch.titulo.length > 35 ? '...' : ''}</span><br>
-                                    <span>${ultimaAcao} ${new Date(ch.updatedAt).toLocaleString('pt-BR')}</span>
+                                    <span class="recent-activity-link">${ch.id}: ${ch.titulo.substring(0, 35)}${ch.titulo.length > 35 ? '...' : ''}</span><br>
+                                    <span class="recent-activity-text">${ultimaAcao} ${new Date(ch.updatedAt).toLocaleString('pt-BR')}</span>
                                 </div>
                                 <span class="badge ${getStatusClass(ch.status)}">${ch.status}</span>
                             </a>`;
