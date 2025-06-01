@@ -13,7 +13,7 @@ Permite cadastro de usuários, login seguro, abertura de chamados, acompanhament
 
 - **HTML5, CSS3, JavaScript (ES6)**
 - **Bootstrap 5** (componentes e responsividade)
-- **Arquitetura MVC** O projeto está no modelo de arquitetura MVC, separando o aplicativo em 3 partes distintas: Model, View e Controller. A camada Model é responsável pela lógica de dados da aplicação e pelo armazenamento e recuperação de dados de repositórios de dados do back-end, a camada de View fornece a interface do usuário necessária para interagir com o aplicativo sendo que também nesta camada está sendo utilizado
+- **Arquitetura MVC** O projeto está no modelo de arquitetura MVC, separando o aplicativo em 3 partes distintas: Model, View e Controller. A camada Model é responsável pela lógica de dados da aplicação e pelo armazenamento e recuperação de dados de repositórios de dados do back-end, a camada de View fornece a interface do usuário necessária para interagir com o aplicativo sendo que também nesta camada está sendo utilizado.
 - **Arquitetura Spa-like**   (páginas HTML + JS modular), enquanto a camada Controller contém a lógica da aplicação necessária para facilitar a comunicação em toda a aplicação, atuando como uma interface entre as camadas de visualização e modelo.
 - **Sem frameworks como React/Vue/Angular**
 
