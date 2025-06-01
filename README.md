@@ -145,6 +145,9 @@ Para rodar o projeto localmente, você precisa ter instalado:
 - (Opcional) [Insomnia](https://insomnia.rest/) ou [Postman](https://www.postman.com/) para testar as APIs REST
 
 ---
+## 📍 ANEXOS:
+
+- [Análise de Requisitos](https://drive.google.com/drive/folders/1mnMf63SudRqTQ4NZpG2nI3VEifoxGF4A?usp=sharing)
 
 ## 📍 Créditos
 
@@ -152,6 +155,4 @@ Desenvolvido por [Carla Patrícia](https://www.linkedin.com/in/carlapatriciasg/)
 Orientação: Prof. [Sheila Tirony](https://www.linkedin.com/in/sheila-tirony-a2207924/)  
 Projeto Acadêmico — 2025
 
-## 📍 ANEXOS:
 
-- Análise de Requisitos - https://drive.google.com/drive/folders/1mnMf63SudRqTQ4NZpG2nI3VEifoxGF4A?usp=sharing
