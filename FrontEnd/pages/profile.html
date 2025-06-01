@@ -103,6 +103,11 @@
     <script type="module" src="/FrontEnd/js/vlibras.js"></script>
     <script type="module" src="/FrontEnd/js/loadSidebar.js"></script>
     <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const email = sessionStorage.getItem('email');
+            document.getElementById('profileEmail').value = email;
+        });
+
         document.getElementById('profile-form').addEventListener('submit', async(event) => {
             event.preventDefault()
 
