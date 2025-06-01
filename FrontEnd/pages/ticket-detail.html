@@ -112,7 +112,7 @@
                         </div>
 
                         <!-- Add Comment/Reply Section -->
-                        <div class="card">
+                        <div class="card" id="card-comment-section">
                             <div class="card-header">
                                 <h5 class="card-title mb-0"><i class="bi bi-chat-dots-fill me-2"></i>Adicionar
                                     Comentário / Resposta</h5>
@@ -163,15 +163,15 @@
                             <div class="card-footer">
                                 <div class="d-grid gap-2">
                                     <!-- Checkbox -->
-                                    <div class="form-check">
+                                    <div class="form-check" id="checkbox-section">
                                         <input class="form-check-input" type="checkbox" id="selectTicketS">
                                         <label class="form-check-label" for="selectTicketS">
                                             Selecionar este Chamado para Tratamento
                                         </label>
                                     </div>
 
-                                    <!-- Dropdown com texto centralizado -->
-                                    <div class="dropdown">
+                                    <!-- Dropdown -->
+                                    <div class="dropdown" id="status-dropdown-section">
                                         <button
                                             class="btn btn-warning dropdown-toggle w-100 d-flex justify-content-center align-items-center text-center"
                                             type="button" data-bs-toggle="dropdown" id="dropdownStatusButton">
@@ -179,14 +179,23 @@
                                         </button>
                                         <ul class="dropdown-menu w-100 text-center" id="dropdown-menu-detail"
                                             aria-labelledby="dropdownStatusButton">
-                                            <li><a class="dropdown-item dropdown-item-detail" href="#" data-value="Aberto"><i class="bi bi-clipboard-data me-2"></i>Chamado em Aberto</a></li>
-                                            <li><a class="dropdown-item dropdown-item-detail" href="#" data-value="Em Atendimento"><i class="bi bi-hourglass-split me-2"></i>Chamado em Andamento</a></li>
-                                            <li><a class="dropdown-item dropdown-item-detail" href="#" data-value="Resolvido"><i class="bi bi-check2-circle me-2"></i>Chamado Resolvido</a></li>
-                                            <li><a class="dropdown-item detail-item-detail" href="#" data-value="Fechado"><i class="bi bi-x me-2"></i>Chamado Fechado</a></li>
+                                            <li><a class="dropdown-item dropdown-item-detail" href="#"
+                                                    data-value="Aberto"><i class="bi bi-clipboard-data me-2"></i>Chamado
+                                                    em Aberto</a></li>
+                                            <li><a class="dropdown-item dropdown-item-detail" href="#"
+                                                    data-value="Em Atendimento"><i
+                                                        class="bi bi-hourglass-split me-2"></i>Chamado em Andamento</a>
+                                            </li>
+                                            <li><a class="dropdown-item dropdown-item-detail" href="#"
+                                                    data-value="Resolvido"><i
+                                                        class="bi bi-check2-circle me-2"></i>Chamado Resolvido</a></li>
+                                            <li><a class="dropdown-item detail-item-detail" href="#"
+                                                    data-value="Fechado"><i class="bi bi-x me-2"></i>Chamado Fechado</a>
+                                            </li>
                                         </ul>
                                     </div>
 
-                                    <!-- Botão de fechar -->
+                                    <!-- Button close -->
                                     <button id="close-ticket-button" class="btn btn-danger">
                                         <i class="bi bi-x-circle-fill me-2"></i>Fechar Chamado
                                     </button>
@@ -213,6 +222,10 @@
     <script type="module">
         import { setupDropdownStatus } from '/FrontEnd/js/dropdownStatus.js';
         setupDropdownStatus();
+    </script>
+    <script type="module">
+        import { inicializarTicket } from '/FrontEnd/js/auth-ticket-detail.js';
+        inicializarTicket();
     </script>
 </body>
 
