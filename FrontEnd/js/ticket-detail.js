@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return params.get('id');
     }
 
+    let chamadoAtual = null
+
     function populateTicketDetails(chamado) {
         document.getElementById('ticket-id').textContent = `#${chamado.id}`;
         document.getElementById('ticket-title').textContent = chamado.titulo || 'Sem título';
@@ -41,23 +43,25 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('ticket-description').textContent = chamado.descricao || 'Sem descrição';
         document.getElementById('ticket-priority').textContent = chamado.prioridade || 'Não definida';
         document.getElementById('ticket-category').textContent = chamado.categoria || 'Não definida';
-        document.getElementById('ticket-requester').textContent = chamado.solicitante || 'Não informado';
+        document.getElementById('ticket-requester').textContent = chamado.userEmail  || 'Não informado';
         document.getElementById('ticket-agent').textContent = chamado.analista || 'Não atribuído';
-        document.getElementById('ticket-created-at').textContent = formatDate(chamado.criadoEm);
-        document.getElementById('ticket-updated-at').textContent = formatDate(chamado.atualizadoEm);
+        document.getElementById('ticket-created-at').textContent = formatDate(chamado.createdAt);
+        document.getElementById('ticket-updated-at').textContent = formatDate(chamado.updatedAt);
+        chamadoAtual = chamado
 
         // Histórico do chamado
         const timeline = document.getElementById('ticket-timeline');
         timeline.innerHTML = '';
         if (chamado.historico && chamado.historico.length > 0) {
+            chamado.historico.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
             chamado.historico.forEach(item => {
                 const li = document.createElement('li');
                 li.classList.add('timeline-item');
                 li.innerHTML = `
                     <span class="timeline-icon"><i class="bi bi-clock-history"></i></span>
                     <div class="timeline-content">
-                        <strong>${item.acao}</strong> - ${formatDate(item.data)}<br/>
-                        ${item.descricao || ''}
+                        <strong>${item.type}</strong> - ${formatDate(item.timestamp)}<br/>
+                        ${item.detalhes || ''}
                     </div>
                 `;
                 timeline.appendChild(li);
@@ -82,6 +86,45 @@ document.addEventListener('DOMContentLoaded', () => {
             attachmentsSection.classList.add('d-none');
         }
     }
+
+    const addCommentForm = document.getElementById('add-comment-form');
+
+    addCommentForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const commentText = document.getElementById('comment-text').value.trim();
+        const ticketId = getTicketIdFromUrl();
+
+        if (!commentText) {
+            alert('Insira um comentário.');
+            return;
+        }
+        try {
+            const resposta = await fetch(`http://localhost:3000/api/chamado/${ticketId}/resposta`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ comentario: commentText })
+            });
+
+            if (!resposta.ok) {
+                throw new Error('Erro ao enviar o comentário.');
+            }
+
+            const data = await resposta.json();
+            
+
+            alert('Comentário enviado');
+            document.getElementById('comment-text').value = '';
+
+            populateTicketDetails(data.chamadoAtualizado); 
+
+        } catch (erro) {
+            console.error(erro)
+            alert('Erro ao enviar resposta. Tente novamente.');
+        }
+    })
 
     function showError(message) {
         loadingIndicator.innerHTML = `<p class="text-danger">${message}</p>`;

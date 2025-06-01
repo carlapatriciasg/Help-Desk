@@ -179,10 +179,10 @@
                                         </button>
                                         <ul class="dropdown-menu w-100 text-center" id="dropdown-menu-detail"
                                             aria-labelledby="dropdownStatusButton">
-                                            <li><a class="dropdown-item detail" href="#" data-value="Baixa"><i class="bi bi-clipboard-data me-2"></i>Chamado em Aberto</a></li>
-                                            <li><a class="dropdown-item detail" href="#" data-value="Média"><i class="bi bi-hourglass-split me-2"></i>Chamado em Andamento</a></li>
-                                            <li><a class="dropdown-item detail" href="#" data-value="Alta"><i class="bi bi-check2-circle me-2"></i>Chamado Resolvido</a></li>
-                                            <li><a class="dropdown-item detail" href="#" data-value="Alta"><i class="bi bi-x me-2"></i>Chamado Fechado</a></li>
+                                            <li><a class="dropdown-item detail" href="#" data-value="Aberto"><i class="bi bi-clipboard-data me-2"></i>Chamado em Aberto</a></li>
+                                            <li><a class="dropdown-item detail" href="#" data-value="Em Andamento"><i class="bi bi-hourglass-split me-2"></i>Chamado em Andamento</a></li>
+                                            <li><a class="dropdown-item detail" href="#" data-value="Resolvido"><i class="bi bi-check2-circle me-2"></i>Chamado Resolvido</a></li>
+                                            <li><a class="dropdown-item detail" href="#" data-value="Fechado"><i class="bi bi-x me-2"></i>Chamado Fechado</a></li>
                                         </ul>
                                     </div>
 
@@ -208,6 +208,8 @@
     <script src="../js/nameBar.js"></script>
     <script src="/FrontEnd/js/ticket-detail.js"></script>
     <script src="/FrontEnd/js/dropdownStatus.js"></script>
+    <script src="/FrontEnd/js/vincularChamados.js"></script>
+    <script src="/FrontEnd/js/alterarStatus.js"></script>
     <script type="module">
         import { setupDropdownStatus } from '/FrontEnd/js/dropdownStatus.js';
         setupDropdownStatus();

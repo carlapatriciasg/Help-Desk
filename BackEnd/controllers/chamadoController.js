@@ -43,7 +43,7 @@ exports.Abertura = async (req, res) => {
     await ChamadoHistorico.create({
         chamadoId: newId,
         type: 'Criado',
-        user: null,
+        user: userEmail,
         timestamp: now,
         detalhes: 'Chamado criado'
     });
@@ -240,10 +240,11 @@ exports.BuscarChamadoPorId = async (req, res) => {
                 {
                     model: ChamadoHistorico,
                     as: 'historico',
-                    order: [['timestamp', 'DESC']]
                 }
             ]
         });
+
+        const ordenarHistorico = chamado.historico.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
         if (!chamado) {
             console.log('Chamado não encontrado para ID:', chamadoId);
@@ -259,14 +260,14 @@ exports.BuscarChamadoPorId = async (req, res) => {
                 status: chamado.status,
                 prioridade: chamado.prioridade,
                 categoria: chamado.categoria,
-                solicitante: chamado.userEmail,
+                userEmail: chamado.userEmail,
                 analista: chamado.agente,
-                criadoEm: chamado.createdAt,
-                atualizadoEm: chamado.updatedAt,
+                createdAt: chamado.createdAt,
+                updatedAt: chamado.updatedAt,
                 historico: chamado.historico.map(h => ({
-                    acao: h.type,
-                    data: h.timestamp,
-                    descricao: h.detalhes
+                    type: h.type,
+                    timestamp: h.timestamp,
+                    detalhes: h.detalhes
                 })),
                 anexos: chamado.anexo ? [{ nome: chamado.anexo }] : []
             }
@@ -278,3 +279,86 @@ exports.BuscarChamadoPorId = async (req, res) => {
         res.status(500).json({ msg: 'Erro interno ao buscar chamado' });
     }
 };
+
+exports.chamadoRespota = async (req, res) => {
+    const chamadoId = req.params.id
+    const { comentario } = req.body
+
+    try {
+        const chamado = await Chamado.findByPk(chamadoId)
+
+        if(!chamado){
+            return res.status(404).json({msg: 'Chamado não localizado'})
+        }
+
+        await ChamadoHistorico.create({
+            chamadoId: chamado.id,
+            type: 'Comentário',
+            user: chamado.userEmail || 'Desconhecido', 
+            timestamp: new Date(),
+            detalhes: comentario
+        });
+
+        const chamadoAtualizado = await Chamado.findByPk(chamadoId, {
+            include: { model: ChamadoHistorico, as: 'historico' }
+        });
+
+        res.json({msg: 'Resposta salva com sucesso', chamadoAtualizado})
+    }catch(erro){
+        console.error('Erro ao salvar resposta', erro)
+        res.status(500).json({msg: 'Erro interno.'})
+    }
+}
+
+exports.vincularAnalista = async(req, res) => {
+    const chamadoId = req.params.id
+    const { analista } = req.body
+
+    try {
+        const chamado = await Chamado.findByPk(chamadoId)
+        if(!chamado){
+            return res.status(400).json({ msg: 'Chamado não encontrado.'})
+        }
+
+        if (chamado.agente && analista) {
+            return res.status(400).json({ msg: 'Chamado já possui um analista vinculado.' });
+        }
+
+        chamado.agente = analista
+        await chamado.save()
+
+        res.json({ msg: 'Analista vinculado ao chamado', chamado})
+    }catch(erro){
+        console.error('Erro ao vincular analista: ', erro)
+        res.status(500).json({ msg: 'Erro interno.' })
+    }
+}
+
+exports.alterarStatus = async (req, res) =>{
+    const chamadoId = req.params.id;
+    const { status } = req.body;
+
+    try {
+        const chamado = await Chamado.findByPk(chamadoId)
+
+        if(!chamado){
+            return res.status(400).json({msg:'Chamado não localizado'})
+        }
+
+        chamado.status = status
+        await chamado.save()
+
+        await ChamadoHistorico.create({
+            chamadoId: chamado.id,
+            type: 'Atualização de Status',
+            user: chamado.userEmail || 'Desconhecido',
+            detalhes: `Status atualizado:  "${status}"`,
+            timestamp: new Date()
+        });
+
+        res.json({msg: 'Status atualizado', chamado})
+    }catch(erro){
+        console.error('Erro ao atualizar status: ', erro)
+        res.status(500).json({msg: 'Erro interno.'})
+    }
+}

@@ -49,8 +49,11 @@ exports.register = async (req, res) => {
 
     console.log("Dados recebidos no registro:", req.body);
 
+    if (tipoUsuario) {
+    Usuario.tipoUsuario = tipoUsuario;
+    }
     //criando user 
-    await Usuario.create({
+    const novoUsuario = {
         nome,
         senha: senhaHash,
         email,
@@ -60,8 +63,13 @@ exports.register = async (req, res) => {
         cidade,
         uf,
         datanasc,
-        tipoUsuario,
-    });
+    };
+
+    if (tipoUsuario) {
+    novoUsuario.tipoUsuario = tipoUsuario;
+    }
+
+    await Usuario.create(novoUsuario)
 
     return res.status(201).json({ msg: 'Usuario criado com sucesso'})
 

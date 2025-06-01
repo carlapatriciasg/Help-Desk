@@ -10,18 +10,29 @@ const ChamadoHistorico = db.define('ChamadoHistorico',{
     chamadoId: {
         type: DataTypes.STRING,
         allowNull: false,
-        referencia: {
+        references: {
             model: 'Chamado',
             key: 'id'
         }
     },
-    type: DataTypes.STRING,
-    user: DataTypes.STRING,
+    type: { 
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    user: {
+        type: DataTypes.STRING,
+    },
+    detalhes: {
+        type: DataTypes.TEXT,
+        allowNull: true 
+    },
     timestamp: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
-    },    
-    detalhes: DataTypes.TEXT
+    } 
+},{
+    tableName: 'ChamadoHistorico',
+    timestamps: false
 });
 
 module.exports = ChamadoHistorico;
