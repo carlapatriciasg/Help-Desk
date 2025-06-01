@@ -128,8 +128,9 @@
                 chamados.forEach(ch => {
                     tbody.innerHTML +=
                         `<tr>
-                        <td>${ch.id}</td>
-                        <td>${ch.titulo}</td>
+                        
+                        <td><a href="/FrontEnd/pages/ticket-detail.html?id=${encodeURIComponent(ch.id)}" class="text-decoration-none">${ch.id}</a></td>
+                        <td>${ch.titulo}</td></a>
                         <td><span class="badge ${getStatusClass(ch.status)}">${ch.status}</span></td>
                         <td>${ch.prioridade}</td>
                         <td>${ch.categoria}</td>
@@ -137,6 +138,7 @@
                         <td>${ch.userEmail || '-'}</td>
                         <td>${new Date(ch.createdAt).toLocaleString('pt-BR')}</td>
                         <td>${new Date(ch.updatedAt).toLocaleString('pt-BR')}</td>
+                        
                     </tr>`
 
                     const exibidos = chamados.length

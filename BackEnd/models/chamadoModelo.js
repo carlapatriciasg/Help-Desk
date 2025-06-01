@@ -29,7 +29,7 @@ const Chamado = db.define('chamado', {
     descricao: {
         type: DataTypes.TEXT,
         allowNull: false,
-    }, 
+    },
     status: {
         type: DataTypes.STRING,
         defaultValue: 'Aberto',
@@ -41,16 +41,16 @@ const Chamado = db.define('chamado', {
         type: DataTypes.BLOB
     }
 },{
-    tableNome: 'Chamado',
-    timestamp: true
+    tableName: 'Chamado',
+    timestamps: true
 });
 
 // Associação entre Chamado e ChamadoHistorico
 Chamado.hasMany(ChamadoHistorico, { foreignKey: 'chamadoId', as: 'historico' });
 ChamadoHistorico.belongsTo(Chamado, { foreignKey: 'chamadoId', as: 'chamado' });
 
-Chamado.createChamado = async ({ titulo, userEmail, categoria, subcategoria, prioridade, descricao, anexo}) => {
-    return Chamado.create({ 
+Chamado.createChamado = async ({ id,titulo, userEmail, categoria, subcategoria, prioridade, descricao, anexo}) => {
+    const chamado = Chamado.create({ 
         id,
         titulo,
         userEmail, 
@@ -60,6 +60,14 @@ Chamado.createChamado = async ({ titulo, userEmail, categoria, subcategoria, pri
         descricao,
         anexo 
     });
-  };  
+    await ChamadoHistorico.create({
+      chamadoId: chamado.id,
+      type: 'Criação',
+      user: chamado.userEmail,
+      detalhes: 'Chamado criado'
+    })
+
+    return chamado
+  };
 
   module.exports = Chamado

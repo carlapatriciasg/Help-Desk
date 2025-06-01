@@ -16,4 +16,10 @@ router.get('/chamados-relatorios', chamadoController.ChamadoRelatorio)
 
 router.get('/chamado/:id', chamadoController.BuscarChamadoPorId);
 
+router.post('/chamado/:id/resposta', chamadoController.chamadoRespota);
+
+router.patch('/chamado/:id/vincular-analista', chamadoController.vincularAnalista);
+
+router.patch('/chamado/:id/status', chamadoController.alterarStatus);
+
 module.exports = router

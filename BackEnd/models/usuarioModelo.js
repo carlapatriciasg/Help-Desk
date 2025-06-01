@@ -48,7 +48,7 @@ const Usuario = db.define('usuario' , {
     },
     tipoUsuario : {
         type: DataTypes.STRING,
-        default: 'usuario',  
+        defaultValue: 'usuario',  
     },
 });
 
@@ -60,8 +60,8 @@ Usuario.checkEmailExists = async (email) => {
   };
   
   // Método para criar novo usuário
-  Usuario.createUser = async ({ nome,email, senha, datanasc, cep, rua, bairro, cidade, uf, tipoUsuario }) => {
-    return Usuario.create({ nome ,email, senha, datanasc, cep,rua, bairro, cidade, uf, tipoUsuario });
+  Usuario.createUser = async ({ nome,email, senha, datanasc, cep, rua, bairro, cidade, uf }) => {
+    return Usuario.create({ nome ,email, senha, datanasc, cep,rua, bairro, cidade, uf });
   };  
 
 module.exports = Usuario;
