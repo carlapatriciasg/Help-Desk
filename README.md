@@ -13,8 +13,8 @@ Permite cadastro de usuários, login seguro, abertura de chamados, acompanhament
 
 - **HTML5, CSS3, JavaScript (ES6)**
 - **Bootstrap 5** (componentes e responsividade)
-- **i18next** (internacionalização PT/EN)
-- **Arquitetura SPA-like** (páginas HTML + JS modular)
+- **Arquitetura MVC** O projeto está no modelo de arquitetura MVC, separando o aplicativo em 3 partes distintas: Model, View e Controller. A camada Model é responsável pela lógica de dados da aplicação e pelo armazenamento e recuperação de dados de repositórios de dados do back-end, a camada de View fornece a interface do usuário necessária para interagir com o aplicativo sendo que também nesta camada está sendo utilizado.
+- **Arquitetura Spa-like**   (páginas HTML + JS modular), enquanto a camada Controller contém a lógica da aplicação necessária para facilitar a comunicação em toda a aplicação, atuando como uma interface entre as camadas de visualização e modelo.
 - **Sem frameworks como React/Vue/Angular**
 
 ### 🔹 Back-end
@@ -75,15 +75,12 @@ Permite cadastro de usuários, login seguro, abertura de chamados, acompanhament
 - **Painel do usuário**
   - Dashboard com métricas (abertos, em atendimento, resolvidos, fechados)
   - Perfil do usuário (edição de dados e senha)
-  - Configurações (idioma, tema, fuso horário)
+  - Configurações (idioma)
 
 - **Painel do analista/admin**
   - Relatórios de atendimento
   - Visualização de todos os chamados
   - Alteração de status e atribuição de chamados
-
-- **Internacionalização**
-  - Suporte a Português (Brasil) e Inglês (EUA) via i18next
 
 - **Acessibilidade**
   - Integração com VLibras
@@ -125,7 +122,7 @@ Permite cadastro de usuários, login seguro, abertura de chamados, acompanhament
 ## 📍 Observações
 
 - O projeto NÃO utiliza React, Vue ou Angular.
-- Toda a lógica de internacionalização, sidebar, dashboard, etc., é feita em JavaScript puro.
+- Toda a lógica do sidebar, dashboard, etc., é feita em JavaScript puro.
 - O banco de dados utilizado é o PostgreSQL.
 - O sistema é modular e pode ser expandido facilmente.
 
