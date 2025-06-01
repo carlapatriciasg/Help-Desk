@@ -34,12 +34,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return params.get('id');
     }
 
+    function getStatusClass(status) {
+        switch (status) {
+            case 'Aberto':
+                return 'bg-primary';
+            case 'Em Atendimento':
+                return 'bg-warning text-dark';
+            case 'Resolvido':
+                return 'bg-success';
+            case 'Fechado':
+                return 'bg-danger';
+            default:
+                return 'bg-secondary';
+        }
+    }
+
     let chamadoAtual = null
 
     function populateTicketDetails(chamado) {
         document.getElementById('ticket-id').textContent = `#${chamado.id}`;
         document.getElementById('ticket-title').textContent = chamado.titulo || 'Sem título';
-        document.getElementById('ticket-status').textContent = chamado.status || 'Desconhecido';
+        document.getElementById('ticket-status').innerHTML = `<span class="badge ${getStatusClass(chamado.status)}">${chamado.status}</span>` || '<span>Desconhecido</span>';
         document.getElementById('ticket-description').textContent = chamado.descricao || 'Sem descrição';
         document.getElementById('ticket-priority').textContent = chamado.prioridade || 'Não definida';
         document.getElementById('ticket-category').textContent = chamado.categoria || 'Não definida';
