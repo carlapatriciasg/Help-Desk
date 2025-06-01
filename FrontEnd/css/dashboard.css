@@ -215,6 +215,12 @@ body {
 .status-resolvido { background-color: #d1e7dd; color: #198754; }
 .status-fechado { background-color: #f8d7da; color: #dc3545; }
 
+.dark-mode .status-aberto { background-color: #e1edff; color: #e8f1ff; }
+.dark-mode .status-atendimento { background-color: #fff3cd; color: #ffe9a7; }
+.dark-mode .status-aguardando { background-color: #e2e3e5; color: #e2e2e2; }
+.dark-mode .status-resolvido { background-color: #d1e7dd; color: #c8fce3; }
+.dark-mode .status-fechado { background-color: #f8d7da; color: #ffc4ca; }
+
 /* Icon Priority */
 .priority-icon {
     font-size: 1.1em;
@@ -611,7 +617,21 @@ a:hover {
     background-color: #fff9c1;
 }
 
+.dark-mode #dropdown-menu-detail{
+    background-color: #1a1a1a; 
+    color: #9dcdff; 
+}
+
+.dark-mode .dropdown-menu-detail:hover{
+    color: #e0f0ff; 
+    background-color: rgba(0, 86, 179, 0.1) !; /*blue hover sidebar <---------*/
+}
+
 .dark-mode #dropdownStatusButton {
+    color: #000000;
+}
+
+.dark-mode #dropdownStatusButton i{
     color: #000000;
 }
 
@@ -635,6 +655,11 @@ a:hover {
 
 #dropdown-menu-detail .dropdown-item:hover{
     background-color: #fff599;
+}
+
+.dark-mode #dropdown-menu-detail .dropdown-item:hover{
+    color: #e0f0ff; 
+    background-color: rgba(0, 86, 179, 0.1); /*blue hover sidebar <---------*/
 }
 
 .dark-mode #dropdownStatusButton:hover {

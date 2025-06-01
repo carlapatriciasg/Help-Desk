@@ -1,4 +1,4 @@
-export function setupDropdownStatus(buttonId = 'dropdownStatusButton', itemSelector = '.dropdown-item') {
+export function setupDropdownStatus(buttonId = 'dropdownStatusButton', itemSelector = '.dropdown-item-detail') {
     const dropdownButton = document.getElementById(buttonId);
     const dropdownItems = document.querySelectorAll(itemSelector);
 
