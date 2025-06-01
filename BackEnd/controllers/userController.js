@@ -22,6 +22,11 @@ exports.register = async (req, res) => {
     if(!validator.isAlphanumeric(senha)){
         return res.status(422).json({msg: 'A senha deve conter letras e numeros'})
     }
+
+    if(!/[A-Z]/.test(senha) || !/[a-z]/.test(senha)){
+        return res.status(422).json({msg: 'A senha deve conter pelo menos uma letra maiúscula e uma minúscula'})
+    };
+
     if(senha !== confirmSenha){
         return res.status(422).json({msg: 'As senhas não conferem '})
     }

@@ -28,6 +28,11 @@ Permite cadastro de usuários, login seguro, abertura de chamados, acompanhament
 
 ---
 
+## 📍 Protocolos Utilizados
+
+- **HTTP** (Protocolo de Transferência de Hipertexto)
+- **SMTP** (Simple Mail Transfer Protocol)
+
 ## 📍 Estrutura do Projeto
 
 ```
@@ -140,9 +145,14 @@ Para rodar o projeto localmente, você precisa ter instalado:
 - (Opcional) [Insomnia](https://insomnia.rest/) ou [Postman](https://www.postman.com/) para testar as APIs REST
 
 ---
+## 📍 ANEXOS:
+
+- [Análise de Requisitos](https://drive.google.com/drive/folders/1mnMf63SudRqTQ4NZpG2nI3VEifoxGF4A?usp=sharing)
 
 ## 📍 Créditos
 
 Desenvolvido por [Carla Patrícia](https://www.linkedin.com/in/carlapatriciasg/), [Ielson Dias](https://www.linkedin.com/in/ielson-dias/), [Caique Mendes](https://www.linkedin.com/in/caiquemendes-/), [Vinicius Castro](https://www.linkedin.com/in/vinicius-castrodev/) e [Kaique Aquino](https://www.linkedin.com/in/kaique-aquino/)  
 Orientação: Prof. [Sheila Tirony](https://www.linkedin.com/in/sheila-tirony-a2207924/)  
 Projeto Acadêmico — 2025
+
+

@@ -18,7 +18,7 @@
                 <i class="bi bi-list"></i>
             </button>
             <h1 class="h4 mb-0 ms-2">
-                <strog>Dashboard</strog>
+                <strog>Perfil</strog>
             </h1>
             <div class="d-flex align-items-center gap-2">
                 <div class="d-flex align-items-center gap-2">
@@ -103,6 +103,11 @@
     <script type="module" src="/FrontEnd/js/vlibras.js"></script>
     <script type="module" src="/FrontEnd/js/loadSidebar.js"></script>
     <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const email = sessionStorage.getItem('email');
+            document.getElementById('profileEmail').value = email;
+        });
+
         document.getElementById('profile-form').addEventListener('submit', async(event) => {
             event.preventDefault()
 
