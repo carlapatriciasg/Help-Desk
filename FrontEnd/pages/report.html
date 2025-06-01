@@ -137,7 +137,7 @@
     <script>
         document.getElementById("filter-button").addEventListener("change", function () {
             let prioridadeSelecionada = this.value;
-            let linhas = document.querySelectorAll("#ticket-list-body tr");
+            let linhas = document.querySelectorAll("#relatorio-ticket-list-body tr");
 
             linhas.forEach(linha => {
                 let prioridade = linha.cells[3]?.textContent.trim(); 
