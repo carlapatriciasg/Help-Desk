@@ -176,7 +176,7 @@
 
             const usuario = JSON.parse(localStorage.getItem('Usuario') || '{}');
 
-            // muda o titulo se o tipo de usuário for "usuario"
+            // change title if user type is "user"
             if (usuario.tipoUsuario === 'usuario') {
                    const elemento = document.getElementById("user-ticket");
                     elemento.innerHTML = "Meus Chamados";
