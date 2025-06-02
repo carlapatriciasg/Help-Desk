@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('ticket-description').textContent = chamado.descricao || 'Sem descrição';
         document.getElementById('ticket-priority').textContent = chamado.prioridade || 'Não definida';
         document.getElementById('ticket-category').textContent = chamado.categoria || 'Não definida';
-        document.getElementById('ticket-requester').textContent = chamado.userEmail  || 'Não informado';
+        document.getElementById('ticket-requester').textContent = chamado.userEmail || 'Não informado';
         document.getElementById('ticket-agent').textContent = chamado.analista || 'Não atribuído';
         document.getElementById('ticket-created-at').textContent = formatDate(chamado.createdAt);
         document.getElementById('ticket-updated-at').textContent = formatDate(chamado.updatedAt);
@@ -87,14 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Anexos
         const attachmentsSection = document.getElementById('attachments-section');
+        const ul = attachmentsSection.querySelector('ul');
+        ul.innerHTML = ''
+
         if (chamado.anexos && chamado.anexos.length > 0) {
             attachmentsSection.classList.remove('d-none');
-            const ul = attachmentsSection.querySelector('ul');
-            ul.innerHTML = '';
             chamado.anexos.forEach(anexo => {
                 const li = document.createElement('li');
                 li.classList.add('list-group-item');
-                li.innerHTML = `<i class="bi bi-paperclip me-2"></i> ${anexo.nome}`;
+                li.innerHTML = `<i class="bi bi-paperclip me-2"></i>
+                ${anexo.nome}`;
                 ul.appendChild(li);
             });
         } else {
@@ -109,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const commentText = document.getElementById('comment-text').value.trim();
         const ticketId = getTicketIdFromUrl();
+        const email = sessionStorage.getItem('email')
 
         if (!commentText) {
             alert('Insira um comentário.');
@@ -117,37 +120,36 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const resposta = await fetch(`http://localhost:3000/api/chamado/${ticketId}/resposta`, {
                 method: 'POST',
-                headers: {
+                    headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ comentario: commentText })
+                body: JSON.stringify({ comentario: commentText, analista: email })
             });
 
-            if (!resposta.ok) {
-                throw new Error('Erro ao enviar o comentário.');
-            }
-
             const data = await resposta.json();
-            
+
+            if (!resposta.ok) {
+                throw new Error(data.msg || 'Erro ao enviar o comentário.');
+            }
 
             alert('Comentário enviado');
             document.getElementById('comment-text').value = '';
 
-            populateTicketDetails(data.chamadoAtualizado); 
+            populateTicketDetails(data.chamadoAtualizado);
 
         } catch (erro) {
             console.error(erro)
-            alert('Erro ao enviar resposta. Tente novamente.');
+            alert(`${erro.message}` || 'Erro ao enviar resposta. Tente novamente.');
         }
     })
 
-    function showError(message) {
-        loadingIndicator.innerHTML = `<p class="text-danger">${message}</p>`;
-    }
+function showError(message) {
+    loadingIndicator.innerHTML = `<p class="text-danger">${message}</p>`;
+}
 
-    function formatDate(dateString) {
-        if (!dateString) return 'Não informado';
-        const date = new Date(dateString);
-        return date.toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
-    }
+function formatDate(dateString) {
+    if (!dateString) return 'Não informado';
+    const date = new Date(dateString);
+    return date.toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
+}
 });

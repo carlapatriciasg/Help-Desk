@@ -137,22 +137,31 @@
         document.getElementById('new-ticket-form').addEventListener('submit', async function (event) {
             event.preventDefault();
 
+            const form = new FormData();
             const categoria = document.getElementById('category').value;
             const subcategoria = document.getElementById('subcategory').value;
             const prioridade = document.getElementById('priority').value;
             const titulo = document.getElementById('title').value;
             const descricao = document.getElementById('description').value;
-            const anexo = document.getElementById('attachments').value;
+            const fileInput = document.getElementById('attachments');
+            const file = fileInput.files[0]
 
             const userEmail = sessionStorage.getItem("email");
 
+            form.append('categoria', categoria);
+            form.append('subcategoria', subcategoria);
+            form.append('prioridade', prioridade);
+            form.append('titulo', titulo);
+            form.append('descricao', descricao);
+            form.append('userEmail', userEmail);
+            if (file) {
+                form.append('anexo', file);
+            }
+            
             try {
                 const respostas = await fetch('http://localhost:3000/api/abertura', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ categoria, subcategoria, prioridade, titulo, descricao, userEmail, anexo })
+                    body: form
                 });
 
                 if (!respostas.ok) {

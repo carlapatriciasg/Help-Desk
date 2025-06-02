@@ -24,6 +24,7 @@ document.getElementById('selectTicketS').addEventListener('change', async functi
         }
          const data = await resposta.json();
         alert(`Chamado ${isChecked ? 'atribuído' : 'desatribuído'} com sucesso.`);
+        location.reload()
     }catch(erro){
         console.error(erro)
         alert('Erro ao vincular chamado')
