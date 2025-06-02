@@ -547,7 +547,7 @@ a:hover {
 /* Cards */
 
 .dropdown-item {
-    color: #0056b3;
+    color: #4b6179;
 }
 
 .dark-mode .card {
@@ -610,7 +610,6 @@ a:hover {
 
 .dropdown-menu .user-li.dropdown-item{
     color: #0056b3;
-    text-decoration: none;
 }
 
 .dropdown-menu .user-li.dropdown-item:hover{
