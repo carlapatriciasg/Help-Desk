@@ -32,16 +32,8 @@ exports.login = async (req, res) => {
     return res.status(422).json({msg: 'Senha invalida'})
    }
    
-   // captura de erro na validação de acesso por id
+   
    try{
-    //const secret = process.env.SECRET
-
-    /*const token = jwt.sign(
-        {
-            id: usuarioExiste._id
-        },
-        secret,
-    )*/
         res.status(200).json({
             msg: 'Autenticação realizada com sucesso',
             usuario: { tipoUsuario: usuarioExiste.tipoUsuario }

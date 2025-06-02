@@ -39,7 +39,10 @@ const Chamado = db.define('chamado', {
     },
     anexo: {
         type: DataTypes.BLOB
-    }
+    },
+    nomeAnexo: {
+        type: DataTypes.STRING,
+    },
 },{
     tableName: 'Chamado',
     timestamps: true
@@ -49,7 +52,7 @@ const Chamado = db.define('chamado', {
 Chamado.hasMany(ChamadoHistorico, { foreignKey: 'chamadoId', as: 'historico' });
 ChamadoHistorico.belongsTo(Chamado, { foreignKey: 'chamadoId', as: 'chamado' });
 
-Chamado.createChamado = async ({ id,titulo, userEmail, categoria, subcategoria, prioridade, descricao, anexo}) => {
+Chamado.createChamado = async ({ id,titulo, userEmail, categoria, subcategoria, prioridade, descricao, anexo, nomeAnexo, agente}) => {
     const chamado = Chamado.create({ 
         id,
         titulo,
@@ -58,7 +61,9 @@ Chamado.createChamado = async ({ id,titulo, userEmail, categoria, subcategoria, 
         subcategoria, 
         prioridade, 
         descricao,
-        anexo 
+        anexo,
+        nomeAnexo,
+        agente
     });
     await ChamadoHistorico.create({
       chamadoId: chamado.id,

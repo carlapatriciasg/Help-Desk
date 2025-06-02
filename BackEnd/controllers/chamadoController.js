@@ -2,10 +2,14 @@ const Chamado = require('../models/chamadoModelo');
 const ChamadoHistorico = require('../models/ChamadoHistorico');
 const EmailService = require('../service/EmailService');
 const { where } = require('sequelize');
-const { Op } = require('sequelize');
+const { Op } = require('sequelize')
+const multer = require('multer');
+
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage });
 
 exports.Abertura = async (req, res) => {
-    const { titulo, categoria, subcategoria, prioridade, descricao, userEmail, anexo } = req.body;
+    const { titulo, categoria, subcategoria, prioridade, descricao, userEmail } = req.body;
     //validações
     if(!titulo){
         return res.status(422).json({msg: 'O titulo é obrigatório'})
@@ -37,7 +41,8 @@ exports.Abertura = async (req, res) => {
         userEmail,
         status: 'Aberto',
         agente: null,
-        anexo
+        anexo: req.file ? req.file.buffer : null,
+        nomeAnexo: req.file ? req.file.originalname : null
     });
     //criação do historico do chamado
     await ChamadoHistorico.create({
@@ -270,7 +275,7 @@ exports.BuscarChamadoPorId = async (req, res) => {
                     timestamp: h.timestamp,
                     detalhes: h.detalhes
                 })),
-                anexos: chamado.anexo ? [{ nome: chamado.anexo }] : []
+                anexos: chamado.nomeAnexo ? [{ nome: chamado.nomeAnexo }] : []
             }
         };
 
@@ -373,3 +378,23 @@ exports.alterarStatus = async (req, res) =>{
         res.status(500).json({msg: 'Erro interno.'})
     }
 }
+//função inativa
+/*exports.DownloadAnexo = async (req, res) => {
+    const { id, nome } = req.params;
+    const decodedNome = decodeURIComponent(nome)
+
+    try {
+        const chamado = await Chamado.findByPk(id);
+
+        if (!chamado || !chamado.anexo || chamado.nomeAnexo !== decodedNome ) {
+            return res.status(404).json({ msg: 'Anexo não encontrado' });
+        }
+
+        res.setHeader('Content-Disposition', `attachment; filename="${chamado.nomeAnexo}"`);
+        res.setHeader('Content-Type', 'application/octet-stream');
+        res.send(chamado.anexo);
+    } catch (err) {
+        console.error('Erro ao baixar anexo:', err);
+        res.status(500).json({ msg: 'Erro ao baixar anexo' });
+    }
+};*/
