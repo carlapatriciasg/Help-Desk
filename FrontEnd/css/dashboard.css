@@ -608,6 +608,15 @@ a:hover {
 
 /* ticket detail */
 
+.dropdown-menu .dropdown-item{
+    color: #0056b3;
+}
+
+.dropdown-menu .dropdown-item:hover{
+    color: #e0f0ff;
+    background-color: rgba(0, 86, 179, 0.1);
+}
+
 .dark-mode .list-group-item{
     background-color: #232323;
     color: #fff;
@@ -633,11 +642,6 @@ a:hover {
 
 .dark-mode #dropdownStatusButton i{
     color: #000000;
-}
-
-.dropdown-menu .dropdown-item{
-    color: #000000;
-    text-decoration: none;
 }
 
 .dark-mode .dropdown-menu .dropdown-item{
@@ -672,9 +676,6 @@ a:hover {
 
 .dark-mode .dropdown-menu .dropdown-item:hover{
     color: #e0f0ff;
-}
-
-.dark-mode .dropdown-menu .dropdown-item:hover{
     background-color: rgba(0, 86, 179, 0.1);
 }
 
