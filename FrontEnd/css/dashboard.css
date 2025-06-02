@@ -616,6 +616,10 @@ a:hover {
     color: #060130;;
 }
 
+.dropdown-menu .user-li.dropdown-item:focus {
+  background-color: #fcfcfc;
+}
+
 .dark-mode .list-group-item{
     background-color: #232323;
     color: #fff;
@@ -632,7 +636,7 @@ a:hover {
 
 .dark-mode .dropdown-menu-detail:hover{
     color: #e0f0ff; 
-    background-color: rgba(0, 86, 179, 0.1) !; /*blue hover sidebar <---------*/
+    background-color: rgba(0, 86, 179, 0.1); /*blue hover sidebar <---------*/
 }
 
 .dark-mode #dropdownStatusButton {
