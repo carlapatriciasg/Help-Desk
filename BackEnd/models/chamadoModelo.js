@@ -64,6 +64,7 @@ Chamado.createChamado = async ({ id,titulo, userEmail, categoria, subcategoria, 
       chamadoId: chamado.id,
       type: 'Criação',
       user: chamado.userEmail,
+      analista: chamado.agente,
       detalhes: 'Chamado criado'
     })
 

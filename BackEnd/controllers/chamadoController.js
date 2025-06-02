@@ -44,6 +44,7 @@ exports.Abertura = async (req, res) => {
         chamadoId: newId,
         type: 'Criado',
         user: userEmail,
+        analista: null,
         timestamp: now,
         detalhes: 'Chamado criado'
     });
@@ -282,7 +283,7 @@ exports.BuscarChamadoPorId = async (req, res) => {
 
 exports.chamadoRespota = async (req, res) => {
     const chamadoId = req.params.id
-    const { comentario } = req.body
+    const { comentario, analista } = req.body
 
     try {
         const chamado = await Chamado.findByPk(chamadoId)
@@ -291,10 +292,15 @@ exports.chamadoRespota = async (req, res) => {
             return res.status(404).json({msg: 'Chamado não localizado'})
         }
 
+        if(chamado.agente !== analista){
+            return res.status(403).json({msg: 'O envio de respota só poderá ser realizada pelo analista.'})
+        }
+
         await ChamadoHistorico.create({
             chamadoId: chamado.id,
             type: 'Comentário',
-            user: chamado.userEmail || 'Desconhecido', 
+            user: chamado.userEmail || 'Desconhecido',
+            analista: chamado.agente || 'Desconhecido',  
             timestamp: new Date(),
             detalhes: comentario
         });
@@ -336,13 +342,17 @@ exports.vincularAnalista = async(req, res) => {
 
 exports.alterarStatus = async (req, res) =>{
     const chamadoId = req.params.id;
-    const { status } = req.body;
+    const { status, analista } = req.body;
 
     try {
         const chamado = await Chamado.findByPk(chamadoId)
 
         if(!chamado){
             return res.status(400).json({msg:'Chamado não localizado'})
+        }
+
+        if(chamado.agente !== analista){
+            return res.status(403).json({msg: 'A alteração do status do chamado só poderá ser realizada pelo analista.'})
         }
 
         chamado.status = status
@@ -352,6 +362,7 @@ exports.alterarStatus = async (req, res) =>{
             chamadoId: chamado.id,
             type: 'Atualização de Status',
             user: chamado.userEmail || 'Desconhecido',
+            analista: chamado.agente || 'Desconhecido',
             detalhes: `Status atualizado:  "${status}"`,
             timestamp: new Date()
         });

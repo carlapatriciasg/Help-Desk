@@ -22,6 +22,9 @@ const ChamadoHistorico = db.define('ChamadoHistorico',{
     user: {
         type: DataTypes.STRING,
     },
+    analista: {
+        type: DataTypes.STRING,
+    },
     detalhes: {
         type: DataTypes.TEXT,
         allowNull: true 
